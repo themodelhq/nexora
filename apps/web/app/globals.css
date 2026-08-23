@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0e14;
+  --text: #f5f7fa;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff;
+    --text: #0b0e14;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The site is dark-mode first. Light mode is only honored when the OS
+   requests it and the user has not overridden. */
+.dark body {
+  background-color: #0b0e14;
+  color: #f5f7fa;
+}

@@ -1,0 +1,31 @@
+{
+  "_comment": "Canonical token metadata for data aggregators / listing packages. Human-reviewable, NOT submitted.",
+  "status": "PREPARATION",
+  "name": "Nexora",
+  "symbol": "NXR",
+  "decimals": 18,
+  "total_supply": 1000000000,
+  "max_supply": 1000000000,
+  "token_type": "utility",
+  "chain": {
+    "name": "Base",
+    "chain_id": 8453,
+    "testnet_chain_id": 84532,
+    "explorer": "https://basescan.org",
+    "testnet_explorer": "https://sepolia.basescan.org"
+  },
+  "primary_dex_pair": "NXR/USDC",
+  "use_cases": [
+    "community rewards",
+    "airdrops",
+    "staking",
+    "governance",
+    "treasury",
+    "Web3 utilities"
+  ],
+  "logo": "apps/web/public/logo.png",
+  "og_image": "apps/web/public/og.png",
+  "docs": "https://docs.nexora.io",
+  "no_guaranteed_returns": true,
+  "listing_status": "NOT SUBMITTED — requires live mainnet + real liquidity + human submission"
+}

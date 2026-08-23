@@ -1,0 +1,31 @@
+{
+  "_comment": "Human-reviewable CoinGecko application metadata. NOT submitted. Complete only after token is live on Base mainnet with real liquidity.",
+  "status": "PREPARATION — NOT SUBMITTED",
+  "asset": {
+    "name": "Nexora",
+    "symbol": "NXR",
+    "decimals": 18,
+    "total_supply": "1000000000",
+    "website": "https://nexora.io",
+    "description": "Nexora is a next-generation digital ecosystem powered by NXR, an ERC-20 utility token on Base. NXR powers community rewards, airdrops, staking, governance, treasury and Web3 utilities.",
+    "token_type": "utility"
+  },
+  "links": {
+    "website": "https://nexora.io",
+    "documentation": "https://docs.nexora.io",
+    "twitter": "https://x.com/nexora",
+    "github": "https://github.com/nexora",
+    "discord": "https://discord.gg/nexora"
+  },
+  "contract_addresses": {
+    "_placeholder_filled_at_deploy": "see packages/contracts/deployments/base.json"
+  },
+  "requirements_checklist": {
+    "live_on_base_mainnet": false,
+    "verified_contract": false,
+    "real_liquidity": false,
+    "real_trading_volume": false,
+    "logo_final": true,
+    "no_guaranteed_profit_claims": true
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@nexora/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Nexora public website and user Web3 dashboard (Next.js).",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nexora/blockchain": "*",
+    "@nexora/config": "*",
+    "@nexora/types": "*",
+    "@nexora/ui": "*",
+    "@tanstack/react-query": "^5.45.0",
+    "@x402/evm": "^2.21.0",
+    "next": "14.2.35",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "viem": "^2.15.0",
+    "wagmi": "^2.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.4"
+  }
+}

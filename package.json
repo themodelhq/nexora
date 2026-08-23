@@ -1,0 +1,45 @@
+{
+  "name": "nexora",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Nexora (NXR) — a next-generation Web3 digital ecosystem. ERC-20 utility token on Base.",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "build:web": "npm run build -w @nexora/web",
+    "build:admin": "npm run build -w @nexora/admin",
+    "dev": "npm run dev --workspaces --if-present",
+    "dev:web": "npm run dev -w @nexora/web",
+    "dev:admin": "npm run dev -w @nexora/admin",
+    "dev:api": "npm run dev -w @nexora/api",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:contracts": "npm run test -w @nexora/contracts",
+    "test:contracts:coverage": "npm run coverage -w @nexora/contracts",
+    "compile": "npm run compile -w @nexora/contracts",
+    "clean": "npm run clean --workspaces --if-present && rm -rf node_modules",
+    "prepare": "husky || true",
+    "security:audit": "npm audit --audit-level=high",
+    "deploy:local": "bash scripts/deployment/deploy-local.sh"
+  },
+  "devDependencies": {
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,sol}": [
+      "prettier --write"
+    ]
+  }
+}

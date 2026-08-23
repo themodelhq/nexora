@@ -1,0 +1,225 @@
+/**
+ * Nexora — deterministic genesis allocation architecture.
+ *
+ * The NXR token has a FIXED 1,000,000,000 supply minted at construction, so
+ * every allocation recipient must be a legitimate, known destination at the
+ * moment the token deploys. This module is the single source of truth for
+ * those destinations.
+ *
+ * ARCHITECTURE (chosen: pre-computed allocation vaults + automatic wiring):
+ *   - Community, Liquidity, Treasury, Development -> EXPLICIT configured
+ *     addresses (env in production; dedicated non-deployer test addresses in
+ *     testnet/local).
+ *   - Team, Advisors, Public Sale -> token-agnostic `NexoraAllocationVault`
+ *     escrows deployed via CREATE2 BEFORE the token. The token mints to the
+ *     vaults. The deployment flow then automatically releases the vaults'
+ *     tokens into the actual Vesting (team/advisors) and Presale (public sale)
+ *     contracts. No manual post-deployment movement, no deployer windfall.
+ *
+ * HARD INVARIANTS (validated here and by validate-genesis-allocation.ts):
+ *   - sum(allocations) == 1,000,000,000
+ *   - all recipients unique, non-zero
+ *   - deployer is never a recipient
+ */
+import { ethers } from 'ethers';
+
+export const MAX_SUPPLY = ethers.parseEther('1000000000');
+
+export type BucketKind = 'external' | 'vault';
+
+export interface AllocationSpec {
+  key: string; // env var name for explicit addresses
+  bucket: string;
+  amount: bigint;
+  kind: BucketKind;
+  /** Vault salt (only for kind='vault'). */
+  salt?: string;
+  /** Purpose string for documentation. */
+  purpose: string;
+}
+
+/** Approved tokenomics buckets. */
+export const ALLOCATIONS: AllocationSpec[] = [
+  { key: 'COMMUNITY_ADDRESS', bucket: 'community-ecosystem', amount: ethers.parseEther('350000000'), kind: 'external', purpose: 'Community airdrop/ecosystem multisig' },
+  { key: 'LIQUIDITY_ADDRESS', bucket: 'liquidity', amount: ethers.parseEther('150000000'), kind: 'external', purpose: 'DEX liquidity wallet' },
+  { key: 'TREASURY_ADDRESS', bucket: 'treasury', amount: ethers.parseEther('150000000'), kind: 'external', purpose: 'Treasury multisig' },
+  { key: 'TEAM_VESTING_ADDRESS', bucket: 'team', amount: ethers.parseEther('100000000'), kind: 'vault', salt: 'nexora-team-vault', purpose: 'Team vesting vault (-> NexoraVesting)' },
+  { key: 'ADVISOR_VESTING_ADDRESS', bucket: 'advisors', amount: ethers.parseEther('50000000'), kind: 'vault', salt: 'nexora-advisor-vault', purpose: 'Advisor vesting vault (-> NexoraVesting)' },
+  { key: 'PUBLIC_SALE_ADDRESS', bucket: 'public-sale', amount: ethers.parseEther('100000000'), kind: 'vault', salt: 'nexora-sale-vault', purpose: 'Public sale vault (-> NexoraPresale)' },
+  { key: 'DEVELOPMENT_ADDRESS', bucket: 'development', amount: ethers.parseEther('100000000'), kind: 'external', purpose: 'Development/grants wallet' },
+];
+
+/** Dedicated hardhat testnet addresses (deterministic, distinct, NOT deployer). */
+export const TEST_RECIPIENTS: Record<string, string> = {
+  COMMUNITY_ADDRESS: '',
+  LIQUIDITY_ADDRESS: '',
+  TREASURY_ADDRESS: '',
+  DEVELOPMENT_ADDRESS: '',
+};
+
+export function assertAllocationSum(allocations: { amount: bigint }[]): boolean {
+  const sum = allocations.reduce((acc, a) => acc + a.amount, 0n);
+  return sum === MAX_SUPPLY;
+}
+
+/** Resolve an explicit (non-vault) recipient: env in production, test fallback otherwise. */
+export function explicitRecipient(key: string, isProduction: boolean): string {
+  const fromEnv = process.env[key];
+  if (fromEnv) return ethers.getAddress(fromEnv);
+  if (isProduction) throw new Error(`Production deployment requires ${key} (no fallback allowed)`);
+  const test = TEST_RECIPIENTS[key];
+  if (!test) throw new Error(`No test fallback for ${key}`);
+  return ethers.getAddress(test);
+}
+
+export interface ResolvedAllocations {
+  /** Ordered recipients for the token constructor. */
+  entries: { recipient: string; amount: bigint }[];
+  /** Which entries are vaults (recipient = vault address). */
+  vaultRecipients: { bucket: string; recipient: string; amount: bigint; salt: string }[];
+  deploymentType: 'production' | 'testnet';
+}
+
+/**
+ * Resolves the full genesis allocation. Vault recipients are supplied as the
+ * pre-computed CREATE2 addresses of the allocation vaults.
+ * @param deployer Deployer address (must never be a recipient in production).
+ * @param isProduction Whether this is a production (mainnet) deployment.
+ * @param vaultAddresses Map of vault salt -> precomputed CREATE2 address.
+ */
+export function resolveAllocations(
+  deployer: string,
+  isProduction: boolean,
+  vaultAddresses: Record<string, string> = {},
+): ResolvedAllocations {
+  const entries: { recipient: string; amount: bigint }[] = [];
+  const vaultRecipients: ResolvedAllocations['vaultRecipients'] = [];
+
+  for (const spec of ALLOCATIONS) {
+    let recipient: string;
+    if (spec.kind === 'vault') {
+      const vaultAddr = vaultAddresses[spec.salt!];
+      if (!vaultAddr) throw new Error(`Vault address for ${spec.bucket} (${spec.salt}) not provided`);
+      recipient = ethers.getAddress(vaultAddr);
+      vaultRecipients.push({ bucket: spec.bucket, recipient, amount: spec.amount, salt: spec.salt! });
+    } else {
+      recipient = explicitRecipient(spec.key, isProduction);
+    }
+    entries.push({ recipient, amount: spec.amount });
+  }
+
+  // Hard invariant: sum == MAX_SUPPLY.
+  if (!assertAllocationSum(entries)) {
+    throw new Error('Allocation sum does not equal MAX_SUPPLY (1,000,000,000)');
+  }
+
+  // Uniqueness, non-zero, no deployer windfall.
+  const seen = new Set<string>();
+  for (const e of entries) {
+    const key = e.recipient.toLowerCase();
+    if (seen.has(key)) throw new Error(`Duplicate allocation recipient: ${e.recipient}`);
+    seen.add(key);
+    if (e.recipient === ethers.ZeroAddress) throw new Error('Zero address is not a valid allocation recipient');
+    if (isProduction && key === deployer.toLowerCase()) {
+      throw new Error('Deployer address cannot be an allocation recipient in production');
+    }
+  }
+
+  return { entries, vaultRecipients, deploymentType: isProduction ? 'production' : 'testnet' };
+}
+
+/** The correct allocation destination for each bucket (for docs/reporting). */
+export const BUCKET_PURPOSE: Record<string, string> = Object.fromEntries(
+  ALLOCATIONS.map((a) => [a.bucket, a.purpose]),
+);
+
+// ---------------------------------------------------------------------------
+// Vesting schedule configuration (team + advisors)
+// ---------------------------------------------------------------------------
+
+export interface VestingScheduleSpec {
+  beneficiary: string;
+  totalAmount: bigint;
+  start: bigint; // unix seconds
+  cliff: bigint; // seconds
+  duration: bigint; // seconds
+  revocable: boolean;
+}
+
+const SECONDS_PER_MONTH = 30n * 24n * 3600n;
+
+/** Intended vesting terms (from approved tokenomics). */
+const DEFAULT_TERMS = {
+  team: { cliff: 12n * SECONDS_PER_MONTH, duration: 36n * SECONDS_PER_MONTH, revocable: false },
+  advisors: { cliff: 6n * SECONDS_PER_MONTH, duration: 24n * SECONDS_PER_MONTH, revocable: false },
+};
+
+/** Testnet fallback beneficiaries (distinct non-deployer test addresses). */
+const TEST_VESTING_BENEFICIARIES = {
+  team: '',
+  advisors: '',
+};
+
+function vestingEnv(prefix: string, field: string): string | undefined {
+  return process.env[`${prefix}_VESTING_${field}`];
+}
+
+function resolveSchedule(
+  bucket: 'team' | 'advisors',
+  amount: bigint,
+  isProduction: boolean,
+  defaultStart: bigint,
+): VestingScheduleSpec {
+  const terms = DEFAULT_TERMS[bucket];
+
+  // Beneficiary: explicit env in production; test fallback otherwise.
+  let beneficiary: string;
+  const envBen = vestingEnv(bucket.toUpperCase(), 'BENEFICIARY');
+  if (envBen) {
+    beneficiary = ethers.getAddress(envBen);
+  } else if (isProduction) {
+    throw new Error(`Production requires ${bucket.toUpperCase()}_VESTING_BENEFICIARY (no fallback)`);
+  } else {
+    beneficiary = ethers.getAddress(TEST_VESTING_BENEFICIARIES[bucket]);
+  }
+
+  const start = vestingEnv(bucket.toUpperCase(), 'START')
+    ? BigInt(vestingEnv(bucket.toUpperCase(), 'START')!)
+    : defaultStart;
+  const cliff = vestingEnv(bucket.toUpperCase(), 'CLIFF')
+    ? BigInt(vestingEnv(bucket.toUpperCase(), 'CLIFF')!)
+    : terms.cliff;
+  const duration = vestingEnv(bucket.toUpperCase(), 'DURATION')
+    ? BigInt(vestingEnv(bucket.toUpperCase(), 'DURATION')!)
+    : terms.duration;
+  const revocable = vestingEnv(bucket.toUpperCase(), 'REVOCABLE')
+    ? vestingEnv(bucket.toUpperCase(), 'REVOCABLE')! === 'true'
+    : terms.revocable;
+
+  // Validation.
+  if (beneficiary === ethers.ZeroAddress) throw new Error(`Vesting beneficiary for ${bucket} is zero`);
+  if (start <= 0n) throw new Error(`Vesting start for ${bucket} is invalid`);
+  if (cliff < 0n) throw new Error(`Vesting cliff for ${bucket} is negative`);
+  if (duration <= 0n) throw new Error(`Vesting duration for ${bucket} is invalid`);
+  if (cliff > duration) throw new Error(`Vesting cliff exceeds duration for ${bucket}`);
+  if (amount <= 0n) throw new Error(`Vesting allocation for ${bucket} is zero`);
+
+  return { beneficiary, totalAmount: amount, start, cliff, duration, revocable };
+}
+
+/**
+ * Resolves the team and advisor vesting schedules.
+ * @param isProduction true => explicit env beneficiaries required.
+ * @param defaultStart start timestamp (now) for schedules.
+ */
+export function resolveVestingSchedules(
+  isProduction: boolean,
+  defaultStart: bigint,
+): { team: VestingScheduleSpec; advisors: VestingScheduleSpec } {
+  const team = ALLOCATIONS.find((a) => a.bucket === 'team')!;
+  const advisors = ALLOCATIONS.find((a) => a.bucket === 'advisors')!;
+  return {
+    team: resolveSchedule('team', team.amount, isProduction, defaultStart),
+    advisors: resolveSchedule('advisors', advisors.amount, isProduction, defaultStart),
+  };
+}

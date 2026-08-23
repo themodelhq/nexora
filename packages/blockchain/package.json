@@ -1,0 +1,18 @@
+{
+  "name": "@nexora/blockchain",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Nexora blockchain client layer: viem-based read/write helpers, contract ABIs, and chain-aware utilities.",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "viem": "^2.15.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

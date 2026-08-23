@@ -1,0 +1,99 @@
+version: '3.9'
+
+# Nexora local development / staging stack.
+# For production, secrets should come from a vault/secret manager and the
+# images should be built in CI. Never put real private keys in this file.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: nexora-postgres
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-nexora}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-nexora}
+      POSTGRES_DB: ${DATABASE_NAME:-nexora}
+    ports:
+      - '5432:5432'
+    volumes:
+      - nexora_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${DATABASE_USER:-nexora}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: nexora-redis
+    ports:
+      - '6379:6379'
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ..
+      dockerfile: infrastructure/docker/api.Dockerfile
+    container_name: nexora-api
+    env_file:
+      - ../.env
+    environment:
+      DATABASE_URL: postgresql://${DATABASE_USER:-nexora}:${DATABASE_PASSWORD:-nexora}@postgres:5432/${DATABASE_NAME:-nexora}
+      REDIS_URL: redis://redis:6379
+    ports:
+      - '4000:4000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ..
+      dockerfile: infrastructure/docker/web.Dockerfile
+      args:
+        NEXT_PUBLIC_APP_ENV: ${NEXT_PUBLIC_APP_ENV:-development}
+    container_name: nexora-web
+    env_file:
+      - ../.env.local
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
+
+  admin:
+    build:
+      context: ..
+      dockerfile: infrastructure/docker/admin.Dockerfile
+    container_name: nexora-admin
+    env_file:
+      - ../.env.local
+    ports:
+      - '3001:3001'
+    depends_on:
+      - api
+
+  indexer:
+    build:
+      context: ..
+      dockerfile: infrastructure/docker/api.Dockerfile
+    container_name: nexora-indexer
+    env_file:
+      - ../.env
+    environment:
+      DATABASE_URL: postgresql://${DATABASE_USER:-nexora}:${DATABASE_PASSWORD:-nexora}@postgres:5432/${DATABASE_NAME:-nexora}
+      REDIS_URL: redis://redis:6379
+      INDEXER_POLL_MS: 15000
+    command: node apps/api/dist/worker.js
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  nexora_pgdata:

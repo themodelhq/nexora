@@ -1,0 +1,35 @@
+{
+  "_comment": "Human-reviewable CoinMarketCap application metadata. NOT submitted. Complete only after token is live on Base mainnet with real liquidity.",
+  "status": "PREPARATION — NOT SUBMITTED",
+  "asset": {
+    "name": "Nexora",
+    "symbol": "NXR",
+    "decimals": 18,
+    "total_supply": "1000000000",
+    "contract_address": "_filled_at_deploy",
+    "website": "https://nexora.io",
+    "description": "Nexora (NXR) is an ERC-20 utility token on Base powering a community ecosystem: rewards, airdrops, staking, governance, treasury and Web3 utilities.",
+    "logo": "apps/web/public/logo.png"
+  },
+  "links": {
+    "website": "https://nexora.io",
+    "docs": "https://docs.nexora.io",
+    "twitter": "https://x.com/nexora",
+    "github": "https://github.com/nexora"
+  },
+  "required_real_data": {
+    "explorer_link": "https://basescan.org",
+    "dex_pair": "NXR/USDC (once live)",
+    "holders": "from on-chain data",
+    "volume": "from real DEX data",
+    "market_cap": "computed from real price and supply"
+  },
+  "requirements_checklist": {
+    "live_on_base_mainnet": false,
+    "verified_contract": false,
+    "real_liquidity": false,
+    "real_trading_volume": false,
+    "no_fabricated_listing": true,
+    "no_guaranteed_profit_claims": true
+  }
+}
