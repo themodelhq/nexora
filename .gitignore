@@ -122,3 +122,9 @@ venv/
 
 # Runtime logs
 *.log
+# Local secrets
+.custody/
+# Deployment secrets
+deployments/private/
+deployments/secrets/
+# Hardhat / Foundry generated data

@@ -34,8 +34,8 @@ Deployment addresses are written to
 ```bash
 # In your local `.env` (never committed):
 #   RPC_URL=https://sepolia.base.org
-#   DEPLOYER_PRIVATE_KEY=<your testnet deployer key>
-#   BASESCAN_API_KEY=<your BaseScan API key>
+#   DEPLOYER_PRIVATE_KEY=<SET_LOCALLY> testnet deployer key>
+#   BASESCAN_API_KEY=<SET_LOCALLY> BaseScan API key>
 
 npm run deploy:sepolia
 ```
@@ -51,8 +51,8 @@ You can also trigger the manual `deploy-sepolia` GitHub Actions workflow
 ```bash
 # .env:
 #   MAINNET_RPC_URL=https://mainnet.base.org
-#   DEPLOYER_PRIVATE_KEY=<from a SECURE secret store — never a committed file>
-#   BASESCAN_API_KEY=<your BaseScan API key>
+#   DEPLOYER_PRIVATE_KEY=<SET_LOCALLY> a SECURE secret store — never a committed file>
+#   BASESCAN_API_KEY=<SET_LOCALLY> BaseScan API key>
 
 APP_ENV=production npm run compile && npm run test:contracts
 npx hardhat run packages/contracts/scripts/deploy-mainnet.ts --network base --yes-i-understand
