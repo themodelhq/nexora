@@ -1,0 +1,13 @@
+{
+  "contract": "NexoraFactory",
+  "network": "baseSepolia",
+  "chainId": 84532,
+  "deployer": "0x167d231F59f86D0317CBF031b807daceC2bE6857",
+  "factoryAddress": "0x4587d758aD25B48be29cbbf6DE9ceca36Cb06265",
+  "transactionHash": "0x864843dcfcfce2afbbe781be2ce6dc14e65b177590156e86a1c5fa2e9b0cbb97",
+  "blockNumber": 45569909,
+  "gasUsed": "234472",
+  "status": 1,
+  "onChainBytecodeLength": 838,
+  "deployedAt": "2026-08-16T19:21:46.679Z"
+}

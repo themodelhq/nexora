@@ -1,0 +1,19 @@
+{
+  "step": "34A-6",
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "factory": "0x4587d758aD25B48be29cbbf6DE9ceca36Cb06265",
+  "deployer": "0x167d231F59f86D0317CBF031b807daceC2bE6857",
+  "salt": "0xbbc3ea4301461202dc17c36a2971f675a5494e1660e908a5e1bee51d671771e1",
+  "predictedAddress": "0xB9EBEf96123112241d11d4736315801051e81024",
+  "actualAddress": "0xB9EBEf96123112241d11d4736315801051e81024",
+  "transactionHash": "0xd805132a2aec7522cb6d2ede7fdb17c678d147573e61846b97af84c1cacb77e3",
+  "blockNumber": 45570038,
+  "gasUsed": "89163",
+  "runtimeBytecodeLength": 136,
+  "marker": "3406",
+  "deterministic": true,
+  "status": "SUCCESS",
+  "privateKeyPrinted": false,
+  "transactionsSent": 1
+}

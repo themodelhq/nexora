@@ -1,0 +1,262 @@
+{
+  "step": "9.6G-J-AO.4",
+  "timestamp_utc": "2026-08-23T18:48:23.366987+00:00",
+  "project": "/content/nexora",
+  "contracts": "/content/nexora/packages/contracts",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_construction": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false
+  },
+  "paths": {
+    "project": "/content/nexora",
+    "contracts": "/content/nexora/packages/contracts",
+    "root_package_json": "/content/nexora/package.json",
+    "contracts_package_json": "/content/nexora/packages/contracts/package.json",
+    "root_node_modules": "/content/nexora/node_modules",
+    "contracts_node_modules": "/content/nexora/packages/contracts/node_modules",
+    "contracts_lock": "/content/nexora/packages/contracts/package-lock.json",
+    "root_lock": "/content/nexora/package-lock.json",
+    "pnpm_lock": "/content/nexora/pnpm-lock.yaml",
+    "yarn_lock": "/content/nexora/yarn.lock"
+  },
+  "workspace": {
+    "root_workspaces": [
+      "apps/*",
+      "packages/*"
+    ],
+    "contracts_is_workspace": true,
+    "workspace_match": "packages/*"
+  },
+  "lock_inventory": {
+    "/content/nexora/package-lock.json": {
+      "exists": true,
+      "size": 721826,
+      "sha256": "126ccc1df300be7d5812af6a1c1d4809e34e898440dad9cd24b7a306d4212877"
+    },
+    "/content/nexora/pnpm-lock.yaml": {
+      "exists": false,
+      "size": null,
+      "sha256": null
+    },
+    "/content/nexora/yarn.lock": {
+      "exists": false,
+      "size": null,
+      "sha256": null
+    },
+    "/content/nexora/packages/contracts/package-lock.json": {
+      "exists": false,
+      "size": null,
+      "sha256": null
+    },
+    "/content/nexora/packages/contracts/pnpm-lock.yaml": {
+      "exists": false,
+      "size": null,
+      "sha256": null
+    },
+    "/content/nexora/packages/contracts/yarn.lock": {
+      "exists": false,
+      "size": null,
+      "sha256": null
+    }
+  },
+  "root_lock_info": {
+    "exists": true,
+    "lockfileVersion": 3,
+    "packages": 1442,
+    "contracts_package_present": true,
+    "hardhat_entries": [
+      {
+        "path": "node_modules/hardhat",
+        "version": "2.29.0"
+      },
+      {
+        "path": "packages/contracts/node_modules/hardhat",
+        "version": "2.22.19"
+      }
+    ],
+    "typescript_entries": [
+      {
+        "path": "node_modules/typescript",
+        "version": "5.9.3"
+      }
+    ],
+    "tsnode_entries": [
+      {
+        "path": "node_modules/ts-node",
+        "version": "10.9.2"
+      }
+    ],
+    "ethers_entries": [
+      {
+        "path": "node_modules/eth-gas-reporter/node_modules/ethers",
+        "version": "5.8.0"
+      },
+      {
+        "path": "node_modules/ethers",
+        "version": "6.17.0"
+      }
+    ]
+  },
+  "root_resolution": {
+    "hardhat": {
+      "status": "PASS",
+      "resolved": "/content/nexora/node_modules/hardhat/internal/lib/hardhat-lib.js"
+    },
+    "typescript": {
+      "status": "PASS",
+      "resolved": "/content/nexora/node_modules/typescript/lib/typescript.js"
+    },
+    "ts-node": {
+      "status": "PASS",
+      "resolved": "/content/nexora/node_modules/ts-node/dist/index.js"
+    },
+    "ethers": {
+      "status": "PASS",
+      "resolved": "/content/nexora/node_modules/ethers/lib.commonjs/index.js"
+    },
+    "@nomicfoundation/hardhat-toolbox": {
+      "status": "PASS",
+      "resolved": "/content/nexora/node_modules/@nomicfoundation/hardhat-toolbox/index.js"
+    },
+    "@nomicfoundation/hardhat-ethers": {
+      "status": "PASS",
+      "resolved": "/content/nexora/node_modules/@nomicfoundation/hardhat-ethers/internal/index.js"
+    }
+  },
+  "contracts_resolution": {
+    "hardhat": {
+      "status": "PASS",
+      "resolved": "/content/nexora/packages/contracts/node_modules/hardhat/internal/lib/hardhat-lib.js"
+    },
+    "typescript": {
+      "status": "PASS",
+      "resolved": "/content/nexora/node_modules/typescript/lib/typescript.js"
+    },
+    "ts-node": {
+      "status": "PASS",
+      "resolved": "/content/nexora/node_modules/ts-node/dist/index.js"
+    },
+    "ethers": {
+      "status": "PASS",
+      "resolved": "/content/nexora/node_modules/ethers/lib.commonjs/index.js"
+    },
+    "@nomicfoundation/hardhat-toolbox": {
+      "status": "PASS",
+      "resolved": "/content/nexora/node_modules/@nomicfoundation/hardhat-toolbox/index.js"
+    },
+    "@nomicfoundation/hardhat-ethers": {
+      "status": "PASS",
+      "resolved": "/content/nexora/node_modules/@nomicfoundation/hardhat-ethers/internal/index.js"
+    }
+  },
+  "root_bin_state": {
+    "hardhat": {
+      "exists": true,
+      "mode": "0o644",
+      "executable": false,
+      "target": null
+    },
+    "tsc": {
+      "exists": true,
+      "mode": "0o644",
+      "executable": false,
+      "target": null
+    },
+    "ts-node": {
+      "exists": true,
+      "mode": "0o644",
+      "executable": false,
+      "target": null
+    }
+  },
+  "contracts_bin_state": {
+    "hardhat": {
+      "exists": true,
+      "mode": "0o755",
+      "executable": true,
+      "target": null
+    },
+    "tsc": {
+      "exists": false,
+      "mode": null,
+      "executable": false,
+      "target": null
+    },
+    "ts-node": {
+      "exists": false,
+      "mode": null,
+      "executable": false,
+      "target": null
+    }
+  },
+  "hardhat_integrity": {
+    "/content/nexora/node_modules/hardhat": {
+      "exists": true,
+      "package_json": true,
+      "main": "internal/lib/hardhat-lib.js",
+      "version": "2.29.0"
+    },
+    "/content/nexora/packages/contracts/node_modules/hardhat": {
+      "exists": true,
+      "package_json": true,
+      "main": "internal/lib/hardhat-lib.js",
+      "version": "2.22.19"
+    }
+  },
+  "root_hardhat": {
+    "returncode": 0,
+    "stdout": "2.29.0\n",
+    "stderr": ""
+  },
+  "contracts_hardhat": {
+    "returncode": 0,
+    "stdout": "2.22.19\n",
+    "stderr": ""
+  },
+  "hardhat_config_sha256": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f",
+  "static_audit": {
+    "/content/nexora/packages/contracts/scripts/deploy-all.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    },
+    "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    },
+    "/content/nexora/packages/contracts/scripts/mainnet-preflight.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    },
+    "/content/nexora/packages/contracts/scripts/finalize-mainnet.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    }
+  },
+  "dependency_model": "ROOT_NPM_WORKSPACE_WITH_ROOT_LOCKFILE",
+  "deployment": {
+    "executed": false,
+    "authorized": false,
+    "transaction_created": false,
+    "transaction_sent": false,
+    "broadcast": false,
+    "blockchain_modified": false
+  }
+}

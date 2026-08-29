@@ -1,0 +1,387 @@
+{
+  "step": "9.6G-J-AO.19-R1",
+  "audit": "allocation-deployer-fallback-forensic-readonly",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_creation": false,
+    "transaction_signing": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "package_modification": false,
+    "rpc_access": false
+  },
+  "paths": {
+    "root": "/content/nexora",
+    "contracts": "/content/nexora/packages/contracts",
+    "deployment-config.ts": "/content/nexora/packages/contracts/scripts/deployment-config.ts",
+    "deploy-all.ts": "/content/nexora/packages/contracts/scripts/deploy-all.ts",
+    "deploy-mainnet.ts": "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts",
+    "NexoraToken.sol": "/content/nexora/packages/contracts/src/token/NexoraToken.sol"
+  },
+  "hashes": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2"
+  },
+  "recipients": {
+    "COMMUNITY_ADDRESS": "0xb0Ee0E2b53DC57e924066B93E87F933b5Ea2bEb5",
+    "LIQUIDITY_ADDRESS": "0xaf8A62113e189AF4C7E1130aefb5b57bea132c29",
+    "TREASURY_ADDRESS": "0x6BBdC0ec728D40586D3326749E541630bD382EbA",
+    "DEVELOPMENT_ADDRESS": "0xCa6BcAD3Fed3fC88E9dC8F537Eb44E3b37197Eb4"
+  },
+  "explicitRecipient": {
+    "found": true,
+    "environment_lookup": true,
+    "production_guard": true,
+    "production_throw": true,
+    "test_fallback": true,
+    "address_normalization": true,
+    "production_before_test_fallback": true
+  },
+  "deployer_occurrences": [
+    {
+      "index": 1,
+      "line": 148,
+      "expression": "deployer.address",
+      "context": "  141:     }\n  142:     console.log(`Deployment already recorded for \"${network}\" (chainId ${existing.chainId}). Reusing existing manifest.`);\n  143:     console.log('Set FORCE_REDEPLOY=true to intentionally redeploy the entire ecosystem (this overwrites the record).');\n  144:     return existing;\n  145:   }\n  146: \n  147:   console.log(`Deploying Nexora suite on network=\"${network}\" chainId=${chainId} (${isProduction ? 'PRODUCTION' : 'testnet'})`);\n  148:   console.log(`Deployer: ${deployer.address}`);\n  149: \n  150:   const contracts: Record<string, string> = {};\n  151: \n  152:   // ------------------------------------------------------------------\n  153:   // 1. CREATE2 factory.\n  154:   // ------------------------------------------------------------------\n  155:   const factory = await deploy('NexoraFactory');"
+    },
+    {
+      "index": 2,
+      "line": 167,
+      "expression": "deployer.address",
+      "context": "  160:   // 2. Allocation vaults (token-agnostic, deployed before the token).\n  161:   //    Owner = deployer (temporary controller); released to destinations below.\n  162:   // ------------------------------------------------------------------\n  163:   const vaultAddresses: Record<string, string> = {};\n  164:   const vaultInitcode: Record<string, string> = {};\n  165:   const vaultInfo = ALLOCATIONS.filter((a) => a.kind === 'vault');\n  166:   for (const spec of vaultInfo) {\n  167:     const { initcode } = await initcodeFor('NexoraAllocationVault', [deployer.address]);\n  168:     vaultInitcode[spec.salt!] = initcode;\n  169:     const predicted = await factoryC.predictAddress(ethers.id(spec.salt!), initcode);\n  170:     // Deploy via CREATE2.\n  171:     const tx = await factoryC.deploy(ethers.id(spec.salt!), initcode);\n  172:     await tx.wait();\n  173:     vaultAddresses[spec.salt!] = predicted;\n  174:     console.log(`  deployed ${spec.bucket} vault -> ${predicted}`);"
+    },
+    {
+      "index": 3,
+      "line": 181,
+      "expression": "deployer.address",
+      "context": "  174:     console.log(`  deployed ${spec.bucket} vault -> ${predicted}`);\n  175:   }\n  176: \n  177:   // ------------------------------------------------------------------\n  178:   // 3. Resolve + validate the genesis allocation (uses vault addresses).\n  179:   // ------------------------------------------------------------------\n  180:   const { entries: allocations, vaultRecipients, deploymentType } = resolveAllocations(\n  181:     deployer.address,\n  182:     isProduction,\n  183:     vaultAddresses,\n  184:   );\n  185:   console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);\n  186:   for (const e of allocations) {\n  187:     console.log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);\n  188:   }"
+    },
+    {
+      "index": 4,
+      "line": 197,
+      "expression": "deployer.address",
+      "context": "  190:   // Deploy the token with the deterministic genesis allocation.\n  191:   const token = await deploy('NexoraToken', [allocations.map((a) => ({ recipient: a.recipient, amount: a.amount }))]);\n  192:   contracts.nxrToken = token;\n  193: \n  194:   // ------------------------------------------------------------------\n  195:   // 4. Governance stack.\n  196:   // ------------------------------------------------------------------\n  197:   const voteToken = await deploy('NexoraVoteToken', [deployer.address]);\n  198:   contracts.voteToken = voteToken;\n  199: \n  200:   const voteWrapper = await deploy('NexoraVoteWrapper', [token, voteToken]);\n  201:   contracts.voteWrapper = voteWrapper;\n  202: \n  203:   // Wrapper is the ONLY NXVT minter; revoke deployer MINTER.\n  204:   const vt = await ethers.getContractAt('NexoraVoteToken', voteToken);"
+    },
+    {
+      "index": 5,
+      "line": 207,
+      "expression": "deployer.address",
+      "context": "  200:   const voteWrapper = await deploy('NexoraVoteWrapper', [token, voteToken]);\n  201:   contracts.voteWrapper = voteWrapper;\n  202: \n  203:   // Wrapper is the ONLY NXVT minter; revoke deployer MINTER.\n  204:   const vt = await ethers.getContractAt('NexoraVoteToken', voteToken);\n  205:   const MINTER = await vt.MINTER_ROLE();\n  206:   await vt.grantRole(MINTER, voteWrapper);\n  207:   if (await vt.hasRole(MINTER, deployer.address)) {\n  208:     await vt.revokeRole(MINTER, deployer.address);\n  209:     console.log('  revoked MINTER_ROLE from deployer (wrapper is now the only minter)');\n  210:   }\n  211: \n  212:   const timelock = await deploy('TimelockController', [TIMELOCK_MIN_DELAY, [], [], deployer.address]);\n  213:   contracts.timelock = timelock;\n  214: "
+    },
+    {
+      "index": 6,
+      "line": 208,
+      "expression": "deployer.address",
+      "context": "  201:   contracts.voteWrapper = voteWrapper;\n  202: \n  203:   // Wrapper is the ONLY NXVT minter; revoke deployer MINTER.\n  204:   const vt = await ethers.getContractAt('NexoraVoteToken', voteToken);\n  205:   const MINTER = await vt.MINTER_ROLE();\n  206:   await vt.grantRole(MINTER, voteWrapper);\n  207:   if (await vt.hasRole(MINTER, deployer.address)) {\n  208:     await vt.revokeRole(MINTER, deployer.address);\n  209:     console.log('  revoked MINTER_ROLE from deployer (wrapper is now the only minter)');\n  210:   }\n  211: \n  212:   const timelock = await deploy('TimelockController', [TIMELOCK_MIN_DELAY, [], [], deployer.address]);\n  213:   contracts.timelock = timelock;\n  214: \n  215:   // Move the vote token's DEFAULT_ADMIN from the deployer to the timelock so"
+    },
+    {
+      "index": 7,
+      "line": 212,
+      "expression": "deployer.address",
+      "context": "  205:   const MINTER = await vt.MINTER_ROLE();\n  206:   await vt.grantRole(MINTER, voteWrapper);\n  207:   if (await vt.hasRole(MINTER, deployer.address)) {\n  208:     await vt.revokeRole(MINTER, deployer.address);\n  209:     console.log('  revoked MINTER_ROLE from deployer (wrapper is now the only minter)');\n  210:   }\n  211: \n  212:   const timelock = await deploy('TimelockController', [TIMELOCK_MIN_DELAY, [], [], deployer.address]);\n  213:   contracts.timelock = timelock;\n  214: \n  215:   // Move the vote token's DEFAULT_ADMIN from the deployer to the timelock so\n  216:   // the deployer can no longer grant MINTER_ROLE to anyone after deployment.\n  217:   if (await vt.hasRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address)) {\n  218:     await vt.grantRole(await vt.DEFAULT_ADMIN_ROLE(), timelock);\n  219:     await vt.revokeRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address);"
+    },
+    {
+      "index": 8,
+      "line": 217,
+      "expression": "deployer.address",
+      "context": "  210:   }\n  211: \n  212:   const timelock = await deploy('TimelockController', [TIMELOCK_MIN_DELAY, [], [], deployer.address]);\n  213:   contracts.timelock = timelock;\n  214: \n  215:   // Move the vote token's DEFAULT_ADMIN from the deployer to the timelock so\n  216:   // the deployer can no longer grant MINTER_ROLE to anyone after deployment.\n  217:   if (await vt.hasRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address)) {\n  218:     await vt.grantRole(await vt.DEFAULT_ADMIN_ROLE(), timelock);\n  219:     await vt.revokeRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address);\n  220:     console.log('  transferred vote token DEFAULT_ADMIN from deployer to timelock');\n  221:   }\n  222: \n  223:   const governor = await deploy('NexoraGovernor', [\n  224:     voteToken, timelock, VOTING_DELAY, VOTING_PERIOD, PROPOSAL_THRESHOLD, QUORUM_NUMERATOR,"
+    },
+    {
+      "index": 9,
+      "line": 219,
+      "expression": "deployer.address",
+      "context": "  212:   const timelock = await deploy('TimelockController', [TIMELOCK_MIN_DELAY, [], [], deployer.address]);\n  213:   contracts.timelock = timelock;\n  214: \n  215:   // Move the vote token's DEFAULT_ADMIN from the deployer to the timelock so\n  216:   // the deployer can no longer grant MINTER_ROLE to anyone after deployment.\n  217:   if (await vt.hasRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address)) {\n  218:     await vt.grantRole(await vt.DEFAULT_ADMIN_ROLE(), timelock);\n  219:     await vt.revokeRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address);\n  220:     console.log('  transferred vote token DEFAULT_ADMIN from deployer to timelock');\n  221:   }\n  222: \n  223:   const governor = await deploy('NexoraGovernor', [\n  224:     voteToken, timelock, VOTING_DELAY, VOTING_PERIOD, PROPOSAL_THRESHOLD, QUORUM_NUMERATOR,\n  225:   ]);\n  226:   contracts.governor = governor;"
+    },
+    {
+      "index": 10,
+      "line": 237,
+      "expression": "deployer.address",
+      "context": "  230:   await timelockC.grantRole(await timelockC.EXECUTOR_ROLE(), governor);\n  231:   await timelockC.grantRole(await timelockC.CANCELLER_ROLE(), governor);\n  232: \n  233:   // ------------------------------------------------------------------\n  234:   // 5. Ecosystem contracts.\n  235:   // ------------------------------------------------------------------\n  236:   // Two vesting instances: team + advisors (each holds its own allocation).\n  237:   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team\n  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);"
+    },
+    {
+      "index": 11,
+      "line": 238,
+      "expression": "deployer.address",
+      "context": "  231:   await timelockC.grantRole(await timelockC.CANCELLER_ROLE(), governor);\n  232: \n  233:   // ------------------------------------------------------------------\n  234:   // 5. Ecosystem contracts.\n  235:   // ------------------------------------------------------------------\n  236:   // Two vesting instances: team + advisors (each holds its own allocation).\n  237:   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team\n  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);\n  245:   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default"
+    },
+    {
+      "index": 12,
+      "line": 239,
+      "expression": "deployer.address",
+      "context": "  232: \n  233:   // ------------------------------------------------------------------\n  234:   // 5. Ecosystem contracts.\n  235:   // ------------------------------------------------------------------\n  236:   // Two vesting instances: team + advisors (each holds its own allocation).\n  237:   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team\n  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);\n  245:   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default\n  246: "
+    },
+    {
+      "index": 13,
+      "line": 240,
+      "expression": "deployer.address",
+      "context": "  233:   // ------------------------------------------------------------------\n  234:   // 5. Ecosystem contracts.\n  235:   // ------------------------------------------------------------------\n  236:   // Two vesting instances: team + advisors (each holds its own allocation).\n  237:   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team\n  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);\n  245:   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default\n  246: \n  247:   // ------------------------------------------------------------------"
+    },
+    {
+      "index": 14,
+      "line": 244,
+      "expression": "deployer.address",
+      "context": "  237:   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team\n  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);\n  245:   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default\n  246: \n  247:   // ------------------------------------------------------------------\n  248:   // 6. Automatic vault release into their real destinations.\n  249:   //    team -> team Vesting, advisors -> advisor Vesting, sale -> Presale.\n  250:   // ------------------------------------------------------------------\n  251:   const vaultByBucket: Record<string, string> = {};"
+    },
+    {
+      "index": 15,
+      "line": 245,
+      "expression": "deployer.address",
+      "context": "  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);\n  245:   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default\n  246: \n  247:   // ------------------------------------------------------------------\n  248:   // 6. Automatic vault release into their real destinations.\n  249:   //    team -> team Vesting, advisors -> advisor Vesting, sale -> Presale.\n  250:   // ------------------------------------------------------------------\n  251:   const vaultByBucket: Record<string, string> = {};\n  252:   for (const spec of ALLOCATIONS) {"
+    },
+    {
+      "index": 16,
+      "line": 331,
+      "expression": "deployer.address",
+      "context": "  324:   const authorities = resolvePermanentAuthorities(isProduction, timelock, treasuryDestination);\n  325: \n  326:   // Treasury relationship (Option A): in production the treasury destination\n  327:   // and the treasury multisig must be the SAME Safe.\n  328:   const treasuryConfigErrors = validateTreasuryConfiguration({\n  329:     treasuryAddress: treasuryDestination,\n  330:     treasuryMultisig: authorities.treasuryMultisig,\n  331:     deployer: deployer.address,\n  332:     isProduction,\n  333:   });\n  334:   if (treasuryConfigErrors.length > 0) {\n  335:     throw new Error('Invalid treasury configuration: ' + treasuryConfigErrors.join('; '));\n  336:   }\n  337: \n  338:   // Perform the role handoff across ALL privileged contracts (Timelock,"
+    },
+    {
+      "index": 17,
+      "line": 352,
+      "expression": "deployer.address",
+      "context": "  345:       voteWrapperAddr: voteWrapper,\n  346:       timelockAddr: timelock,\n  347:       teamVestingAddr: contracts.vesting!,\n  348:       advisorVestingAddr: contracts.vestingAdvisors!,\n  349:       airdropAddr: contracts.airdrop!,\n  350:       presaleAddr: contracts.presale!,\n  351:     },\n  352:     deployer: deployer.address,\n  353:     governance: timelock,\n  354:     authorities,\n  355:     log: (s) => console.log(s),\n  356:   });\n  357: \n  358:   // Build + verify the authoritative role table (exit non-zero on failure).\n  359:   const expectations = await buildRoleExpectations({"
+    },
+    {
+      "index": 18,
+      "line": 361,
+      "expression": "deployer.address",
+      "context": "  354:     authorities,\n  355:     log: (s) => console.log(s),\n  356:   });\n  357: \n  358:   // Build + verify the authoritative role table (exit non-zero on failure).\n  359:   const expectations = await buildRoleExpectations({\n  360:     contracts,\n  361:     deployer: deployer.address,\n  362:     governance: timelock,\n  363:     authorities,\n  364:   });\n  365:   const { rows, allOk } = await verifyRoleTable(expectations);\n  366:   console.log('\\nCONTRACT | ROLE | EXPECTED | ACTUAL | STATUS');\n  367:   for (const r of rows) {\n  368:     console.log(`  ${r.c} | ${r.role} | ${r.expected ? 'HAS' : 'MUST NOT HAVE'} | has=${r.has} | ${r.ok ? 'PASS' : 'FAIL'}`);"
+    },
+    {
+      "index": 19,
+      "line": 388,
+      "expression": "deployer.address",
+      "context": "  381: \n  382:   // ------------------------------------------------------------------\n  383:   // 7. Record, write manifest, verify.\n  384:   // ------------------------------------------------------------------\n  385:   const manifest = {\n  386:     network,\n  387:     chainId: Number(chainId),\n  388:     deployer: deployer.address,\n  389:     deployedAt: new Date().toISOString(),\n  390:     version: '0.1.0',\n  391:     gitCommit: process.env.GITHUB_SHA ?? 'unknown',\n  392:     deploymentType,\n  393:     contracts,\n  394:     allocation: allocations.map((a) => ({ recipient: a.recipient, amount: a.amount.toString() })),\n  395:     treasury: {"
+    }
+  ],
+  "allocation_candidates": [
+    {
+      "index": 2,
+      "line": 167,
+      "expression": "deployer.address",
+      "context": "  160:   // 2. Allocation vaults (token-agnostic, deployed before the token).\n  161:   //    Owner = deployer (temporary controller); released to destinations below.\n  162:   // ------------------------------------------------------------------\n  163:   const vaultAddresses: Record<string, string> = {};\n  164:   const vaultInitcode: Record<string, string> = {};\n  165:   const vaultInfo = ALLOCATIONS.filter((a) => a.kind === 'vault');\n  166:   for (const spec of vaultInfo) {\n  167:     const { initcode } = await initcodeFor('NexoraAllocationVault', [deployer.address]);\n  168:     vaultInitcode[spec.salt!] = initcode;\n  169:     const predicted = await factoryC.predictAddress(ethers.id(spec.salt!), initcode);\n  170:     // Deploy via CREATE2.\n  171:     const tx = await factoryC.deploy(ethers.id(spec.salt!), initcode);\n  172:     await tx.wait();\n  173:     vaultAddresses[spec.salt!] = predicted;\n  174:     console.log(`  deployed ${spec.bucket} vault -> ${predicted}`);",
+      "matched_keywords": [
+        "allocation",
+        "allocations",
+        "destination"
+      ]
+    },
+    {
+      "index": 3,
+      "line": 181,
+      "expression": "deployer.address",
+      "context": "  174:     console.log(`  deployed ${spec.bucket} vault -> ${predicted}`);\n  175:   }\n  176: \n  177:   // ------------------------------------------------------------------\n  178:   // 3. Resolve + validate the genesis allocation (uses vault addresses).\n  179:   // ------------------------------------------------------------------\n  180:   const { entries: allocations, vaultRecipients, deploymentType } = resolveAllocations(\n  181:     deployer.address,\n  182:     isProduction,\n  183:     vaultAddresses,\n  184:   );\n  185:   console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);\n  186:   for (const e of allocations) {\n  187:     console.log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);\n  188:   }",
+      "matched_keywords": [
+        "allocation",
+        "allocations",
+        "recipient",
+        "amount"
+      ]
+    },
+    {
+      "index": 4,
+      "line": 197,
+      "expression": "deployer.address",
+      "context": "  190:   // Deploy the token with the deterministic genesis allocation.\n  191:   const token = await deploy('NexoraToken', [allocations.map((a) => ({ recipient: a.recipient, amount: a.amount }))]);\n  192:   contracts.nxrToken = token;\n  193: \n  194:   // ------------------------------------------------------------------\n  195:   // 4. Governance stack.\n  196:   // ------------------------------------------------------------------\n  197:   const voteToken = await deploy('NexoraVoteToken', [deployer.address]);\n  198:   contracts.voteToken = voteToken;\n  199: \n  200:   const voteWrapper = await deploy('NexoraVoteWrapper', [token, voteToken]);\n  201:   contracts.voteWrapper = voteWrapper;\n  202: \n  203:   // Wrapper is the ONLY NXVT minter; revoke deployer MINTER.\n  204:   const vt = await ethers.getContractAt('NexoraVoteToken', voteToken);",
+      "matched_keywords": [
+        "allocation",
+        "allocations",
+        "recipient",
+        "amount",
+        "mint",
+        "NexoraToken"
+      ]
+    },
+    {
+      "index": 5,
+      "line": 207,
+      "expression": "deployer.address",
+      "context": "  200:   const voteWrapper = await deploy('NexoraVoteWrapper', [token, voteToken]);\n  201:   contracts.voteWrapper = voteWrapper;\n  202: \n  203:   // Wrapper is the ONLY NXVT minter; revoke deployer MINTER.\n  204:   const vt = await ethers.getContractAt('NexoraVoteToken', voteToken);\n  205:   const MINTER = await vt.MINTER_ROLE();\n  206:   await vt.grantRole(MINTER, voteWrapper);\n  207:   if (await vt.hasRole(MINTER, deployer.address)) {\n  208:     await vt.revokeRole(MINTER, deployer.address);\n  209:     console.log('  revoked MINTER_ROLE from deployer (wrapper is now the only minter)');\n  210:   }\n  211: \n  212:   const timelock = await deploy('TimelockController', [TIMELOCK_MIN_DELAY, [], [], deployer.address]);\n  213:   contracts.timelock = timelock;\n  214: ",
+      "matched_keywords": [
+        "mint"
+      ]
+    },
+    {
+      "index": 6,
+      "line": 208,
+      "expression": "deployer.address",
+      "context": "  201:   contracts.voteWrapper = voteWrapper;\n  202: \n  203:   // Wrapper is the ONLY NXVT minter; revoke deployer MINTER.\n  204:   const vt = await ethers.getContractAt('NexoraVoteToken', voteToken);\n  205:   const MINTER = await vt.MINTER_ROLE();\n  206:   await vt.grantRole(MINTER, voteWrapper);\n  207:   if (await vt.hasRole(MINTER, deployer.address)) {\n  208:     await vt.revokeRole(MINTER, deployer.address);\n  209:     console.log('  revoked MINTER_ROLE from deployer (wrapper is now the only minter)');\n  210:   }\n  211: \n  212:   const timelock = await deploy('TimelockController', [TIMELOCK_MIN_DELAY, [], [], deployer.address]);\n  213:   contracts.timelock = timelock;\n  214: \n  215:   // Move the vote token's DEFAULT_ADMIN from the deployer to the timelock so",
+      "matched_keywords": [
+        "mint"
+      ]
+    },
+    {
+      "index": 7,
+      "line": 212,
+      "expression": "deployer.address",
+      "context": "  205:   const MINTER = await vt.MINTER_ROLE();\n  206:   await vt.grantRole(MINTER, voteWrapper);\n  207:   if (await vt.hasRole(MINTER, deployer.address)) {\n  208:     await vt.revokeRole(MINTER, deployer.address);\n  209:     console.log('  revoked MINTER_ROLE from deployer (wrapper is now the only minter)');\n  210:   }\n  211: \n  212:   const timelock = await deploy('TimelockController', [TIMELOCK_MIN_DELAY, [], [], deployer.address]);\n  213:   contracts.timelock = timelock;\n  214: \n  215:   // Move the vote token's DEFAULT_ADMIN from the deployer to the timelock so\n  216:   // the deployer can no longer grant MINTER_ROLE to anyone after deployment.\n  217:   if (await vt.hasRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address)) {\n  218:     await vt.grantRole(await vt.DEFAULT_ADMIN_ROLE(), timelock);\n  219:     await vt.revokeRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address);",
+      "matched_keywords": [
+        "mint"
+      ]
+    },
+    {
+      "index": 8,
+      "line": 217,
+      "expression": "deployer.address",
+      "context": "  210:   }\n  211: \n  212:   const timelock = await deploy('TimelockController', [TIMELOCK_MIN_DELAY, [], [], deployer.address]);\n  213:   contracts.timelock = timelock;\n  214: \n  215:   // Move the vote token's DEFAULT_ADMIN from the deployer to the timelock so\n  216:   // the deployer can no longer grant MINTER_ROLE to anyone after deployment.\n  217:   if (await vt.hasRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address)) {\n  218:     await vt.grantRole(await vt.DEFAULT_ADMIN_ROLE(), timelock);\n  219:     await vt.revokeRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address);\n  220:     console.log('  transferred vote token DEFAULT_ADMIN from deployer to timelock');\n  221:   }\n  222: \n  223:   const governor = await deploy('NexoraGovernor', [\n  224:     voteToken, timelock, VOTING_DELAY, VOTING_PERIOD, PROPOSAL_THRESHOLD, QUORUM_NUMERATOR,",
+      "matched_keywords": [
+        "mint"
+      ]
+    },
+    {
+      "index": 9,
+      "line": 219,
+      "expression": "deployer.address",
+      "context": "  212:   const timelock = await deploy('TimelockController', [TIMELOCK_MIN_DELAY, [], [], deployer.address]);\n  213:   contracts.timelock = timelock;\n  214: \n  215:   // Move the vote token's DEFAULT_ADMIN from the deployer to the timelock so\n  216:   // the deployer can no longer grant MINTER_ROLE to anyone after deployment.\n  217:   if (await vt.hasRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address)) {\n  218:     await vt.grantRole(await vt.DEFAULT_ADMIN_ROLE(), timelock);\n  219:     await vt.revokeRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address);\n  220:     console.log('  transferred vote token DEFAULT_ADMIN from deployer to timelock');\n  221:   }\n  222: \n  223:   const governor = await deploy('NexoraGovernor', [\n  224:     voteToken, timelock, VOTING_DELAY, VOTING_PERIOD, PROPOSAL_THRESHOLD, QUORUM_NUMERATOR,\n  225:   ]);\n  226:   contracts.governor = governor;",
+      "matched_keywords": [
+        "mint"
+      ]
+    },
+    {
+      "index": 10,
+      "line": 237,
+      "expression": "deployer.address",
+      "context": "  230:   await timelockC.grantRole(await timelockC.EXECUTOR_ROLE(), governor);\n  231:   await timelockC.grantRole(await timelockC.CANCELLER_ROLE(), governor);\n  232: \n  233:   // ------------------------------------------------------------------\n  234:   // 5. Ecosystem contracts.\n  235:   // ------------------------------------------------------------------\n  236:   // Two vesting instances: team + advisors (each holds its own allocation).\n  237:   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team\n  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);",
+      "matched_keywords": [
+        "allocation",
+        "treasury",
+        "team",
+        "advisor"
+      ]
+    },
+    {
+      "index": 11,
+      "line": 238,
+      "expression": "deployer.address",
+      "context": "  231:   await timelockC.grantRole(await timelockC.CANCELLER_ROLE(), governor);\n  232: \n  233:   // ------------------------------------------------------------------\n  234:   // 5. Ecosystem contracts.\n  235:   // ------------------------------------------------------------------\n  236:   // Two vesting instances: team + advisors (each holds its own allocation).\n  237:   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team\n  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);\n  245:   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default",
+      "matched_keywords": [
+        "allocation",
+        "treasury",
+        "team",
+        "advisor"
+      ]
+    },
+    {
+      "index": 12,
+      "line": 239,
+      "expression": "deployer.address",
+      "context": "  232: \n  233:   // ------------------------------------------------------------------\n  234:   // 5. Ecosystem contracts.\n  235:   // ------------------------------------------------------------------\n  236:   // Two vesting instances: team + advisors (each holds its own allocation).\n  237:   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team\n  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);\n  245:   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default\n  246: ",
+      "matched_keywords": [
+        "allocation",
+        "treasury",
+        "team",
+        "advisor"
+      ]
+    },
+    {
+      "index": 13,
+      "line": 240,
+      "expression": "deployer.address",
+      "context": "  233:   // ------------------------------------------------------------------\n  234:   // 5. Ecosystem contracts.\n  235:   // ------------------------------------------------------------------\n  236:   // Two vesting instances: team + advisors (each holds its own allocation).\n  237:   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team\n  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);\n  245:   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default\n  246: \n  247:   // ------------------------------------------------------------------",
+      "matched_keywords": [
+        "allocation",
+        "treasury",
+        "team",
+        "advisor"
+      ]
+    },
+    {
+      "index": 14,
+      "line": 244,
+      "expression": "deployer.address",
+      "context": "  237:   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team\n  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);\n  245:   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default\n  246: \n  247:   // ------------------------------------------------------------------\n  248:   // 6. Automatic vault release into their real destinations.\n  249:   //    team -> team Vesting, advisors -> advisor Vesting, sale -> Presale.\n  250:   // ------------------------------------------------------------------\n  251:   const vaultByBucket: Record<string, string> = {};",
+      "matched_keywords": [
+        "destination",
+        "treasury",
+        "team",
+        "advisor"
+      ]
+    },
+    {
+      "index": 15,
+      "line": 245,
+      "expression": "deployer.address",
+      "context": "  238:   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors\n  239:   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);\n  240:   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);\n  241: \n  242:   // Airdrop starts with a zero root; a real Merkle root must be set before claims.\n  243:   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;\n  244:   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);\n  245:   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default\n  246: \n  247:   // ------------------------------------------------------------------\n  248:   // 6. Automatic vault release into their real destinations.\n  249:   //    team -> team Vesting, advisors -> advisor Vesting, sale -> Presale.\n  250:   // ------------------------------------------------------------------\n  251:   const vaultByBucket: Record<string, string> = {};\n  252:   for (const spec of ALLOCATIONS) {",
+      "matched_keywords": [
+        "allocation",
+        "allocations",
+        "destination",
+        "treasury",
+        "team",
+        "advisor"
+      ]
+    },
+    {
+      "index": 16,
+      "line": 331,
+      "expression": "deployer.address",
+      "context": "  324:   const authorities = resolvePermanentAuthorities(isProduction, timelock, treasuryDestination);\n  325: \n  326:   // Treasury relationship (Option A): in production the treasury destination\n  327:   // and the treasury multisig must be the SAME Safe.\n  328:   const treasuryConfigErrors = validateTreasuryConfiguration({\n  329:     treasuryAddress: treasuryDestination,\n  330:     treasuryMultisig: authorities.treasuryMultisig,\n  331:     deployer: deployer.address,\n  332:     isProduction,\n  333:   });\n  334:   if (treasuryConfigErrors.length > 0) {\n  335:     throw new Error('Invalid treasury configuration: ' + treasuryConfigErrors.join('; '));\n  336:   }\n  337: \n  338:   // Perform the role handoff across ALL privileged contracts (Timelock,",
+      "matched_keywords": [
+        "destination",
+        "treasury"
+      ]
+    },
+    {
+      "index": 17,
+      "line": 352,
+      "expression": "deployer.address",
+      "context": "  345:       voteWrapperAddr: voteWrapper,\n  346:       timelockAddr: timelock,\n  347:       teamVestingAddr: contracts.vesting!,\n  348:       advisorVestingAddr: contracts.vestingAdvisors!,\n  349:       airdropAddr: contracts.airdrop!,\n  350:       presaleAddr: contracts.presale!,\n  351:     },\n  352:     deployer: deployer.address,\n  353:     governance: timelock,\n  354:     authorities,\n  355:     log: (s) => console.log(s),\n  356:   });\n  357: \n  358:   // Build + verify the authoritative role table (exit non-zero on failure).\n  359:   const expectations = await buildRoleExpectations({",
+      "matched_keywords": [
+        "team",
+        "advisor"
+      ]
+    },
+    {
+      "index": 19,
+      "line": 388,
+      "expression": "deployer.address",
+      "context": "  381: \n  382:   // ------------------------------------------------------------------\n  383:   // 7. Record, write manifest, verify.\n  384:   // ------------------------------------------------------------------\n  385:   const manifest = {\n  386:     network,\n  387:     chainId: Number(chainId),\n  388:     deployer: deployer.address,\n  389:     deployedAt: new Date().toISOString(),\n  390:     version: '0.1.0',\n  391:     gitCommit: process.env.GITHUB_SHA ?? 'unknown',\n  392:     deploymentType,\n  393:     contracts,\n  394:     allocation: allocations.map((a) => ({ recipient: a.recipient, amount: a.amount.toString() })),\n  395:     treasury: {",
+      "matched_keywords": [
+        "allocation",
+        "allocations",
+        "recipient",
+        "treasury",
+        "amount"
+      ]
+    }
+  ],
+  "direct_recipient_fallbacks": [],
+  "allocation_totals": {
+    "external": 750000000,
+    "vault": 250000000,
+    "grand_total": 1000000000,
+    "max_supply": 1000000000
+  },
+  "resolution": {
+    "resolveAllocations": true,
+    "isProduction": true,
+    "vaultAddresses": true,
+    "NexoraToken": true
+  },
+  "static_safety": {
+    "hits": {
+      "private key assignment": 0,
+      "wallet construction": 0,
+      "signer initialization": 0,
+      "transaction send": 0,
+      "raw transaction": 0,
+      "broadcast": 0
+    },
+    "pass": true
+  },
+  "overall_pass": true,
+  "deployment_performed": false,
+  "transaction_created": false,
+  "transaction_signed": false,
+  "broadcast_performed": false,
+  "blockchain_modified": false,
+  "source_modified": false,
+  "package_modified": false,
+  "rpc_accessed": false
+}

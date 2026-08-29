@@ -1,0 +1,20 @@
+{
+  "step": "34A-12",
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "contract": "NexoraToken",
+  "factory": "0x4587d758aD25B48be29cbbf6DE9ceca36Cb06265",
+  "deployer": "0x167d231F59f86D0317CBF031b807daceC2bE6857",
+  "configurationFile": "/content/nexora/packages/contracts/registry.json",
+  "constructorParameterCount": 1,
+  "constructorParameters": [
+    {
+      "name": "allocations",
+      "type": "tuple[]"
+    }
+  ],
+  "productionDeploymentSent": false,
+  "transactionsSent": 0,
+  "broadcastEnabled": false,
+  "status": "DRY_RUN_CONFIGURATION_FOUND"
+}

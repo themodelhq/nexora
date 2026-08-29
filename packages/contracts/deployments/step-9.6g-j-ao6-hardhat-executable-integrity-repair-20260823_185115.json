@@ -1,0 +1,109 @@
+{
+  "step": "9.6G-J-AO.6",
+  "purpose": "Hardhat executable integrity diagnosis and lockfile-based workspace repair",
+  "timestamp_utc": "2026-08-23T18:53:05.539928+00:00",
+  "deployment_authorized": false,
+  "broadcast_authorized": false,
+  "private_key_read": false,
+  "signer_initialized": false,
+  "wallet_created": false,
+  "transaction_created": false,
+  "transaction_sent": false,
+  "blockchain_modified": false,
+  "dependency_model": "ROOT_NPM_WORKSPACE_WITH_ROOT_LOCKFILE",
+  "node_version": "v20.19.0",
+  "npm_version": "10.8.2",
+  "root_lock_sha256_before": "126ccc1df300be7d5812af6a1c1d4809e34e898440dad9cd24b7a306d4212877",
+  "root_lock_sha256_after": "126ccc1df300be7d5812af6a1c1d4809e34e898440dad9cd24b7a306d4212877",
+  "root_lock_unchanged": true,
+  "contracts_lock_created": false,
+  "hardhat_versions_before": {
+    "contracts": "2.22.19",
+    "root": "2.29.0"
+  },
+  "hardhat_version_validation": true,
+  "typescript_validation": true,
+  "ts_node_validation": true,
+  "hardhat_config_validation": true,
+  "compile_validation": true,
+  "hardhat_package_integrity": {
+    "package.json": true,
+    "internal/lib/hardhat-lib.js": true
+  },
+  "bin_status": {
+    "hardhat": {
+      "exists": true,
+      "is_symlink": true,
+      "mode": "0o755",
+      "executable": true,
+      "target": "../hardhat/internal/cli/bootstrap.js",
+      "size": 804
+    },
+    "tsc": {
+      "exists": false,
+      "is_symlink": false,
+      "mode": null,
+      "executable": false,
+      "target": null,
+      "size": null
+    },
+    "ts-node": {
+      "exists": false,
+      "is_symlink": false,
+      "mode": null,
+      "executable": false,
+      "target": null,
+      "size": null
+    }
+  },
+  "source_hashes_before": {
+    "/content/nexora/packages/contracts/scripts/deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "/content/nexora/packages/contracts/scripts/helpers.ts": "4d7f4f7cb12e34c58990ec151da7d18b43c2b330784fa285e041f5d918f0aeb5",
+    "/content/nexora/packages/contracts/scripts/deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "/content/nexora/packages/contracts/scripts/mainnet-preflight.ts": "0b76aa32b5beb19190c72ab8173dd3e3189e35ec0c528676e142677ac3faba21",
+    "/content/nexora/packages/contracts/scripts/finalize-mainnet.ts": "ff174b44f3f7ab6aa5d3312d46a41c2ffe9771e84cd2a2360f569a124aca3357",
+    "/content/nexora/packages/contracts/src/token/NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "/content/nexora/packages/contracts/hardhat.config.ts": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f"
+  },
+  "source_hashes_after": {
+    "/content/nexora/packages/contracts/scripts/deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "/content/nexora/packages/contracts/scripts/helpers.ts": "4d7f4f7cb12e34c58990ec151da7d18b43c2b330784fa285e041f5d918f0aeb5",
+    "/content/nexora/packages/contracts/scripts/deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "/content/nexora/packages/contracts/scripts/mainnet-preflight.ts": "0b76aa32b5beb19190c72ab8173dd3e3189e35ec0c528676e142677ac3faba21",
+    "/content/nexora/packages/contracts/scripts/finalize-mainnet.ts": "ff174b44f3f7ab6aa5d3312d46a41c2ffe9771e84cd2a2360f569a124aca3357",
+    "/content/nexora/packages/contracts/src/token/NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "/content/nexora/packages/contracts/hardhat.config.ts": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f"
+  },
+  "source_hashes_unchanged": true,
+  "deployment_scripts_executed": false,
+  "static_deployment_safety": {
+    "deploy-all.ts": {
+      "new Wallet(": 0,
+      "sendTransaction(": 0,
+      "sendRawTransaction": 0,
+      "broadcastTransaction": 0
+    },
+    "deploy-mainnet.ts": {
+      "new Wallet(": 0,
+      "sendTransaction(": 0,
+      "sendRawTransaction": 0,
+      "broadcastTransaction": 0
+    },
+    "mainnet-preflight.ts": {
+      "new Wallet(": 0,
+      "sendTransaction(": 0,
+      "sendRawTransaction": 0,
+      "broadcastTransaction": 0
+    },
+    "finalize-mainnet.ts": {
+      "new Wallet(": 0,
+      "sendTransaction(": 0,
+      "sendRawTransaction": 0,
+      "broadcastTransaction": 0
+    }
+  },
+  "overall_status": "PASS",
+  "next_step": "Proceed to the next reconciliation step only. DO NOT DEPLOY YET."
+}

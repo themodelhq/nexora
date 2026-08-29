@@ -1,0 +1,195 @@
+{
+  "step": "9.6G-J-AO.12",
+  "title": "READ-ONLY PRODUCTION RECIPIENT CONFIGURATION PRE-FLIGHT",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_creation": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "package_modification": false,
+    "rpc_access": false
+  },
+  "paths": {
+    "/content/nexora": true,
+    "/content/nexora/packages/contracts": true,
+    "/content/nexora/packages/contracts/src/token/NexoraToken.sol": true,
+    "/content/nexora/packages/contracts/scripts/deployment-config.ts": true,
+    "/content/nexora/packages/contracts/scripts/deploy-all.ts": true,
+    "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts": true,
+    "/content/nexora/packages/contracts/hardhat.config.ts": true,
+    "/content/nexora/packages/contracts/package.json": true,
+    "/content/nexora/package.json": true,
+    "/content/nexora/package-lock.json": true
+  },
+  "source_hashes_before": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "hardhat.config.ts": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f",
+    "package.json": "c13760214c13c7ae2aefb72dd25b51717930a627d06883dcb5048a005be7755b",
+    "package-lock.json": "126ccc1df300be7d5812af6a1c1d4809e34e898440dad9cd24b7a306d4212877"
+  },
+  "source_hashes_after": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "hardhat.config.ts": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f",
+    "package.json": "c13760214c13c7ae2aefb72dd25b51717930a627d06883dcb5048a005be7755b",
+    "package-lock.json": "126ccc1df300be7d5812af6a1c1d4809e34e898440dad9cd24b7a306d4212877"
+  },
+  "source_integrity": {
+    "NexoraToken.sol": true,
+    "deployment-config.ts": true,
+    "deploy-all.ts": true,
+    "deploy-mainnet.ts": true,
+    "hardhat.config.ts": true,
+    "package.json": true,
+    "package-lock.json": true
+  },
+  "environment": {
+    "private_keys_present": false,
+    "rpc_present": false
+  },
+  "production_recipients": {
+    "COMMUNITY_ADDRESS": {
+      "present": false,
+      "valid": false,
+      "zero": false,
+      "status": "NOT CONFIGURED"
+    },
+    "LIQUIDITY_ADDRESS": {
+      "present": false,
+      "valid": false,
+      "zero": false,
+      "status": "NOT CONFIGURED"
+    },
+    "TREASURY_ADDRESS": {
+      "present": false,
+      "valid": false,
+      "zero": false,
+      "status": "NOT CONFIGURED"
+    },
+    "DEVELOPMENT_ADDRESS": {
+      "present": false,
+      "valid": false,
+      "zero": false,
+      "status": "NOT CONFIGURED"
+    }
+  },
+  "missing_production_recipients": [
+    "COMMUNITY_ADDRESS",
+    "LIQUIDITY_ADDRESS",
+    "TREASURY_ADDRESS",
+    "DEVELOPMENT_ADDRESS"
+  ],
+  "recipient_collisions": {},
+  "deployer_address_present": false,
+  "canonical_allocations": [
+    {
+      "bucket": "community-ecosystem",
+      "key": "COMMUNITY_ADDRESS",
+      "kind": "external",
+      "amount": 350000000,
+      "salt": null
+    },
+    {
+      "bucket": "liquidity",
+      "key": "LIQUIDITY_ADDRESS",
+      "kind": "external",
+      "amount": 150000000,
+      "salt": null
+    },
+    {
+      "bucket": "treasury",
+      "key": "TREASURY_ADDRESS",
+      "kind": "external",
+      "amount": 150000000,
+      "salt": null
+    },
+    {
+      "bucket": "team",
+      "key": "TEAM_VESTING_ADDRESS",
+      "kind": "vault",
+      "amount": 100000000,
+      "salt": "nexora-team-vault"
+    },
+    {
+      "bucket": "advisors",
+      "key": "ADVISOR_VESTING_ADDRESS",
+      "kind": "vault",
+      "amount": 50000000,
+      "salt": "nexora-advisor-vault"
+    },
+    {
+      "bucket": "public-sale",
+      "key": "PUBLIC_SALE_ADDRESS",
+      "kind": "vault",
+      "amount": 100000000,
+      "salt": "nexora-sale-vault"
+    },
+    {
+      "bucket": "development",
+      "key": "DEVELOPMENT_ADDRESS",
+      "kind": "external",
+      "amount": 100000000,
+      "salt": null
+    }
+  ],
+  "allocation_total_nxr": 1000000000,
+  "max_supply_nxr": 1000000000,
+  "allocation_total_wei": 1000000000000000000000000000,
+  "max_supply_wei": 1000000000000000000000000000,
+  "vault_allocations": 3,
+  "external_allocations": 4,
+  "deploy_all_resolution": {
+    "resolveAllocations": true,
+    "deployer.address": true,
+    "isProduction": true,
+    "vaultAddresses": true,
+    "NexoraToken": true
+  },
+  "static_transaction_safety": {
+    "deploy-all.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    },
+    "deploy-mainnet.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    }
+  },
+  "final_gate": {
+    "required_paths": true,
+    "max_supply": true,
+    "allocation_total_wei": true,
+    "canonical_allocation_count": true,
+    "duplicate_buckets": true,
+    "duplicate_keys": true,
+    "vault_structure": true,
+    "constructor_source_present": true,
+    "deploy_all_resolution": true,
+    "private_keys_absent": true,
+    "rpc_absent": true,
+    "source_integrity": true,
+    "readonly_safety": true
+  },
+  "production_configuration_complete": false,
+  "deployment_performed": false,
+  "broadcast_performed": false,
+  "blockchain_modified": false,
+  "overall_status": "PASS",
+  "deployment_status": "DISABLED"
+}

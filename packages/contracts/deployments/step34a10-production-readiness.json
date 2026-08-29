@@ -1,0 +1,16 @@
+{
+  "step": "34A-10",
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "deployer": "0x167d231F59f86D0317CBF031b807daceC2bE6857",
+  "factory": "0x4587d758aD25B48be29cbbf6DE9ceca36Cb06265",
+  "salt": "0x46b8ffceffba15eaccc6d3137d007985fea5e9923e16334350a27794c04e6a97",
+  "predictedAddress": "0xa6f7bff2803cB4a7774c69Ed74FF72DEcfe612CD",
+  "independentAddress": "0xa6f7bff2803cB4a7774c69Ed74FF72DEcfe612CD",
+  "initcodeHash": "0x70217bb1faba122814b22dceaa3098df99bf1816988cea88e2b04c3943ecdd97",
+  "runtimeBytes": 136,
+  "marker": "3406",
+  "collisionProtectionVerified": true,
+  "productionDeploymentBroadcast": false,
+  "status": "SUCCESS"
+}

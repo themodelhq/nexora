@@ -1,0 +1,125 @@
+{
+  "step": "9.6G-J-AO.19",
+  "title": "Read-only token allocation / contract wiring / role authority forensic audit",
+  "timestamp_utc": "2026-08-23T19:21:16.612174+00:00",
+  "overall_status": "FAIL",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_creation": false,
+    "transaction_signing": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "package_modification": false,
+    "rpc_access": false
+  },
+  "hashes": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "hardhat.config.ts": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f",
+    "contracts/package.json": "6071cfaba284dfc0451c36c2014a88c64f65311eb635c7f94b2468e6b20c3137",
+    "root/package.json": "c13760214c13c7ae2aefb72dd25b51717930a627d06883dcb5048a005be7755b",
+    "package-lock.json": "126ccc1df300be7d5812af6a1c1d4809e34e898440dad9cd24b7a306d4212877"
+  },
+  "production_recipients": {
+    "COMMUNITY_ADDRESS": "0xb0Ee0E2b53DC57e924066B93E87F933b5Ea2bEb5",
+    "LIQUIDITY_ADDRESS": "0xaf8A62113e189AF4C7E1130aefb5b57bea132c29",
+    "TREASURY_ADDRESS": "0x6BBdC0ec728D40586D3326749E541630bD382EbA",
+    "DEVELOPMENT_ADDRESS": "0xCa6BcAD3Fed3fC88E9dC8F537Eb44E3b37197Eb4"
+  },
+  "allocations": {
+    "community-ecosystem": 350000000,
+    "liquidity": 150000000,
+    "treasury": 150000000,
+    "team": 100000000,
+    "advisors": 50000000,
+    "public-sale": 100000000,
+    "development": 100000000
+  },
+  "allocation_total": 1000000000,
+  "max_supply": 1000000000,
+  "allocation_wei": "1000000000000000000000000000",
+  "max_supply_wei": "1000000000000000000000000000",
+  "explicitRecipient": {
+    "found": true,
+    "environment_lookup": true,
+    "production_guard": true,
+    "production_throw": true,
+    "test_fallback": true,
+    "address_normalization": true
+  },
+  "deployment_resolution": {
+    "resolveAllocations": true,
+    "isProduction": true,
+    "vaultAddresses": true,
+    "NexoraToken": true
+  },
+  "vault_wiring": {
+    "team": {
+      "NexoraAllocationVault": true,
+      "NexoraVesting": true,
+      "vesting": true
+    },
+    "advisors": {
+      "NexoraAllocationVault": true,
+      "NexoraVesting": true,
+      "vestingAdvisors": true
+    },
+    "public-sale": {
+      "NexoraAllocationVault": true,
+      "NexoraPresale": true,
+      "presale": true
+    }
+  },
+  "governance": {
+    "TimelockController": true,
+    "NexoraGovernor": true,
+    "DEFAULT_ADMIN_ROLE": true,
+    "MINTER_ROLE": true,
+    "grantRole": true,
+    "revokeRole": true,
+    "governance": true
+  },
+  "roles": {
+    "minter_grant_wrapper": true,
+    "minter_revoke_deployer": true,
+    "admin_grant_timelock": true,
+    "admin_revoke_deployer": true
+  },
+  "treasury_authority": true,
+  "airdrop_presale_safety": {
+    "airdrop_zero_root": true,
+    "presale_zero_payment": true
+  },
+  "checks": {
+    "required_paths": true,
+    "private_keys_absent": true,
+    "address_format": true,
+    "zero_address_protection": true,
+    "recipient_uniqueness": true,
+    "explicitRecipient_present": true,
+    "production_guard": true,
+    "production_missing_recipient_rejected": true,
+    "testnet_fallback_preserved": true,
+    "production_allocation_deployer_noncollision": false,
+    "canonical_keys": true,
+    "deploy_all_resolution": true,
+    "vault_wiring": true,
+    "governance_source": true,
+    "role_separation": true,
+    "treasury_authority": true,
+    "airdrop_presale_initial_safety": true,
+    "token_source": true,
+    "role_expectations": true,
+    "deploy_mainnet_delegation": true,
+    "supply_reconciliation": true,
+    "wei_reconciliation": true,
+    "static_readonly_safety": true
+  }
+}

@@ -1,0 +1,364 @@
+{
+  "step": "9.6G-J-AN",
+  "timestamp_utc": "2026-08-23T18:41:11.138833+00:00",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_read": false,
+    "signer_initialized": false,
+    "transaction_constructed": false,
+    "transaction_sent": false,
+    "blockchain_modified": false
+  },
+  "project": "/content/nexora",
+  "source_hashes": {
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "mainnet-preflight.ts": "0b76aa32b5beb19190c72ab8173dd3e3189e35ec0c528676e142677ac3faba21",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "helpers.ts": "4d7f4f7cb12e34c58990ec151da7d18b43c2b330784fa285e041f5d918f0aeb5",
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959"
+  },
+  "private_key_static_audit": {
+    "private key assignment": 0,
+    "new Wallet": 0,
+    "Wallet constructor": 0,
+    "sendTransaction": 0,
+    "sendRawTransaction": 0,
+    "broadcastTransaction": 0
+  },
+  "max_supply": {
+    "expected_nxr": 1000000000,
+    "parsed_values": [
+      1000000000
+    ]
+  },
+  "allocation_symbol_audit": {
+    "community": 4,
+    "liquidity": 6,
+    "treasury": 4,
+    "team": 29,
+    "advisors": 24,
+    "publicSale": 1,
+    "development": 4
+  },
+  "allocation_amount_extraction": {
+    "community": "ethers.parseEther('350000000')",
+    "liquidity": "ethers.parseEther('150000000')",
+    "treasury": "ethers.parseEther('150000000')",
+    "team": "ethers.parseEther('100000000')",
+    "advisors": "ethers.parseEther('50000000')",
+    "publicSale": null,
+    "development": "ethers.parseEther('100000000')"
+  },
+  "resolveAllocations_signature": "export function resolveAllocations(\n  deployer: string,\n  isProduction: boolean,\n  vaultAddresses: Record<string, string> = {},\n)",
+  "resolveAllocations_usage": [
+    "\n    deployer.address,\n    isProduction,\n    vaultAddresses,\n  "
+  ],
+  "architecture": {
+    "getContractFactory": 2,
+    "factory.deploy": 2,
+    "waitForDeployment": 1,
+    "getAddress": 1,
+    "NexoraToken deployment": 1,
+    "factory predictAddress": 1
+  },
+  "constructor": {
+    "constructor": 1,
+    "ERC20 Nexora": 1,
+    "ERC20Permit": 1,
+    "duplicate recipient protection": 1,
+    "allocation sum": 0,
+    "MAX_SUPPLY": 4,
+    "mint": 1
+  },
+  "mainnet_authorization": {
+    "Base Mainnet 8453": 6,
+    "DEPLOY_TO_MAINNET": 9,
+    "APP_ENV": 12,
+    "production": 25,
+    "--i-confirm": 7,
+    "runtime chain validation": 3,
+    "J-Y authorization": 1
+  },
+  "deployer_address": null,
+  "deployment_records": [
+    {
+      "file": "/content/nexora/packages/contracts/deployments/hardhat.deployment.json",
+      "keys": [
+        "network",
+        "chainId",
+        "deployedAt",
+        "contracts"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/hardhat.json",
+      "keys": [
+        "network",
+        "chainId",
+        "deployer",
+        "deployedAt",
+        "version",
+        "gitCommit",
+        "deploymentType",
+        "contracts",
+        "allocation",
+        "treasury",
+        "vestingSchedules",
+        "roles",
+        "finalRoleState",
+        "finalizationStatus",
+        "verificationStatus",
+        "presaleStatus",
+        "airdropStatus"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step-9.6g-j-ai-restored-checkpoint-source-hardening-audit.json",
+      "keys": [
+        "step",
+        "description",
+        "timestamp",
+        "deployment_authorized",
+        "private_key_read",
+        "signer_initialized",
+        "transaction_constructed",
+        "transaction_sent",
+        "broadcast",
+        "blockchain_modified",
+        "backup",
+        "original_sha256",
+        "new_sha256",
+        "checks"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step-9.6g-j-aj-restored-source-reconciliation.json",
+      "keys": [
+        "step",
+        "timestamp",
+        "deployment_authorized",
+        "private_key_read",
+        "signer_initialized",
+        "transaction_created",
+        "transaction_sent",
+        "broadcast",
+        "blockchain_modified",
+        "source_hashes",
+        "orchestrator",
+        "authorization",
+        "allocations",
+        "config",
+        "token",
+        "danger_audit",
+        "required_features",
+        "critical_failures"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step-9.6g-j-ak-restored-source-reconciliation.json",
+      "keys": [
+        "step",
+        "timestamp_utc",
+        "safety",
+        "sources",
+        "hashes",
+        "deployment_analysis",
+        "helper_candidates",
+        "decision"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step-9.6g-j-al-deploy-helper-reconciliation.json",
+      "keys": [
+        "step",
+        "timestamp_utc",
+        "safety",
+        "sources",
+        "hashes",
+        "helper_analysis",
+        "decision"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step-9.6g-j-am-controlled-deployment-helper-reconciliation.json",
+      "keys": [
+        "step",
+        "timestamp_utc",
+        "safety",
+        "hashes",
+        "helper_results",
+        "authorization_results",
+        "security_results",
+        "token_results",
+        "allocation_results",
+        "cross_file_deployment_pass",
+        "decision",
+        "source_modified"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step34a10-production-readiness.json",
+      "keys": [
+        "step",
+        "network",
+        "chainId",
+        "deployer",
+        "factory",
+        "salt",
+        "predictedAddress",
+        "independentAddress",
+        "initcodeHash",
+        "runtimeBytes",
+        "marker",
+        "collisionProtectionVerified",
+        "productionDeploymentBroadcast",
+        "status"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step34a11-production-contract-audit.json",
+      "keys": [
+        "step",
+        "network",
+        "chainId",
+        "deployer",
+        "factory",
+        "productionDeploymentSent",
+        "transactionsSent",
+        "artifactCount",
+        "artifacts",
+        "create2Compatibility",
+        "factoryInterfaceVerified",
+        "deploymentSafetyVerified",
+        "status"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step34a12-production-deployment-dry-run.json",
+      "keys": [
+        "step",
+        "network",
+        "chainId",
+        "contract",
+        "factory",
+        "deployer",
+        "configurationFile",
+        "constructorParameterCount",
+        "constructorParameters",
+        "productionDeploymentSent",
+        "transactionsSent",
+        "broadcastEnabled",
+        "status"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step34a13-production-allocation-audit.json",
+      "keys": [
+        "step",
+        "network",
+        "chainId",
+        "deployer",
+        "factory",
+        "contract",
+        "constructorParameter",
+        "constructorComponents",
+        "allocationConfigurationResolved",
+        "constructorEncodingGenerated",
+        "initcodeGenerated",
+        "productionDeploymentSent",
+        "transactionsSent",
+        "broadcastEnabled",
+        "status"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step34a4-nexora-factory.json",
+      "keys": [
+        "contract",
+        "network",
+        "chainId",
+        "deployer",
+        "factoryAddress",
+        "transactionHash",
+        "blockNumber",
+        "gasUsed",
+        "status",
+        "onChainBytecodeLength",
+        "deployedAt"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step34a6-deterministic-deployment.json",
+      "keys": [
+        "step",
+        "network",
+        "chainId",
+        "factory",
+        "deployer",
+        "salt",
+        "predictedAddress",
+        "actualAddress",
+        "transactionHash",
+        "blockNumber",
+        "gasUsed",
+        "runtimeBytecodeLength",
+        "marker",
+        "deterministic",
+        "status",
+        "privateKeyPrinted",
+        "transactionsSent"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step34a7-create2-reproducibility.json",
+      "keys": [
+        "step",
+        "network",
+        "chainId",
+        "factory",
+        "deployer",
+        "existingSalt",
+        "existingDeployment",
+        "reproducedAddress",
+        "independentAddress",
+        "differentSalt",
+        "differentSaltAddress",
+        "differentInitcodeAddress",
+        "initcodeHash",
+        "reproducibilityVerified",
+        "independentFormulaVerified",
+        "saltUniquenessVerified",
+        "initcodeUniquenessVerified",
+        "collisionConditionVerified",
+        "collisionRedeploymentBroadcast",
+        "status"
+      ]
+    },
+    {
+      "file": "/content/nexora/packages/contracts/deployments/step34a8-factory-integrity.json",
+      "keys": [
+        "step",
+        "network",
+        "chainId",
+        "factory",
+        "deployer",
+        "factoryTransaction",
+        "create2Transaction",
+        "deterministicTestAddress",
+        "factoryRuntimeBytecodeLength",
+        "testRuntimeBytecodeLength",
+        "factoryCodeVerified",
+        "factoryInterfaceVerified",
+        "factoryDeploymentVerified",
+        "create2DeploymentVerified",
+        "testContractVerified",
+        "deploymentRecordsVerified",
+        "status"
+      ]
+    }
+  ],
+  "critical_failures": [],
+  "decision": "PASS \u2014 READY FOR NEXT READ-ONLY CHECKPOINT"
+}

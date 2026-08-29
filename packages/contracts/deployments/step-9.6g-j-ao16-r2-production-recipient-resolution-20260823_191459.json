@@ -1,0 +1,100 @@
+{
+  "step": "9.6G-J-AO.16-R2",
+  "title": "Read-Only Production Recipient Resolution Forensic Re-Audit",
+  "timestamp_utc": "2026-08-23T19:14:59.186324+00:00",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_creation": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "package_modification": false,
+    "rpc_access": false
+  },
+  "production_recipients": {
+    "COMMUNITY_ADDRESS": "0xb0Ee0E2b53DC57e924066B93E87F933b5Ea2bEb5",
+    "LIQUIDITY_ADDRESS": "0xaf8A62113e189AF4C7E1130aefb5b57bea132c29",
+    "TREASURY_ADDRESS": "0x6BBdC0ec728D40586D3326749E541630bD382EbA",
+    "DEVELOPMENT_ADDRESS": "0xCa6BcAD3Fed3fC88E9dC8F537Eb44E3b37197Eb4"
+  },
+  "canonical_counts": {
+    "COMMUNITY_ADDRESS": 2,
+    "LIQUIDITY_ADDRESS": 2,
+    "TREASURY_ADDRESS": 2,
+    "TEAM_VESTING_ADDRESS": 1,
+    "ADVISOR_VESTING_ADDRESS": 1,
+    "PUBLIC_SALE_ADDRESS": 1,
+    "DEVELOPMENT_ADDRESS": 2
+  },
+  "env_lookup_hits": {
+    "COMMUNITY_ADDRESS": false,
+    "LIQUIDITY_ADDRESS": false,
+    "TREASURY_ADDRESS": false,
+    "DEVELOPMENT_ADDRESS": false
+  },
+  "production_deployer_reference": false,
+  "production_test_fallback_matches": [],
+  "allocation_relationships": {
+    "COMMUNITY_ADDRESS": true,
+    "LIQUIDITY_ADDRESS": true,
+    "TREASURY_ADDRESS": true,
+    "DEVELOPMENT_ADDRESS": true
+  },
+  "raw_deployer_address_occurrences": 19,
+  "allocation_total_nxr": 1000000000,
+  "max_supply_nxr": 1000000000,
+  "allocation_total_wei": "1000000000000000000000000000",
+  "max_supply_wei": "1000000000000000000000000000",
+  "hash_before": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "hardhat.config.ts": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f",
+    "package.json": "6071cfaba284dfc0451c36c2014a88c64f65311eb635c7f94b2468e6b20c3137",
+    "root-package.json": "c13760214c13c7ae2aefb72dd25b51717930a627d06883dcb5048a005be7755b",
+    "package-lock.json": "126ccc1df300be7d5812af6a1c1d4809e34e898440dad9cd24b7a306d4212877"
+  },
+  "hash_after": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "hardhat.config.ts": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f",
+    "package.json": "6071cfaba284dfc0451c36c2014a88c64f65311eb635c7f94b2468e6b20c3137",
+    "root-package.json": "c13760214c13c7ae2aefb72dd25b51717930a627d06883dcb5048a005be7755b",
+    "package-lock.json": "126ccc1df300be7d5812af6a1c1d4809e34e898440dad9cd24b7a306d4212877"
+  },
+  "source_integrity": {
+    "NexoraToken.sol": true,
+    "deployment-config.ts": true,
+    "deploy-all.ts": true,
+    "deploy-mainnet.ts": true,
+    "hardhat.config.ts": true,
+    "package.json": true,
+    "root-package.json": true,
+    "package-lock.json": true
+  },
+  "final_checks": {
+    "required_paths": true,
+    "private_keys_absent": true,
+    "address_format": true,
+    "zero_address_protection": true,
+    "recipient_uniqueness": true,
+    "production_guard": true,
+    "production_deployer_noncollision": true,
+    "production_test_fallback_absent": true,
+    "canonical_keys": true,
+    "allocation_deployer_noncollision": true,
+    "deploy_all_resolution": true,
+    "supply_reconciliation": true,
+    "wei_reconciliation": true,
+    "source_integrity": true,
+    "readonly_safety": true
+  },
+  "overall_status": "PASS"
+}

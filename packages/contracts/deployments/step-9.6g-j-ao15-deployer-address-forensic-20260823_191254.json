@@ -1,0 +1,96 @@
+{
+  "step": "9.6G-J-AO.15",
+  "timestamp_utc": "2026-08-23T19:12:54.060036+00:00",
+  "read_only": true,
+  "deployment_authorized": false,
+  "broadcast_authorized": false,
+  "private_key_usage": false,
+  "signer_initialization": false,
+  "wallet_creation": false,
+  "transaction_creation": false,
+  "transaction_broadcast": false,
+  "blockchain_modification": false,
+  "source_modification": false,
+  "package_modification": false,
+  "rpc_access": false,
+  "hashes": {
+    "/content/nexora/packages/contracts/scripts/deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "/content/nexora/packages/contracts/scripts/deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2"
+  },
+  "raw_deployer_address_occurrences": {
+    "deploy-all.ts": 19,
+    "deploy-mainnet.ts": 0
+  },
+  "direct_allocation_fallback_matches": [],
+  "production_relationship_matches": [],
+  "explicit_fallback_hits": [
+    {
+      "file": "deploy-all.ts",
+      "line": 85,
+      "text": "*   npx hardhat run scripts/deploy-all.ts --network localhost        # testnet fallback",
+      "pattern": "\\bfallback\\b"
+    },
+    {
+      "file": "deploy-all.ts",
+      "line": 148,
+      "text": "console.log(`Deployer: ${deployer.address}`);",
+      "pattern": "deployer\\s*\\.\\s*address\\s*\\}"
+    },
+    {
+      "file": "deploy-all.ts",
+      "line": 245,
+      "text": "contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default",
+      "pattern": "\\bdefault\\b"
+    },
+    {
+      "file": "deploy-mainnet.ts",
+      "line": 8,
+      "text": "*   4. Real production recipient addresses via env (no deployer fallback).",
+      "pattern": "\\bfallback\\b"
+    },
+    {
+      "file": "deployment-config.ts",
+      "line": 65,
+      "text": "/** Resolve an explicit (non-vault) recipient: env in production, test fallback otherwise. */",
+      "pattern": "\\bfallback\\b"
+    },
+    {
+      "file": "deployment-config.ts",
+      "line": 69,
+      "text": "if (isProduction) throw new Error(`Production deployment requires ${key} (no fallback allowed)`);",
+      "pattern": "\\bfallback\\b"
+    },
+    {
+      "file": "deployment-config.ts",
+      "line": 71,
+      "text": "if (!test) throw new Error(`No test fallback for ${key}`);",
+      "pattern": "\\bfallback\\b"
+    },
+    {
+      "file": "deployment-config.ts",
+      "line": 157,
+      "text": "/** Testnet fallback beneficiaries (distinct non-deployer test addresses). */",
+      "pattern": "\\bfallback\\b"
+    },
+    {
+      "file": "deployment-config.ts",
+      "line": 175,
+      "text": "// Beneficiary: explicit env in production; test fallback otherwise.",
+      "pattern": "\\bfallback\\b"
+    },
+    {
+      "file": "deployment-config.ts",
+      "line": 181,
+      "text": "throw new Error(`Production requires ${bucket.toUpperCase()}_VESTING_BENEFICIARY (no fallback)`);",
+      "pattern": "\\bfallback\\b"
+    }
+  ],
+  "production_recipient_keys": [
+    "COMMUNITY_ADDRESS",
+    "LIQUIDITY_ADDRESS",
+    "TREASURY_ADDRESS",
+    "DEVELOPMENT_ADDRESS"
+  ],
+  "overall_pass": false
+}

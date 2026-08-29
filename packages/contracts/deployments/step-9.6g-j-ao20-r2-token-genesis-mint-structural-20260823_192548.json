@@ -1,0 +1,166 @@
+{
+  "step": "9.6G-J-AO.20-R2",
+  "type": "READ_ONLY",
+  "timestamp_utc": "2026-08-23T19:25:48.835473+00:00",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_creation": false,
+    "transaction_signing": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "package_modification": false,
+    "rpc_access": false
+  },
+  "hashes": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02"
+  },
+  "mint_matches": [
+    79
+  ],
+  "allocation_type_hits": [
+    [
+      40,
+      "\\bstruct\\s+Allocation\\b",
+      "struct Allocation {"
+    ],
+    [
+      59,
+      "\\bAllocation\\[\\]",
+      "constructor(Allocation[] memory allocations) ERC20(\"Nexora\", \"NXR\") ERC20Permit(\"Nexora\") {"
+    ],
+    [
+      64,
+      "\\bAllocation\\s+memory\\b",
+      "Allocation memory alloc = allocations[i];"
+    ]
+  ],
+  "enclosing_declaration": [
+    59,
+    "constructor",
+    "constructor(Allocation[] memory allocations) ERC20(\"Nexora\", \"NXR\") ERC20Permit(\"Nexora\") {"
+  ],
+  "constructor_line": 59,
+  "constructor_context": [
+    "     *         supply to `allocations`.",
+    "     * @param allocations Ordered list of {recipient, amount}. The sum of all",
+    "     *        `amount` values MUST equal MAX_SUPPLY; otherwise deployment",
+    "     *        reverts. No address may appear twice, and no amount may be zero.",
+    "     */",
+    "    constructor(Allocation[] memory allocations) ERC20(\"Nexora\", \"NXR\") ERC20Permit(\"Nexora\") {",
+    "        require(allocations.length > 0, \"NexoraToken: no allocations\");",
+    "",
+    "        uint256 total;",
+    "        for (uint256 i = 0; i < allocations.length; i++) {",
+    "            Allocation memory alloc = allocations[i];",
+    "            require(alloc.recipient != address(0), \"NexoraToken: zero recipient\");",
+    "            require(alloc.amount > 0, \"NexoraToken: zero amount\");",
+    "            // Enforce unique recipients so a single address cannot be given",
+    "            // multiple distinct allocations (avoids ambiguity and matches the",
+    "            // on-chain transparency guarantee).",
+    "            for (uint256 j = 0; j < i; j++) {",
+    "                require(",
+    "                    allocations[j].recipient != alloc.recipient,",
+    "                    \"NexoraToken: duplicate recipient\"",
+    "                );",
+    "            }",
+    "            total += alloc.amount;",
+    "            // Mint to the recipient rather than the deployer so the",
+    "            // allocation is credited directly to its intended destination.",
+    "            _mint(alloc.recipient, alloc.amount);",
+    "            emit InitialAllocation(alloc.recipient, alloc.amount);",
+    "        }",
+    "",
+    "        // Mathematically enforce the maximum supply. Because ERC-20 has no",
+    "        // mint after construction, totalSupply == MAX_SUPPLY forever."
+  ],
+  "mint_context": [
+    "    constructor(Allocation[] memory allocations) ERC20(\"Nexora\", \"NXR\") ERC20Permit(\"Nexora\") {",
+    "        require(allocations.length > 0, \"NexoraToken: no allocations\");",
+    "",
+    "        uint256 total;",
+    "        for (uint256 i = 0; i < allocations.length; i++) {",
+    "            Allocation memory alloc = allocations[i];",
+    "            require(alloc.recipient != address(0), \"NexoraToken: zero recipient\");",
+    "            require(alloc.amount > 0, \"NexoraToken: zero amount\");",
+    "            // Enforce unique recipients so a single address cannot be given",
+    "            // multiple distinct allocations (avoids ambiguity and matches the",
+    "            // on-chain transparency guarantee).",
+    "            for (uint256 j = 0; j < i; j++) {",
+    "                require(",
+    "                    allocations[j].recipient != alloc.recipient,",
+    "                    \"NexoraToken: duplicate recipient\"",
+    "                );",
+    "            }",
+    "            total += alloc.amount;",
+    "            // Mint to the recipient rather than the deployer so the",
+    "            // allocation is credited directly to its intended destination.",
+    "            _mint(alloc.recipient, alloc.amount);",
+    "            emit InitialAllocation(alloc.recipient, alloc.amount);",
+    "        }",
+    "",
+    "        // Mathematically enforce the maximum supply. Because ERC-20 has no",
+    "        // mint after construction, totalSupply == MAX_SUPPLY forever.",
+    "        require(total == MAX_SUPPLY, \"NexoraToken: allocation total mismatch\");",
+    "",
+    "        allocationCount = allocations.length;",
+    "    }",
+    "}"
+  ],
+  "max_supply_hits": [
+    [
+      31,
+      "uint256 public constant MAX_SUPPLY = 1_000_000_000 * 10 ** 18;"
+    ],
+    [
+      56,
+      "*        `amount` values MUST equal MAX_SUPPLY; otherwise deployment"
+    ],
+    [
+      84,
+      "// mint after construction, totalSupply == MAX_SUPPLY forever."
+    ],
+    [
+      85,
+      "require(total == MAX_SUPPLY, \"NexoraToken: allocation total mismatch\");"
+    ]
+  ],
+  "total_supply_hits": [
+    [
+      84,
+      "// mint after construction, totalSupply == MAX_SUPPLY forever."
+    ]
+  ],
+  "rules": {
+    "mint_expression_present": true,
+    "mint_uses_allocation_recipient": true,
+    "mint_uses_allocation_amount": true,
+    "allocation_identifier_present": true,
+    "allocation_iteration_present": true,
+    "max_supply_present": true,
+    "total_supply_reference_present": true
+  },
+  "results": {
+    "required_paths": true,
+    "mint_expression_present": true,
+    "mint_recipient_wiring": true,
+    "mint_amount_wiring": true,
+    "allocation_identifier_present": true,
+    "allocation_iteration_present": true,
+    "MAX_SUPPLY_present": true,
+    "constructor_keyword_present": true,
+    "deploy_all_allocations_wiring": true,
+    "production_guard": true,
+    "deployer_allocation_guard": true,
+    "brace_balance": true,
+    "genesis_mint_confirmed": true,
+    "static_readonly_safety": true
+  },
+  "overall_pass": true
+}

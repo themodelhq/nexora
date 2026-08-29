@@ -1,0 +1,280 @@
+{
+  "step": "34A-11",
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "deployer": "0x167d231F59f86D0317CBF031b807daceC2bE6857",
+  "factory": "0x4587d758aD25B48be29cbbf6DE9ceca36Cb06265",
+  "productionDeploymentSent": false,
+  "transactionsSent": 0,
+  "artifactCount": 33,
+  "artifacts": [
+    {
+      "contractName": "TimelockController",
+      "artifactPath": "artifacts/@openzeppelin/contracts/governance/TimelockController.sol/TimelockController.json",
+      "creationBytes": 7468,
+      "runtimeBytes": 6550,
+      "creationHash": "0xef1371182dfa6d2f11b30335618b7e651dcbd4f93e707b65d5017a4361da1799",
+      "runtimeHash": "0x62f0c01ad557b89c0992c6cb0e1f2795c8a6ac21e63e705e768f967291647c0b"
+    },
+    {
+      "contractName": "SafeERC20",
+      "artifactPath": "artifacts/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol/SafeERC20.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x798f6afc28d94bddeaaf95ca79953f6ec188c32942206ac89f6eef454690619f",
+      "runtimeHash": "0x56e6b15cc1b4204a5da596b8a662c98dbda073cf5a6376bd008902be9e8e0efa"
+    },
+    {
+      "contractName": "Address",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/Address.sol/Address.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0xb1f0a7a2bacc780faaf21b34da1831a9e3b1273f576664fd7ee94cd8ca9a3c78",
+      "runtimeHash": "0x297fb21456ccf7c4e7a9a9d9e17e5d92c35a17f8514544f371d3f608c7598c69"
+    },
+    {
+      "contractName": "Bytes",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/Bytes.sol/Bytes.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x6703cc649681f3197e088050580889e01a52cb434aac599c314b007c12122554",
+      "runtimeHash": "0x7de3fd6b6da5dadf6ddf2aeade057567ff9354a1ea7eca18e702c31a7f392b85"
+    },
+    {
+      "contractName": "Errors",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/Errors.sol/Errors.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0xb6859a797293e491e8feb077ae2373ab515890d71f27efb4918da273b4516543",
+      "runtimeHash": "0x6f3261c67197ae326eb580d1c5603a5b92641ffbf28893d54d958519884e3046"
+    },
+    {
+      "contractName": "LowLevelCall",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/LowLevelCall.sol/LowLevelCall.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x9016b649854e112056833f6024d35e14c7d461d943c0129ca7ab8b69f579b1e5",
+      "runtimeHash": "0x50f5658ed48994e67ac1a0c78a5f68fe1a1a01301cccd5f9cb2f4df1623c5477"
+    },
+    {
+      "contractName": "Panic",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/Panic.sol/Panic.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x57178afa8c2822d24e49269d6d273419dbbe4aa3365ec330e6e9c815d36aab9b",
+      "runtimeHash": "0xd7d0ff3a1ae1d261afdfdde0faf34a46bc353ca13e238b0202e033f7d1d9356a"
+    },
+    {
+      "contractName": "ShortStrings",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/ShortStrings.sol/ShortStrings.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0xaa2fa2ae56d42f8adbd50baa079f0798fe5f1ce5e193d1496dc50347f0700601",
+      "runtimeHash": "0xa886286954cd36216438fc9088e913552e64eadcc39291ab09d9103ea89cd9a3"
+    },
+    {
+      "contractName": "StorageSlot",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/StorageSlot.sol/StorageSlot.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x3fce430b0ee90cf4ec5c1a0a3c10d62b98ea20637e53da8cfc5d22391a1b2242",
+      "runtimeHash": "0xc7a0f09830fafbe47ae1fefe76639c481cb826e4e452ed4a1f8bb79365460579"
+    },
+    {
+      "contractName": "Strings",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/Strings.sol/Strings.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0xeb198ba1d4ab1915fef66172ef44e90f3b0a3a26e706550c84b494e4a852dc10",
+      "runtimeHash": "0xc4f3f069d00dd25d107226a680d0654916ef93501cecd7d68f8fe45292581af6"
+    },
+    {
+      "contractName": "ECDSA",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/cryptography/ECDSA.sol/ECDSA.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x3e9143d9d6a026d55ffe6366dbc4d2b5e5c117c6b1adc401ffbec4ef41cf5ac5",
+      "runtimeHash": "0x99a2399b36e443bbba2c3fd99d5501ffd1eb04999c3226f58a1ea3b242cb4ae5"
+    },
+    {
+      "contractName": "Hashes",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/cryptography/Hashes.sol/Hashes.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x3417c37e81bf933b03cb71e052e4bd539c6ecb4c8c29fa34e970c31170136b43",
+      "runtimeHash": "0x405aa5edf094a553692e59fac3d2f99a5b0cf1d2c0971a740b7911fcf1546fb2"
+    },
+    {
+      "contractName": "MerkleProof",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/cryptography/MerkleProof.sol/MerkleProof.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x3df61df52a3b4d071b6c50b2cfbcb0103b5f7e3f0b3c7a188f65af1d6838383a",
+      "runtimeHash": "0xb0db09664c51ab7da532c3576a536078188fb7c044ced5f559ec3dad34e917a6"
+    },
+    {
+      "contractName": "MessageHashUtils",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol/MessageHashUtils.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x9a6fff611813efbb9b5d437750a12e692d66213f37a783d9e8d481aac92d3463",
+      "runtimeHash": "0x7543bfcd47f62bb160f2bb5e1136255111412a6dd79f8e4c49378112999ed37e"
+    },
+    {
+      "contractName": "SignatureChecker",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol/SignatureChecker.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x9a5e646d7eee045ece626780b394398fb8d7a11c19df486a2178d056d7ad38ae",
+      "runtimeHash": "0xc6c544e3464c3618873bd50ed165dce217482bf842ec650b83c1b2c2c3da84ca"
+    },
+    {
+      "contractName": "Math",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/math/Math.sol/Math.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0xc8a66e0b473c8eb8187d61f5644b0f8bbdc3bd430b5e3970494372c162fea98c",
+      "runtimeHash": "0x97c17b95211580f8853d3f789bee5f9e0b34572b971a44a593c501570ee5e531"
+    },
+    {
+      "contractName": "SafeCast",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/math/SafeCast.sol/SafeCast.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x23ba410c3053f76a36e168015eca8630e5848dfc0681689579018b0f82b5143b",
+      "runtimeHash": "0x060c4cc2bdbaa2b7bd33cab04bf33c623f1c880e37a37ca175e07460357188f9"
+    },
+    {
+      "contractName": "SignedMath",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/math/SignedMath.sol/SignedMath.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x6f54f61d53fd4c863a469b1e32b33e162a27af8b41962e00d06ea03a146e9123",
+      "runtimeHash": "0xafe362bf403fec81782c86dd1d17148121c9fbaf8176e12f4bdf47d6dc151006"
+    },
+    {
+      "contractName": "Checkpoints",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/structs/Checkpoints.sol/Checkpoints.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x238837d9d6b6f8385e130126caccd2e01c949f212643b03e96750fab92821d98",
+      "runtimeHash": "0x9dfcea8f6295977ace5dbe2013f0dafa7817447763218097707a44946d42474d"
+    },
+    {
+      "contractName": "DoubleEndedQueue",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/structs/DoubleEndedQueue.sol/DoubleEndedQueue.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x11c02c2bc04c99f68a83a89eceb9ded89bc96291baaad8f4aac4d0ac6d29e434",
+      "runtimeHash": "0xa152da2c90543a3822490adb14f4ff3177563763fec5ef8405f7c7811ef53317"
+    },
+    {
+      "contractName": "Time",
+      "artifactPath": "artifacts/@openzeppelin/contracts/utils/types/Time.sol/Time.json",
+      "creationBytes": 135,
+      "runtimeBytes": 85,
+      "creationHash": "0x1c1e8dd5ff02818c845ebfbdac47f1d0bde949c65d6d2c12e97434f050fe6ea3",
+      "runtimeHash": "0x5d0905bf03c54e997485ec9412080e120026f9bd65c1a16ac7d7d6657413b298"
+    },
+    {
+      "contractName": "NexoraAirdrop",
+      "artifactPath": "artifacts/src/airdrop/NexoraAirdrop.sol/NexoraAirdrop.json",
+      "creationBytes": 4929,
+      "runtimeBytes": 4142,
+      "creationHash": "0x8a7459ac9c45fbaf11fb4f80b664376b162f147d7a8f728fd651db425ae0de0b",
+      "runtimeHash": "0xa038e03c6c87d905f1ea35bcdf5f8ed484f7cf1608b976b5b3f2afe098244091"
+    },
+    {
+      "contractName": "NexoraGovernor",
+      "artifactPath": "artifacts/src/governance/NexoraGovernor.sol/NexoraGovernor.json",
+      "creationBytes": 19753,
+      "runtimeBytes": 17183,
+      "creationHash": "0x76e5e06a44ac35c1956c2088bf12886fb5aa090cd648c4d7e9cf60ad5d403cd7",
+      "runtimeHash": "0x52dc5f39da72a354775a1430855cd929728887dd13c8accddd259d996156c4e9"
+    },
+    {
+      "contractName": "NexoraVoteToken",
+      "artifactPath": "artifacts/src/governance/NexoraVoteToken.sol/NexoraVoteToken.json",
+      "creationBytes": 9807,
+      "runtimeBytes": 8520,
+      "creationHash": "0xa517170707b882bbb79781a2a6ce55545ba4c972aa10cd0706de46aaa23bdbcc",
+      "runtimeHash": "0x44dd24290f189b3e75ac6751394e36c745a206a6187f2cac95d890e9a202491f"
+    },
+    {
+      "contractName": "NexoraVoteWrapper",
+      "artifactPath": "artifacts/src/governance/NexoraVoteWrapper.sol/NexoraVoteWrapper.json",
+      "creationBytes": 1977,
+      "runtimeBytes": 1618,
+      "creationHash": "0xb2bc84d391fb9dd067efff4cded79a26dd629cbc37d9f8e47daebfa914266bef",
+      "runtimeHash": "0xafc400b5832d7f86b43b04148d65f2f77891c923a11cffd2bf6f32fee13b8b29"
+    },
+    {
+      "contractName": "NexoraAllocationVault",
+      "artifactPath": "artifacts/src/libraries/NexoraAllocationVault.sol/NexoraAllocationVault.json",
+      "creationBytes": 2003,
+      "runtimeBytes": 1694,
+      "creationHash": "0x87154d507d873b9296d5f50df487d117ffa29c62eea2f7af44ce51c26040d0ef",
+      "runtimeHash": "0xaa90986d167f321aa8ef5a092025e37b6b15e8223b9ee84140b957f1f475bb31"
+    },
+    {
+      "contractName": "NexoraFactory",
+      "artifactPath": "artifacts/src/libraries/NexoraFactory.sol/NexoraFactory.json",
+      "creationBytes": 866,
+      "runtimeBytes": 838,
+      "creationHash": "0x8d4cc46080781709afb1f9eba1d13c3842fa9b27e1aa5c860c1f3e1ac081f2e7",
+      "runtimeHash": "0xd10293dde5a7725ef82439079233fef1d8c399e51ed8ed41720fccb1ed6473c7"
+    },
+    {
+      "contractName": "NexoraPresale",
+      "artifactPath": "artifacts/src/presale/NexoraPresale.sol/NexoraPresale.json",
+      "creationBytes": 9609,
+      "runtimeBytes": 8910,
+      "creationHash": "0x1f4f195d41e53b33d742f6a3ab30389554c6574e22e4afeee99da7efe218c639",
+      "runtimeHash": "0xb32e9679f163aba483d39fef5ff4f685209dca3bcc6f89f948349f253a747523"
+    },
+    {
+      "contractName": "NexoraStaking",
+      "artifactPath": "artifacts/src/staking/NexoraStaking.sol/NexoraStaking.json",
+      "creationBytes": 6618,
+      "runtimeBytes": 5812,
+      "creationHash": "0xedb8428ba4f05417a787fde97a8361e4aa563da1cdd2f90c02e38e5d9e363180",
+      "runtimeHash": "0x121b94d3280e1c7871e546e7ea2d34f179debd1dff6b25f6a4447dc058f5c5f0"
+    },
+    {
+      "contractName": "NexoraDeterministicTestTarget",
+      "artifactPath": "artifacts/src/test/NexoraDeterministicTestTarget.sol/NexoraDeterministicTestTarget.json",
+      "creationBytes": 162,
+      "runtimeBytes": 136,
+      "creationHash": "0x70217bb1faba122814b22dceaa3098df99bf1816988cea88e2b04c3943ecdd97",
+      "runtimeHash": "0xc681fc0ef35c24378c440d07ba7ee0efa6a0bc0f35f2212963d70c291392534e"
+    },
+    {
+      "contractName": "NexoraToken",
+      "artifactPath": "artifacts/src/token/NexoraToken.sol/NexoraToken.json",
+      "creationBytes": 6231,
+      "runtimeBytes": 3834,
+      "creationHash": "0x62bb3154453769dd61f7307a3c20e98dc79dd252e9006d0f45188148e7a1e804",
+      "runtimeHash": "0x3f02cde20578323f64155934561b2c8a42180fb5c03f060b4e845cd9872f1e8a"
+    },
+    {
+      "contractName": "NexoraTreasury",
+      "artifactPath": "artifacts/src/treasury/NexoraTreasury.sol/NexoraTreasury.json",
+      "creationBytes": 4000,
+      "runtimeBytes": 3541,
+      "creationHash": "0xcf9d98cd1f36b6c31d7b089398b9f92dda5231cc1520c7af928eb79680c9fc75",
+      "runtimeHash": "0x93b5489c30a8dbb7fd87c23234afe909024d1f72bd6f61a48c00e4145b93957c"
+    },
+    {
+      "contractName": "NexoraVesting",
+      "artifactPath": "artifacts/src/vesting/NexoraVesting.sol/NexoraVesting.json",
+      "creationBytes": 6827,
+      "runtimeBytes": 6140,
+      "creationHash": "0x96728fcdb0c46f3d6c358f062c67e03caf64875491e0e329acdc2d193ace2776",
+      "runtimeHash": "0xa6eb717e792dc79b24edf85b91c81e842bfc939a89570ea8661b6fa4470dbff7"
+    }
+  ],
+  "create2Compatibility": true,
+  "factoryInterfaceVerified": true,
+  "deploymentSafetyVerified": true,
+  "status": "AUDIT_COMPLETE"
+}

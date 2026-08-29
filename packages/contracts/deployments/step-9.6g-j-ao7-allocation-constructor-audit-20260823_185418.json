@@ -1,0 +1,569 @@
+{
+  "step": "9.6G-J-AO.7",
+  "title": "Read-Only Canonical Allocation + Constructor Reconciliation Audit",
+  "timestamp_utc": "2026-08-23T18:54:18.066604+00:00",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_construction": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false
+  },
+  "paths": {
+    "project": "/content/nexora",
+    "contracts": "/content/nexora/packages/contracts",
+    "token": "/content/nexora/packages/contracts/src/token/NexoraToken.sol",
+    "deployment_config": "/content/nexora/packages/contracts/scripts/deployment-config.ts",
+    "deploy_all": "/content/nexora/packages/contracts/scripts/deploy-all.ts",
+    "deploy_mainnet": "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts",
+    "hardhat_config": "/content/nexora/packages/contracts/hardhat.config.ts",
+    "package_json": "/content/nexora/packages/contracts/package.json"
+  },
+  "source_hashes": {
+    "/content/nexora/packages/contracts/src/token/NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "/content/nexora/packages/contracts/scripts/deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "/content/nexora/packages/contracts/scripts/deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "/content/nexora/packages/contracts/hardhat.config.ts": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f"
+  },
+  "constructor": {
+    "raw_source": "constructor(Allocation[] memory allocations)",
+    "parameters": [
+      {
+        "raw": "Allocation[] memory allocations",
+        "identifier_tokens": [
+          "Allocation",
+          "memory",
+          "allocations"
+        ],
+        "likely_name": "allocations"
+      }
+    ],
+    "abi": null,
+    "reconciliation": {
+      "source_constructor_found": true,
+      "source_parameter_count": 1,
+      "abi_constructor_found": false,
+      "abi_parameter_count": null,
+      "parameter_count_match": null
+    }
+  },
+  "allocations": {
+    "entries": [
+      {
+        "name": "COMMUNITY_ADDRESS",
+        "expression": "''",
+        "line": 54,
+        "source": "key_value"
+      },
+      {
+        "name": "LIQUIDITY_ADDRESS",
+        "expression": "''",
+        "line": 55,
+        "source": "key_value"
+      },
+      {
+        "name": "TREASURY_ADDRESS",
+        "expression": "''",
+        "line": 56,
+        "source": "key_value"
+      },
+      {
+        "name": "DEVELOPMENT_ADDRESS",
+        "expression": "''",
+        "line": 57,
+        "source": "key_value"
+      },
+      {
+        "name": "team",
+        "expression": "{ cliff: 12n * SECONDS_PER_MONTH",
+        "line": 153,
+        "source": "key_value"
+      },
+      {
+        "name": "advisors",
+        "expression": "{ cliff: 6n * SECONDS_PER_MONTH",
+        "line": 154,
+        "source": "key_value"
+      },
+      {
+        "name": "team",
+        "expression": "''",
+        "line": 159,
+        "source": "key_value"
+      },
+      {
+        "name": "advisors",
+        "expression": "''",
+        "line": 160,
+        "source": "key_value"
+      },
+      {
+        "name": "team",
+        "expression": "resolveSchedule('team'",
+        "line": 222,
+        "source": "key_value"
+      },
+      {
+        "name": "advisors",
+        "expression": "resolveSchedule('advisors'",
+        "line": 223,
+        "source": "key_value"
+      }
+    ],
+    "duplicates": [
+      "advisors",
+      "team"
+    ],
+    "max_supply_matches": [
+      "ethers.parseEther('1000000000')"
+    ],
+    "total_references": [
+      {
+        "pattern": "sum\\s*=",
+        "line": 61,
+        "snippet": " DEVELOPMENT_ADDRESS: '', };  export function assertAllocationSum(allocations: { amount: bigint }[]): boolean {   const sum = allocations.reduce((acc, a) => acc + a.amount, 0n);   return sum === MAX_SUPPLY; }  /** Resolve an explicit (non-vault) recipient: env in production, test fallback otherwise. */ export function explicitRecipient(key: string, isProduction: boolean): string {   const fromEnv = process.env[key];   if "
+      },
+      {
+        "pattern": "sum\\s*=",
+        "line": 62,
+        "snippet": "llocations: { amount: bigint }[]): boolean {   const sum = allocations.reduce((acc, a) => acc + a.amount, 0n);   return sum === MAX_SUPPLY; }  /** Resolve an explicit (non-vault) recipient: env in production, test fallback otherwise. */ export function explicitRecipient(key: string, isProduction: boolean): string {   const fromEnv = process.env[key];   if (fromEnv) return ethers.getAddress(fromEnv);   if (isProduction) th"
+      },
+      {
+        "pattern": "sum\\s*=",
+        "line": 111,
+        "snippet": "ecipient(spec.key, isProduction);     }     entries.push({ recipient, amount: spec.amount });   }    // Hard invariant: sum == MAX_SUPPLY.   if (!assertAllocationSum(entries)) {     throw new Error('Allocation sum does not equal MAX_SUPPLY (1,000,000,000)');   }    // Uniqueness, non-zero, no deployer windfall.   const seen = new Set<string>();   for (const e of entries) {     const key = e.recipient.toLowerCase();     if"
+      },
+      {
+        "pattern": "MAX_SUPPLY",
+        "line": 26,
+        "snippet": "all recipients unique, non-zero  *   - deployer is never a recipient  */ import { ethers } from 'ethers';  export const MAX_SUPPLY = ethers.parseEther('1000000000');  export type BucketKind = 'external' | 'vault';  export interface AllocationSpec {   key: string; // env var name for explicit addresses   bucket: string;   amount: bigint;   kind: BucketKind;   /** Vault salt (only for kind='vault'). */   salt?: string;   /** Pur"
+      },
+      {
+        "pattern": "MAX_SUPPLY",
+        "line": 62,
+        "snippet": "ns: { amount: bigint }[]): boolean {   const sum = allocations.reduce((acc, a) => acc + a.amount, 0n);   return sum === MAX_SUPPLY; }  /** Resolve an explicit (non-vault) recipient: env in production, test fallback otherwise. */ export function explicitRecipient(key: string, isProduction: boolean): string {   const fromEnv = process.env[key];   if (fromEnv) return ethers.getAddress(fromEnv);   if (isProduction) throw new Error"
+      },
+      {
+        "pattern": "MAX_SUPPLY",
+        "line": 111,
+        "snippet": "t(spec.key, isProduction);     }     entries.push({ recipient, amount: spec.amount });   }    // Hard invariant: sum == MAX_SUPPLY.   if (!assertAllocationSum(entries)) {     throw new Error('Allocation sum does not equal MAX_SUPPLY (1,000,000,000)');   }    // Uniqueness, non-zero, no deployer windfall.   const seen = new Set<string>();   for (const e of entries) {     const key = e.recipient.toLowerCase();     if (seen.has(k"
+      },
+      {
+        "pattern": "MAX_SUPPLY",
+        "line": 113,
+        "snippet": "invariant: sum == MAX_SUPPLY.   if (!assertAllocationSum(entries)) {     throw new Error('Allocation sum does not equal MAX_SUPPLY (1,000,000,000)');   }    // Uniqueness, non-zero, no deployer windfall.   const seen = new Set<string>();   for (const e of entries) {     const key = e.recipient.toLowerCase();     if (seen.has(key)) throw new Error(`Duplicate allocation recipient: ${e.recipient}`);     seen.add(key);     if (e.r"
+      }
+    ]
+  },
+  "deployment_references": {
+    "deploy-all.ts": [
+      {
+        "match": "ALLOCATIONS",
+        "line": 94
+      },
+      {
+        "match": "ALLOCATIONS",
+        "line": 165
+      },
+      {
+        "match": "ALLOCATIONS",
+        "line": 252
+      },
+      {
+        "match": "ALLOCATIONS",
+        "line": 270
+      },
+      {
+        "match": "ALLOCATIONS",
+        "line": 323
+      },
+      {
+        "match": "allocations",
+        "line": 180
+      },
+      {
+        "match": "allocations",
+        "line": 185
+      },
+      {
+        "match": "allocations",
+        "line": 185
+      },
+      {
+        "match": "allocations",
+        "line": 186
+      },
+      {
+        "match": "allocations",
+        "line": 191
+      },
+      {
+        "match": "allocations",
+        "line": 323
+      },
+      {
+        "match": "allocations",
+        "line": 394
+      },
+      {
+        "match": "allocation",
+        "line": 70
+      },
+      {
+        "match": "allocation",
+        "line": 76
+      },
+      {
+        "match": "allocation",
+        "line": 178
+      },
+      {
+        "match": "allocation",
+        "line": 190
+      },
+      {
+        "match": "allocation",
+        "line": 236
+      },
+      {
+        "match": "allocation",
+        "line": 394
+      }
+    ],
+    "deploy-mainnet.ts": []
+  },
+  "token_deployment_references": {
+    "deploy-all.ts": [
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 155,
+        "snippet": "----------------------------------------------------------   // 1. CREATE2 factory.   // ------------------------------------------------------------------   const factory = await deploy('NexoraFactory');   contracts.factory = factory;   const factoryC = await ethers.getContractAt('NexoraFactory', factory);    // ------------------------------------------------------------------   // 2. Allocation vaults (token-agnostic, deployed before the token).   //    Owner = deployer (temporar"
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 171,
+        "snippet": "aultInitcode[spec.salt!] = initcode;     const predicted = await factoryC.predictAddress(ethers.id(spec.salt!), initcode);     // Deploy via CREATE2.     const tx = await factoryC.deploy(ethers.id(spec.salt!), initcode);     await tx.wait();     vaultAddresses[spec.salt!] = predicted;     console.log(`  deployed ${spec.bucket} vault -> ${predicted}`);   }    // ------------------------------------------------------------------   // 3. Resolve + validate the genesis allocation (uses "
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 191,
+        "snippet": "ocations) {     console.log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);   }    // Deploy the token with the deterministic genesis allocation.   const token = await deploy('NexoraToken', [allocations.map((a) => ({ recipient: a.recipient, amount: a.amount }))]);   contracts.nxrToken = token;    // ------------------------------------------------------------------   // 4. Governance stack.   // ------------------------------------------------------------------   const v"
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 197,
+        "snippet": "-------------------------------------------------------   // 4. Governance stack.   // ------------------------------------------------------------------   const voteToken = await deploy('NexoraVoteToken', [deployer.address]);   contracts.voteToken = voteToken;    const voteWrapper = await deploy('NexoraVoteWrapper', [token, voteToken]);   contracts.voteWrapper = voteWrapper;    // Wrapper is the ONLY NXVT minter; revoke deployer MINTER.   const vt = await ethers.getContractAt('Nexo"
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 200,
+        "snippet": "------------------------------------------   const voteToken = await deploy('NexoraVoteToken', [deployer.address]);   contracts.voteToken = voteToken;    const voteWrapper = await deploy('NexoraVoteWrapper', [token, voteToken]);   contracts.voteWrapper = voteWrapper;    // Wrapper is the ONLY NXVT minter; revoke deployer MINTER.   const vt = await ethers.getContractAt('NexoraVoteToken', voteToken);   const MINTER = await vt.MINTER_ROLE();   await vt.grantRole(MINTER, voteWrapper);  "
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 212,
+        "snippet": "dress)) {     await vt.revokeRole(MINTER, deployer.address);     console.log('  revoked MINTER_ROLE from deployer (wrapper is now the only minter)');   }    const timelock = await deploy('TimelockController', [TIMELOCK_MIN_DELAY, [], [], deployer.address]);   contracts.timelock = timelock;    // Move the vote token's DEFAULT_ADMIN from the deployer to the timelock so   // the deployer can no longer grant MINTER_ROLE to anyone after deployment.   if (await vt.hasRole(await vt.DEFAULT"
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 223,
+        "snippet": " vt.revokeRole(await vt.DEFAULT_ADMIN_ROLE(), deployer.address);     console.log('  transferred vote token DEFAULT_ADMIN from deployer to timelock');   }    const governor = await deploy('NexoraGovernor', [     voteToken, timelock, VOTING_DELAY, VOTING_PERIOD, PROPOSAL_THRESHOLD, QUORUM_NUMERATOR,   ]);   contracts.governor = governor;    const timelockC = await ethers.getContractAt('TimelockController', timelock);   await timelockC.grantRole(await timelockC.PROPOSER_ROLE(), governo"
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 237,
+        "snippet": "s.   // ------------------------------------------------------------------   // Two vesting instances: team + advisors (each holds its own allocation).   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);   contracts.treasury = await deploy('NexoraTreasu"
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 238,
+        "snippet": "ances: team + advisors (each holds its own allocation).   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);    // Airdrop starts with a zero root; a real Merkle root must be set "
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 239,
+        "snippet": "NexoraVesting', [token, deployer.address]); // team   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);    // Airdrop starts with a zero root; a real Merkle root must be set before claims.   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRD"
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 240,
+        "snippet": "oraVesting', [token, deployer.address]); // advisors   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);   contracts.treasury = await deploy('NexoraTreasury', [deployer.address]);    // Airdrop starts with a zero root; a real Merkle root must be set before claims.   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;   contracts.airdrop = await deploy('NexoraAirdrop', [token, ether"
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 244,
+        "snippet": "l Merkle root must be set before claims.   const airdropDeadline = BigInt(Math.floor(Date.now() / 1000)) + BigInt(AIRDROP_DEADLINE_DAYS) * 24n * 3600n;   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default    // ------------------------------------------------------------------   // 6. Automatic vault r"
+      },
+      {
+        "pattern": "deploy\\s*\\(",
+        "line": 245,
+        "snippet": "AIRDROP_DEADLINE_DAYS) * 24n * 3600n;   contracts.airdrop = await deploy('NexoraAirdrop', [token, ethers.ZeroHash, airdropDeadline, deployer.address]);   contracts.presale = await deploy('NexoraPresale', [token, ethers.ZeroAddress, deployer.address]); // DISABLED by default    // ------------------------------------------------------------------   // 6. Automatic vault release into their real destinations.   //    team -> team Vesting, advisors -> advisor Vesting, sale -> Presale.  "
+      },
+      {
+        "pattern": "args\\s*:",
+        "line": 112,
+        "snippet": " 3600n; // 30 days const AIRDROP_DEADLINE_DAYS = 30;  /** Encode a contract's CREATE2 initcode = creation bytecode + encoded ctor args. */ async function initcodeFor(name: string, args: unknown[] = []): Promise<{ initcode: string }> {   const factory = await ethers.getContractFactory(name);   const encodedArgs = ethers.AbiCoder.defaultAbiCoder().encode(factory.interface.deploy.inputs, args);   const initcode = (factory.bytecode + encodedArgs.slice(2)) as string;   return { initcod"
+      },
+      {
+        "pattern": "allocation",
+        "line": 70,
+        "snippet": "NET AUTHORIZATION HARDENING // ============================================================================   /**  * Nexora \u2014 full ecosystem deployment orchestrator (deterministic allocation).  *  * Deploys the entire contract suite in a deterministic, safe order:  *   1. NexoraFactory (CREATE2) \u2014 provides pre-computable addresses.  *   2. Allocation vaults (team, advisors, public-sale) via CREATE2, token-agnostic,  *      deployed BEFORE the token so the fixed-supply token can mint to"
+      },
+      {
+        "pattern": "allocation",
+        "line": 74,
+        "snippet": "or (deterministic allocation).  *  * Deploys the entire contract suite in a deterministic, safe order:  *   1. NexoraFactory (CREATE2) \u2014 provides pre-computable addresses.  *   2. Allocation vaults (team, advisors, public-sale) via CREATE2, token-agnostic,  *      deployed BEFORE the token so the fixed-supply token can mint to them.  *   3. NXR token with the approved deterministic genesis allocation.  *   4. Governance stack (NXVT, VoteWrapper, Timelock, Governor).  *   5. Ecosystem c"
+      },
+      {
+        "pattern": "allocation",
+        "line": 76,
+        "snippet": ", public-sale) via CREATE2, token-agnostic,  *      deployed BEFORE the token so the fixed-supply token can mint to them.  *   3. NXR token with the approved deterministic genesis allocation.  *   4. Governance stack (NXVT, VoteWrapper, Timelock, Governor).  *   5. Ecosystem contracts (Vesting, Staking, Treasury, Airdrop, Presale).  *   6. AUTOMATIC vault release: team -> team Vesting, advisors -> advisor Vesting,  *      public-sale -> Presale. No manual movement.  *  * Role hardening"
+      },
+      {
+        "pattern": "allocation",
+        "line": 94,
+        "snippet": "port { ethers } from 'hardhat'; import fs from 'fs'; import path from 'path'; import { deploy, recordDeployment, verifyContract, deploymentsDir } from './helpers'; import { resolveAllocations, ALLOCATIONS, resolveVestingSchedules } from './deployment-config'; import {   resolvePermanentAuthorities,   performRoleHandoff,   buildRoleExpectations,   verifyRoleTable,   validateTreasuryConfiguration, } from './roles';  const VOTING_DELAY = 1; const VOTING_PERIOD = 100; const PROPOSAL_THRESH"
+      },
+      {
+        "pattern": "allocation",
+        "line": 94,
+        "snippet": " } from 'hardhat'; import fs from 'fs'; import path from 'path'; import { deploy, recordDeployment, verifyContract, deploymentsDir } from './helpers'; import { resolveAllocations, ALLOCATIONS, resolveVestingSchedules } from './deployment-config'; import {   resolvePermanentAuthorities,   performRoleHandoff,   buildRoleExpectations,   verifyRoleTable,   validateTreasuryConfiguration, } from './roles';  const VOTING_DELAY = 1; const VOTING_PERIOD = 100; const PROPOSAL_THRESHOLD = 0n; con"
+      },
+      {
+        "pattern": "allocation",
+        "line": 160,
+        "snippet": "tracts.factory = factory;   const factoryC = await ethers.getContractAt('NexoraFactory', factory);    // ------------------------------------------------------------------   // 2. Allocation vaults (token-agnostic, deployed before the token).   //    Owner = deployer (temporary controller); released to destinations below.   // ------------------------------------------------------------------   const vaultAddresses: Record<string, string> = {};   const vaultInitcode: Record<string, str"
+      },
+      {
+        "pattern": "allocation",
+        "line": 165,
+        "snippet": "------------------------------------------------------   const vaultAddresses: Record<string, string> = {};   const vaultInitcode: Record<string, string> = {};   const vaultInfo = ALLOCATIONS.filter((a) => a.kind === 'vault');   for (const spec of vaultInfo) {     const { initcode } = await initcodeFor('NexoraAllocationVault', [deployer.address]);     vaultInitcode[spec.salt!] = initcode;     const predicted = await factoryC.predictAddress(ethers.id(spec.salt!), initcode);     // Deplo"
+      },
+      {
+        "pattern": "allocation",
+        "line": 167,
+        "snippet": "Record<string, string> = {};   const vaultInfo = ALLOCATIONS.filter((a) => a.kind === 'vault');   for (const spec of vaultInfo) {     const { initcode } = await initcodeFor('NexoraAllocationVault', [deployer.address]);     vaultInitcode[spec.salt!] = initcode;     const predicted = await factoryC.predictAddress(ethers.id(spec.salt!), initcode);     // Deploy via CREATE2.     const tx = await factoryC.deploy(ethers.id(spec.salt!), initcode);     await tx.wait();     vaultAddresses[spec."
+      },
+      {
+        "pattern": "allocation",
+        "line": 178,
+        "snippet": "console.log(`  deployed ${spec.bucket} vault -> ${predicted}`);   }    // ------------------------------------------------------------------   // 3. Resolve + validate the genesis allocation (uses vault addresses).   // ------------------------------------------------------------------   const { entries: allocations, vaultRecipients, deploymentType } = resolveAllocations(     deployer.address,     isProduction,     vaultAddresses,   );   console.log(`Allocation resolved (${deploymentTy"
+      },
+      {
+        "pattern": "allocation",
+        "line": 180,
+        "snippet": "--------------   // 3. Resolve + validate the genesis allocation (uses vault addresses).   // ------------------------------------------------------------------   const { entries: allocations, vaultRecipients, deploymentType } = resolveAllocations(     deployer.address,     isProduction,     vaultAddresses,   );   console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);   for"
+      },
+      {
+        "pattern": "allocation",
+        "line": 180,
+        "snippet": "location (uses vault addresses).   // ------------------------------------------------------------------   const { entries: allocations, vaultRecipients, deploymentType } = resolveAllocations(     deployer.address,     isProduction,     vaultAddresses,   );   console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);   for (const e of allocations) {     console.log(`  ${ethers."
+      },
+      {
+        "pattern": "allocation",
+        "line": 185,
+        "snippet": "-----------   const { entries: allocations, vaultRecipients, deploymentType } = resolveAllocations(     deployer.address,     isProduction,     vaultAddresses,   );   console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);   for (const e of allocations) {     console.log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);   }    // Deploy the token with the determini"
+      },
+      {
+        "pattern": "allocation",
+        "line": 185,
+        "snippet": " vaultRecipients, deploymentType } = resolveAllocations(     deployer.address,     isProduction,     vaultAddresses,   );   console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);   for (const e of allocations) {     console.log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);   }    // Deploy the token with the deterministic genesis allocation.   const token = aw"
+      },
+      {
+        "pattern": "allocation",
+        "line": 185,
+        "snippet": "    deployer.address,     isProduction,     vaultAddresses,   );   console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);   for (const e of allocations) {     console.log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);   }    // Deploy the token with the deterministic genesis allocation.   const token = await deploy('NexoraToken', [allocations.map((a) => ({ reci"
+      },
+      {
+        "pattern": "allocation",
+        "line": 186,
+        "snippet": ".log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);   for (const e of allocations) {     console.log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);   }    // Deploy the token with the deterministic genesis allocation.   const token = await deploy('NexoraToken', [allocations.map((a) => ({ recipient: a.recipient, amount: a.amount }))]);   contracts.nxrToken = token; "
+      },
+      {
+        "pattern": "allocation",
+        "line": 190,
+        "snippet": "0n))} NXR`);   for (const e of allocations) {     console.log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);   }    // Deploy the token with the deterministic genesis allocation.   const token = await deploy('NexoraToken', [allocations.map((a) => ({ recipient: a.recipient, amount: a.amount }))]);   contracts.nxrToken = token;    // ------------------------------------------------------------------   // 4. Governance stack.   // ---------------------------------------------"
+      },
+      {
+        "pattern": "allocation",
+        "line": 191,
+        "snippet": ".log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);   }    // Deploy the token with the deterministic genesis allocation.   const token = await deploy('NexoraToken', [allocations.map((a) => ({ recipient: a.recipient, amount: a.amount }))]);   contracts.nxrToken = token;    // ------------------------------------------------------------------   // 4. Governance stack.   // ------------------------------------------------------------------   const voteToken = await deploy('N"
+      },
+      {
+        "pattern": "allocation",
+        "line": 236,
+        "snippet": "--------------   // 5. Ecosystem contracts.   // ------------------------------------------------------------------   // Two vesting instances: team + advisors (each holds its own allocation).   contracts.vesting = await deploy('NexoraVesting', [token, deployer.address]); // team   contracts.vestingAdvisors = await deploy('NexoraVesting', [token, deployer.address]); // advisors   contracts.staking = await deploy('NexoraStaking', [token, deployer.address, STAKING_DURATION]);   contracts"
+      },
+      {
+        "pattern": "allocation",
+        "line": 252,
+        "snippet": " advisor Vesting, sale -> Presale.   // ------------------------------------------------------------------   const vaultByBucket: Record<string, string> = {};   for (const spec of ALLOCATIONS) {     if (spec.kind === 'vault') vaultByBucket[spec.bucket] = vaultAddresses[spec.salt!]!;   }   const release = async (bucket: string, dest: string) => {     const vaultAddr = vaultByBucket[bucket];     if (!vaultAddr) return;     const vault = await ethers.getContractAt('NexoraAllocationVault',"
+      },
+      {
+        "pattern": "allocation",
+        "line": 258,
+        "snippet": "st release = async (bucket: string, dest: string) => {     const vaultAddr = vaultByBucket[bucket];     if (!vaultAddr) return;     const vault = await ethers.getContractAt('NexoraAllocationVault', vaultAddr);     await vault.releaseAll(token, dest);     console.log(`  released ${bucket} vault -> ${dest}`);   };   await release('team', contracts.vesting!);   await release('advisors', contracts.vestingAdvisors!);   await release('public-sale', contracts.presale!);    // Allocation vault"
+      },
+      {
+        "pattern": "allocation",
+        "line": 266,
+        "snippet": " -> ${dest}`);   };   await release('team', contracts.vesting!);   await release('advisors', contracts.vestingAdvisors!);   await release('public-sale', contracts.presale!);    // Allocation vaults are one-shot deployment escrows. After their tokens are   // released they retain no purpose; renounce ownership so no deployer (or any   // single party) retains administrative power over them. Only renounce after   // verifying each vault is empty.   for (const spec of ALLOCATIONS) {     i"
+      },
+      {
+        "pattern": "allocation",
+        "line": 270,
+        "snippet": "; renounce ownership so no deployer (or any   // single party) retains administrative power over them. Only renounce after   // verifying each vault is empty.   for (const spec of ALLOCATIONS) {     if (spec.kind !== 'vault') continue;     const vaultAddr = vaultAddresses[spec.salt!];     if (!vaultAddr) continue;     const vault = await ethers.getContractAt('NexoraAllocationVault', vaultAddr);     const bal = await vault.balanceOf(token);     if (bal !== 0n) {       throw new Error(`V"
+      },
+      {
+        "pattern": "allocation",
+        "line": 274,
+        "snippet": "ONS) {     if (spec.kind !== 'vault') continue;     const vaultAddr = vaultAddresses[spec.salt!];     if (!vaultAddr) continue;     const vault = await ethers.getContractAt('NexoraAllocationVault', vaultAddr);     const bal = await vault.balanceOf(token);     if (bal !== 0n) {       throw new Error(`Vault ${spec.bucket} not empty (${bal}) before renounce \u2014 refusing to renounce ownership`);     }     await vault.renounceOwnership();     console.log(`  renounced ownership of ${spec.bucke"
+      },
+      {
+        "pattern": "allocation",
+        "line": 323,
+        "snippet": " //     permanent roles are granted + verified. Never revokes the last admin.   // ------------------------------------------------------------------   const treasuryDestination = allocations[ALLOCATIONS.findIndex((a) => a.bucket === 'treasury')]?.recipient!;   const authorities = resolvePermanentAuthorities(isProduction, timelock, treasuryDestination);    // Treasury relationship (Option A): in production the treasury destination   // and the treasury multisig must be the SAME Safe.  "
+      },
+      {
+        "pattern": "allocation",
+        "line": 323,
+        "snippet": "anent roles are granted + verified. Never revokes the last admin.   // ------------------------------------------------------------------   const treasuryDestination = allocations[ALLOCATIONS.findIndex((a) => a.bucket === 'treasury')]?.recipient!;   const authorities = resolvePermanentAuthorities(isProduction, timelock, treasuryDestination);    // Treasury relationship (Option A): in production the treasury destination   // and the treasury multisig must be the SAME Safe.   const treas"
+      },
+      {
+        "pattern": "allocation",
+        "line": 394,
+        "snippet": "loyer: deployer.address,     deployedAt: new Date().toISOString(),     version: '0.1.0',     gitCommit: process.env.GITHUB_SHA ?? 'unknown',     deploymentType,     contracts,     allocation: allocations.map((a) => ({ recipient: a.recipient, amount: a.amount.toString() })),     treasury: {       allocationAmount: '150000000000000000000000000',       destination: treasuryDestination,       multisig: authorities.treasuryMultisig,       controller: authorities.treasuryMultisig,       cont"
+      },
+      {
+        "pattern": "allocation",
+        "line": 394,
+        "snippet": "yer.address,     deployedAt: new Date().toISOString(),     version: '0.1.0',     gitCommit: process.env.GITHUB_SHA ?? 'unknown',     deploymentType,     contracts,     allocation: allocations.map((a) => ({ recipient: a.recipient, amount: a.amount.toString() })),     treasury: {       allocationAmount: '150000000000000000000000000',       destination: treasuryDestination,       multisig: authorities.treasuryMultisig,       controller: authorities.treasuryMultisig,       contract: contra"
+      },
+      {
+        "pattern": "allocation",
+        "line": 396,
+        "snippet": "ITHUB_SHA ?? 'unknown',     deploymentType,     contracts,     allocation: allocations.map((a) => ({ recipient: a.recipient, amount: a.amount.toString() })),     treasury: {       allocationAmount: '150000000000000000000000000',       destination: treasuryDestination,       multisig: authorities.treasuryMultisig,       controller: authorities.treasuryMultisig,       contract: contracts.treasury,     },     vestingSchedules: {       team: { beneficiary: sTeam.beneficiary, amount: sTeam."
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 94,
+        "snippet": "port { ethers } from 'hardhat'; import fs from 'fs'; import path from 'path'; import { deploy, recordDeployment, verifyContract, deploymentsDir } from './helpers'; import { resolveAllocations, ALLOCATIONS, resolveVestingSchedules } from './deployment-config'; import {   resolvePermanentAuthorities,   performRoleHandoff,   buildRoleExpectations,   verifyRoleTable,   validateTreasuryConfiguration, } from './roles';  const VOTING_DELAY = 1; const VOTING_PERIOD = 100; const PROPOSAL_THRESHO"
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 94,
+        "snippet": " } from 'hardhat'; import fs from 'fs'; import path from 'path'; import { deploy, recordDeployment, verifyContract, deploymentsDir } from './helpers'; import { resolveAllocations, ALLOCATIONS, resolveVestingSchedules } from './deployment-config'; import {   resolvePermanentAuthorities,   performRoleHandoff,   buildRoleExpectations,   verifyRoleTable,   validateTreasuryConfiguration, } from './roles';  const VOTING_DELAY = 1; const VOTING_PERIOD = 100; const PROPOSAL_THRESHOLD = 0n; cons"
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 165,
+        "snippet": "------------------------------------------------------   const vaultAddresses: Record<string, string> = {};   const vaultInitcode: Record<string, string> = {};   const vaultInfo = ALLOCATIONS.filter((a) => a.kind === 'vault');   for (const spec of vaultInfo) {     const { initcode } = await initcodeFor('NexoraAllocationVault', [deployer.address]);     vaultInitcode[spec.salt!] = initcode;     const predicted = await factoryC.predictAddress(ethers.id(spec.salt!), initcode);     // Deploy"
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 180,
+        "snippet": "--------------   // 3. Resolve + validate the genesis allocation (uses vault addresses).   // ------------------------------------------------------------------   const { entries: allocations, vaultRecipients, deploymentType } = resolveAllocations(     deployer.address,     isProduction,     vaultAddresses,   );   console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);   for "
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 180,
+        "snippet": "location (uses vault addresses).   // ------------------------------------------------------------------   const { entries: allocations, vaultRecipients, deploymentType } = resolveAllocations(     deployer.address,     isProduction,     vaultAddresses,   );   console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);   for (const e of allocations) {     console.log(`  ${ethers.f"
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 185,
+        "snippet": " vaultRecipients, deploymentType } = resolveAllocations(     deployer.address,     isProduction,     vaultAddresses,   );   console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);   for (const e of allocations) {     console.log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);   }    // Deploy the token with the deterministic genesis allocation.   const token = awa"
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 185,
+        "snippet": "    deployer.address,     isProduction,     vaultAddresses,   );   console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);   for (const e of allocations) {     console.log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);   }    // Deploy the token with the deterministic genesis allocation.   const token = await deploy('NexoraToken', [allocations.map((a) => ({ recip"
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 186,
+        "snippet": ".log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);   for (const e of allocations) {     console.log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);   }    // Deploy the token with the deterministic genesis allocation.   const token = await deploy('NexoraToken', [allocations.map((a) => ({ recipient: a.recipient, amount: a.amount }))]);   contracts.nxrToken = token;  "
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 191,
+        "snippet": ".log(`  ${ethers.formatEther(e.amount)} NXR -> ${e.recipient}`);   }    // Deploy the token with the deterministic genesis allocation.   const token = await deploy('NexoraToken', [allocations.map((a) => ({ recipient: a.recipient, amount: a.amount }))]);   contracts.nxrToken = token;    // ------------------------------------------------------------------   // 4. Governance stack.   // ------------------------------------------------------------------   const voteToken = await deploy('Ne"
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 252,
+        "snippet": " advisor Vesting, sale -> Presale.   // ------------------------------------------------------------------   const vaultByBucket: Record<string, string> = {};   for (const spec of ALLOCATIONS) {     if (spec.kind === 'vault') vaultByBucket[spec.bucket] = vaultAddresses[spec.salt!]!;   }   const release = async (bucket: string, dest: string) => {     const vaultAddr = vaultByBucket[bucket];     if (!vaultAddr) return;     const vault = await ethers.getContractAt('NexoraAllocationVault', "
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 270,
+        "snippet": "; renounce ownership so no deployer (or any   // single party) retains administrative power over them. Only renounce after   // verifying each vault is empty.   for (const spec of ALLOCATIONS) {     if (spec.kind !== 'vault') continue;     const vaultAddr = vaultAddresses[spec.salt!];     if (!vaultAddr) continue;     const vault = await ethers.getContractAt('NexoraAllocationVault', vaultAddr);     const bal = await vault.balanceOf(token);     if (bal !== 0n) {       throw new Error(`Va"
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 323,
+        "snippet": " //     permanent roles are granted + verified. Never revokes the last admin.   // ------------------------------------------------------------------   const treasuryDestination = allocations[ALLOCATIONS.findIndex((a) => a.bucket === 'treasury')]?.recipient!;   const authorities = resolvePermanentAuthorities(isProduction, timelock, treasuryDestination);    // Treasury relationship (Option A): in production the treasury destination   // and the treasury multisig must be the SAME Safe.   "
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 323,
+        "snippet": "anent roles are granted + verified. Never revokes the last admin.   // ------------------------------------------------------------------   const treasuryDestination = allocations[ALLOCATIONS.findIndex((a) => a.bucket === 'treasury')]?.recipient!;   const authorities = resolvePermanentAuthorities(isProduction, timelock, treasuryDestination);    // Treasury relationship (Option A): in production the treasury destination   // and the treasury multisig must be the SAME Safe.   const treasu"
+      },
+      {
+        "pattern": "ALLOCATIONS",
+        "line": 394,
+        "snippet": "yer.address,     deployedAt: new Date().toISOString(),     version: '0.1.0',     gitCommit: process.env.GITHUB_SHA ?? 'unknown',     deploymentType,     contracts,     allocation: allocations.map((a) => ({ recipient: a.recipient, amount: a.amount.toString() })),     treasury: {       allocationAmount: '150000000000000000000000000',       destination: treasuryDestination,       multisig: authorities.treasuryMultisig,       controller: authorities.treasuryMultisig,       contract: contrac"
+      }
+    ],
+    "deploy-mainnet.ts": []
+  },
+  "artifact": {
+    "exists": false,
+    "path": "/content/nexora/packages/contracts/artifacts/contracts/src/token/NexoraToken.sol/NexoraToken.json"
+  },
+  "safety_audit": {
+    "deploy-all.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    },
+    "deploy-mainnet.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    }
+  },
+  "checks": {
+    "required_paths": true,
+    "source_constructor_found": true,
+    "abi_constructor_available": false,
+    "constructor_parameter_count_match": null,
+    "duplicate_allocation_names": false,
+    "private_key_absent": true,
+    "deployment_disabled": true,
+    "broadcast_disabled": true,
+    "wallet_disabled": true,
+    "transaction_disabled": true
+  },
+  "overall_status": "FAIL",
+  "execution": {
+    "deployment_executed": false,
+    "deploy_all_executed": false,
+    "deploy_mainnet_executed": false,
+    "finalize_mainnet_executed": false,
+    "transaction_created": false,
+    "transaction_sent": false,
+    "broadcast_occurred": false,
+    "blockchain_modified": false,
+    "source_modified": false,
+    "lockfile_modified": false
+  }
+}

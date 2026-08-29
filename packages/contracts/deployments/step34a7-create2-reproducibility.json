@@ -1,0 +1,22 @@
+{
+  "step": "34A-7",
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "factory": "0x4587d758aD25B48be29cbbf6DE9ceca36Cb06265",
+  "deployer": "0x167d231F59f86D0317CBF031b807daceC2bE6857",
+  "existingSalt": "0xbbc3ea4301461202dc17c36a2971f675a5494e1660e908a5e1bee51d671771e1",
+  "existingDeployment": "0xB9EBEf96123112241d11d4736315801051e81024",
+  "reproducedAddress": "0xB9EBEf96123112241d11d4736315801051e81024",
+  "independentAddress": "0xB9EBEf96123112241d11d4736315801051e81024",
+  "differentSalt": "0xa8f6c77636983e630cd94e43b65eefd2a04e62236ef003e5641a607c00e9f740",
+  "differentSaltAddress": "0xFA183233640fDfEF37036E93a51F30F42700e5A8",
+  "differentInitcodeAddress": "0xBD180cF4105B739A2b0bB23B7F36a9E95AdB8a0f",
+  "initcodeHash": "0x70217bb1faba122814b22dceaa3098df99bf1816988cea88e2b04c3943ecdd97",
+  "reproducibilityVerified": true,
+  "independentFormulaVerified": true,
+  "saltUniquenessVerified": true,
+  "initcodeUniquenessVerified": true,
+  "collisionConditionVerified": true,
+  "collisionRedeploymentBroadcast": false,
+  "status": "SUCCESS"
+}

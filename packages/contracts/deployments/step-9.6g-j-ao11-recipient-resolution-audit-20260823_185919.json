@@ -1,0 +1,147 @@
+{
+  "step": "9.6G-J-AO.11",
+  "timestamp_utc": "2026-08-23T18:59:19.038501+00:00",
+  "overall_pass": true,
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_construction": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "package_modification": false,
+    "rpc_access": false
+  },
+  "paths": {
+    "root": true,
+    "contracts": true,
+    "NexoraToken.sol": true,
+    "deployment-config.ts": true,
+    "deploy-all.ts": true,
+    "deploy-mainnet.ts": true,
+    "hardhat.config.ts": true,
+    "package.json": true
+  },
+  "hashes": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "hardhat.config.ts": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f"
+  },
+  "private_env_present": {
+    "PRIVATE_KEY": false,
+    "DEPLOYER_PRIVATE_KEY": false,
+    "MAINNET_PRIVATE_KEY": false
+  },
+  "rpc_env_present": {
+    "RPC_URL": false,
+    "MAINNET_RPC_URL": false
+  },
+  "recipient_env_present": {
+    "COMMUNITY_ADDRESS": false,
+    "LIQUIDITY_ADDRESS": false,
+    "TREASURY_ADDRESS": false,
+    "DEVELOPMENT_ADDRESS": false
+  },
+  "recipient_declarations": {
+    "COMMUNITY_ADDRESS": 2,
+    "LIQUIDITY_ADDRESS": 2,
+    "TREASURY_ADDRESS": 2,
+    "DEVELOPMENT_ADDRESS": 2
+  },
+  "canonical_allocations": [
+    {
+      "bucket": "community-ecosystem",
+      "key": "COMMUNITY_ADDRESS",
+      "kind": "external",
+      "amount_nxr": 350000000
+    },
+    {
+      "bucket": "liquidity",
+      "key": "LIQUIDITY_ADDRESS",
+      "kind": "external",
+      "amount_nxr": 150000000
+    },
+    {
+      "bucket": "treasury",
+      "key": "TREASURY_ADDRESS",
+      "kind": "external",
+      "amount_nxr": 150000000
+    },
+    {
+      "bucket": "team",
+      "key": "TEAM_VESTING_ADDRESS",
+      "kind": "vault",
+      "amount_nxr": 100000000
+    },
+    {
+      "bucket": "advisors",
+      "key": "ADVISOR_VESTING_ADDRESS",
+      "kind": "vault",
+      "amount_nxr": 50000000
+    },
+    {
+      "bucket": "public-sale",
+      "key": "PUBLIC_SALE_ADDRESS",
+      "kind": "vault",
+      "amount_nxr": 100000000
+    },
+    {
+      "bucket": "development",
+      "key": "DEVELOPMENT_ADDRESS",
+      "kind": "external",
+      "amount_nxr": 100000000
+    }
+  ],
+  "allocation_total_nxr": 1000000000,
+  "external_entries": 4,
+  "vault_entries": 3,
+  "missing_external_recipients": [
+    "COMMUNITY_ADDRESS",
+    "LIQUIDITY_ADDRESS",
+    "TREASURY_ADDRESS",
+    "DEVELOPMENT_ADDRESS"
+  ],
+  "production_deployer_fallback": false,
+  "deploy_all_checks": {
+    "resolveAllocations": true,
+    "deployer.address": true,
+    "isProduction": true,
+    "vaultAddresses": true,
+    "NexoraToken": true
+  },
+  "static_safety": {
+    "deploy-all.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    },
+    "deploy-mainnet.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    },
+    "mainnet-preflight.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    },
+    "finalize-mainnet.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    }
+  }
+}

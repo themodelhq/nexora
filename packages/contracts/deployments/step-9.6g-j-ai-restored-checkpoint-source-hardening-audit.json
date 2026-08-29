@@ -1,0 +1,27 @@
+{
+  "step": "9.6G-J-AI",
+  "description": "Restored checkpoint J-Y source hardening",
+  "timestamp": "2026-08-23T18:37:11.438510",
+  "deployment_authorized": false,
+  "private_key_read": false,
+  "signer_initialized": false,
+  "transaction_constructed": false,
+  "transaction_sent": false,
+  "broadcast": false,
+  "blockchain_modified": false,
+  "backup": "/content/nexora/packages/contracts/scripts/deploy-all.ts.step-9.6g-j-ai-before-hardening-20260823_183711.backup",
+  "original_sha256": "9ee6e42c2483d5071380f00d6fab815d41d195a900aaa49eefbb211e1e2074a2",
+  "new_sha256": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+  "checks": {
+    "Base Mainnet chain ID 8453": true,
+    "Runtime authorization function": true,
+    "DEPLOY_TO_MAINNET gate": true,
+    "APP_ENV production gate": true,
+    "--i-confirm gate": true,
+    "NexoraToken reference": true,
+    "factory.deploy": false,
+    "waitForDeployment": false,
+    "post deployment verification": true,
+    "allocation references": true
+  }
+}

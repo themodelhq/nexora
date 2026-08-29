@@ -1,0 +1,71 @@
+{
+  "step": "9.6G-J-AM",
+  "timestamp_utc": "2026-08-23T18:40:19.785454+00:00",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_read": false,
+    "signer_initialized": false,
+    "transaction_constructed": false,
+    "transaction_sent": false,
+    "broadcast_executed": false,
+    "blockchain_modified": false
+  },
+  "hashes": {
+    "helpers.ts": "4d7f4f7cb12e34c58990ec151da7d18b43c2b330784fa285e041f5d918f0aeb5",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "mainnet-preflight.ts": "0b76aa32b5beb19190c72ab8173dd3e3189e35ec0c528676e142677ac3faba21",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "finalize-mainnet.ts": "ff174b44f3f7ab6aa5d3312d46a41c2ffe9771e84cd2a2360f569a124aca3357",
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959"
+  },
+  "helper_results": {
+    "getContractFactory": true,
+    "factory.deploy": true,
+    "waitForDeployment": true,
+    "getAddress": true,
+    "return address": true
+  },
+  "authorization_results": {
+    "Base Mainnet chain ID 8453": true,
+    "DEPLOY_TO_MAINNET=true": true,
+    "APP_ENV production": true,
+    "--i-confirm": true,
+    "runtime chain validation": true,
+    "J-Y authorization": true
+  },
+  "security_results": {
+    "PRIVATE_KEY assignment": 0,
+    "new Wallet": 0,
+    "Wallet constructor": 0,
+    "sendTransaction": 0,
+    "sendRawTransaction": 0,
+    "broadcastTransaction": 0
+  },
+  "token_results": {
+    "Allocation type": true,
+    "constructor": true,
+    "allocation parameter": true,
+    "ERC20 Nexora": true,
+    "ERC20Permit Nexora": true,
+    "zero recipient protection": false,
+    "zero amount protection": false,
+    "duplicate protection": true,
+    "allocation sum": true,
+    "MAX_SUPPLY": true,
+    "mint": true
+  },
+  "allocation_results": {
+    "community": 3,
+    "liquidity": 3,
+    "treasury": 3,
+    "team": 16,
+    "advisors": 13,
+    "publicSale": 0,
+    "development": 3
+  },
+  "cross_file_deployment_pass": true,
+  "decision": "NO_DEPLOYMENT_ARCHITECTURE_CHANGE_REQUIRED",
+  "source_modified": false
+}

@@ -1,0 +1,72 @@
+{
+  "step": "9.6G-J-AO.23",
+  "timestamp_utc": "2026-08-23T19:29:35.374927+00:00",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "rpc_access": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_creation": false,
+    "transaction_signing": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "package_modification": false,
+    "environment_modification": false
+  },
+  "runtime": {
+    "COMMUNITY_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "valid": false,
+      "zero": false
+    },
+    "LIQUIDITY_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "valid": false,
+      "zero": false
+    },
+    "TREASURY_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "valid": false,
+      "zero": false
+    },
+    "DEVELOPMENT_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "valid": false,
+      "zero": false
+    }
+  },
+  "repository_discovery": {
+    "COMMUNITY_ADDRESS": {
+      "reference_count": 1,
+      "unique_valid_candidates": 1,
+      "ready": true
+    },
+    "LIQUIDITY_ADDRESS": {
+      "reference_count": 1,
+      "unique_valid_candidates": 1,
+      "ready": true
+    },
+    "TREASURY_ADDRESS": {
+      "reference_count": 1,
+      "unique_valid_candidates": 1,
+      "ready": true
+    },
+    "DEVELOPMENT_ADDRESS": {
+      "reference_count": 1,
+      "unique_valid_candidates": 1,
+      "ready": true
+    }
+  },
+  "cross_recipient_duplicate": false,
+  "classification": {
+    "repository_candidates_complete": true,
+    "runtime_ready": false,
+    "deployment_authorized": false
+  }
+}

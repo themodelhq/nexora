@@ -1,0 +1,202 @@
+{
+  "step": "9.6G-J-AO.21",
+  "timestamp_utc": "2026-08-23T19:27:46.564556+00:00",
+  "safety_lock": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_creation": false,
+    "transaction_signing": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "package_modification": false,
+    "environment_modification": false,
+    "rpc_access": false
+  },
+  "paths": {
+    "/content/nexora": "PASS",
+    "/content/nexora/packages/contracts": "PASS",
+    "/content/nexora/packages/contracts/src/token/NexoraToken.sol": "PASS",
+    "/content/nexora/packages/contracts/scripts/deployment-config.ts": "PASS",
+    "/content/nexora/packages/contracts/scripts/deploy-all.ts": "PASS",
+    "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts": "PASS"
+  },
+  "source_hashes": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2"
+  },
+  "production_mode": {
+    "condition_detected": true,
+    "resolveAllocations_present": true
+  },
+  "production_environment": {
+    "COMMUNITY_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "valid_format": false,
+      "zero_address": false,
+      "fingerprint": null
+    },
+    "LIQUIDITY_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "valid_format": false,
+      "zero_address": false,
+      "fingerprint": null
+    },
+    "TREASURY_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "valid_format": false,
+      "zero_address": false,
+      "fingerprint": null
+    },
+    "DEVELOPMENT_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "valid_format": false,
+      "zero_address": false,
+      "fingerprint": null
+    }
+  },
+  "recipient_uniqueness": true,
+  "allocation": {
+    "entries": {
+      "COMMUNITY_ADDRESS": {
+        "expected": 350000000,
+        "found": true
+      },
+      "LIQUIDITY_ADDRESS": {
+        "expected": 150000000,
+        "found": true
+      },
+      "TREASURY_ADDRESS": {
+        "expected": 150000000,
+        "found": true
+      },
+      "TEAM_VESTING_ADDRESS": {
+        "expected": 100000000,
+        "found": true
+      },
+      "ADVISOR_VESTING_ADDRESS": {
+        "expected": 50000000,
+        "found": true
+      },
+      "PUBLIC_SALE_ADDRESS": {
+        "expected": 100000000,
+        "found": true
+      },
+      "DEVELOPMENT_ADDRESS": {
+        "expected": 100000000,
+        "found": true
+      }
+    },
+    "external_total_nxr": 750000000,
+    "vault_total_nxr": 250000000,
+    "grand_total_nxr": 1000000000,
+    "max_supply_nxr": 1000000000,
+    "total_equals_max_supply": true
+  },
+  "resolver": {
+    "present": true,
+    "external_resolution": true,
+    "vault_resolution": true,
+    "zero_guard": true,
+    "duplicate_guard": true,
+    "deployer_guard": true,
+    "allocation_sum_guard": true
+  },
+  "vaults": {
+    "TEAM_VESTING_ADDRESS": true,
+    "ADVISOR_VESTING_ADDRESS": true,
+    "PUBLIC_SALE_ADDRESS": true
+  },
+  "token_constructor": {
+    "constructor": true,
+    "allocation length guard": true,
+    "zero recipient protection": true,
+    "zero amount protection": true,
+    "duplicate protection": true,
+    "total accumulation": false,
+    "genesis mint": false,
+    "MAX_SUPPLY enforcement": false
+  },
+  "post_construction_mint_absent": true,
+  "deploy_all_wiring": {
+    "resolve_allocations": true,
+    "token_deploy": true,
+    "allocation_map": true
+  },
+  "deploy_mainnet": {
+    "deploy_all_link": true,
+    "duplicate_allocations": false,
+    "duplicate_token_deploy": false,
+    "test_recipients": false
+  },
+  "treasury": {
+    "treasuryDestination": true,
+    "resolvePermanentAuthorities": true,
+    "validateTreasuryConfiguration": true
+  },
+  "static_hits": {
+    "deployment-config.ts": [],
+    "deploy-all.ts": [
+      "transaction.wait"
+    ],
+    "deploy-mainnet.ts": [],
+    "NexoraToken.sol": []
+  },
+  "secret_redaction": true,
+  "flow": {
+    "environment -> explicitRecipient": true,
+    "explicitRecipient -> resolveAllocations": true,
+    "resolveAllocations -> allocations[]": true,
+    "allocations[] -> NexoraToken": true,
+    "allocation recipient -> _mint recipient": false,
+    "allocation amount -> _mint amount": false,
+    "MAX_SUPPLY invariant": false
+  },
+  "required_conditions": {
+    "required_paths": true,
+    "source_hashes": true,
+    "production_mode_detection": true,
+    "production_environment_presence": false,
+    "production_address_format": false,
+    "production_address_normalization": false,
+    "zero_address_protection": true,
+    "recipient_uniqueness": true,
+    "deployer_separation": false,
+    "explicitRecipient": true,
+    "production_missing_recipient_guard": true,
+    "test_fallback_isolation": true,
+    "allocation_keys": true,
+    "allocation_amounts": true,
+    "external_total": true,
+    "vault_total": true,
+    "grand_total": true,
+    "vault_wiring": true,
+    "token_constructor": true,
+    "genesis_mint": false,
+    "token_constructor_wiring": true,
+    "deploy_mainnet_delegation": true,
+    "treasury_configuration": true,
+    "secret_redaction": true,
+    "static_readonly_safety": true
+  },
+  "overall_status": "FAIL",
+  "mandatory_safety_statement": [
+    "NO DEPLOYMENT WAS PERFORMED.",
+    "NO TRANSACTION WAS CREATED.",
+    "NO TRANSACTION WAS SIGNED.",
+    "NO BROADCAST WAS PERFORMED.",
+    "NO BLOCKCHAIN STATE WAS MODIFIED.",
+    "NO SOURCE FILE WAS MODIFIED.",
+    "NO PACKAGE WAS MODIFIED.",
+    "NO ENVIRONMENT VARIABLE WAS MODIFIED."
+  ]
+}

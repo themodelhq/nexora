@@ -1,0 +1,81 @@
+{
+  "step": "9.6G-J-AO.22",
+  "timestamp_utc": "2026-08-23T19:28:45.523734+00:00",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "rpc_access": false,
+    "signer_initialization": false,
+    "transaction_creation": false,
+    "transaction_signing": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "environment_modification": false
+  },
+  "source_hashes": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2"
+  },
+  "production_runtime": {
+    "COMMUNITY_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "format_valid": false,
+      "zero": false
+    },
+    "LIQUIDITY_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "format_valid": false,
+      "zero": false
+    },
+    "TREASURY_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "format_valid": false,
+      "zero": false
+    },
+    "DEVELOPMENT_ADDRESS": {
+      "present": false,
+      "non_empty": false,
+      "format_valid": false,
+      "zero": false
+    }
+  },
+  "genesis_source": {
+    "allocation_struct": true,
+    "constructor": true,
+    "allocation_loop": true,
+    "allocation_assignment": true,
+    "mint_expression": true,
+    "total_accumulation": true,
+    "max_supply_declaration": true,
+    "max_supply_guard": true,
+    "allocation_count": true,
+    "zero_recipient_guard": true,
+    "zero_amount_guard": true,
+    "post_construction_public_mint": false,
+    "genesis_mint_confirmed": true
+  },
+  "wiring": {
+    "resolveAllocations": true,
+    "NexoraToken_deployment": true,
+    "recipient_amount_preserved": true
+  },
+  "supply": {
+    "external_total_nxr": 750000000,
+    "vault_total_nxr": 250000000,
+    "grand_total_nxr": 1000000000,
+    "expected_max_supply_nxr": 1000000000,
+    "reconciled": true
+  },
+  "classification": {
+    "ao21_genesis_mint_false_negative": true,
+    "production_runtime_ready": false,
+    "overall_pass": false,
+    "deployment_allowed": false
+  }
+}

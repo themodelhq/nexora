@@ -1,0 +1,408 @@
+{
+  "network": "hardhat",
+  "chainId": 84532,
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "deployedAt": "2026-08-14T14:27:43.066Z",
+  "version": "0.1.0",
+  "gitCommit": "unknown",
+  "deploymentType": "testnet",
+  "contracts": {
+    "factory": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "nxrToken": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+    "voteToken": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+    "voteWrapper": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+    "timelock": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+    "governor": "0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0",
+    "vesting": "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1",
+    "vestingAdvisors": "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE",
+    "staking": "0x68B1D87F95878fE05B998F19b66F4baba5De1aed",
+    "treasury": "0x3Aa5ebB10DC797CAC828524e59A333d0A371443c",
+    "airdrop": "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d",
+    "presale": "0x59b670e9fA9D0A427751Af201D676719a970857b"
+  },
+  "allocation": [
+    {
+      "recipient": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "amount": "350000000000000000000000000"
+    },
+    {
+      "recipient": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "amount": "150000000000000000000000000"
+    },
+    {
+      "recipient": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "amount": "150000000000000000000000000"
+    },
+    {
+      "recipient": "0x7575630Cb5edc7ccf55FFB095024A914aCaBbf0d",
+      "amount": "100000000000000000000000000"
+    },
+    {
+      "recipient": "0xF863081440D33e30171f1eb4D19cA4436DF4d59C",
+      "amount": "50000000000000000000000000"
+    },
+    {
+      "recipient": "0x7EB5CD2100cEfde282bFB6cD01C1B53653b34100",
+      "amount": "100000000000000000000000000"
+    },
+    {
+      "recipient": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "amount": "100000000000000000000000000"
+    }
+  ],
+  "treasury": {
+    "allocationAmount": "150000000000000000000000000",
+    "destination": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "multisig": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "controller": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "contract": "0x3Aa5ebB10DC797CAC828524e59A333d0A371443c"
+  },
+  "vestingSchedules": {
+    "team": {
+      "beneficiary": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "amount": "100000000000000000000000000",
+      "start": "1786721262",
+      "cliff": "31104000",
+      "duration": "93312000",
+      "revocable": false,
+      "contract": "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1"
+    },
+    "advisors": {
+      "beneficiary": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "amount": "50000000000000000000000000",
+      "start": "1786721262",
+      "cliff": "15552000",
+      "duration": "62208000",
+      "revocable": false,
+      "contract": "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE"
+    }
+  },
+  "roles": {
+    "governanceTimelock": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+    "treasuryMultisig": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "emergencyAuthority": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "voteTokenMinter": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+    "governor": "0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0",
+    "timelock": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+    "treasuryOperator": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "stakingRewardGrantor": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "vestingManager": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+    "vestingRecovery": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+    "airdropAdmin": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+    "presaleManager": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318"
+  },
+  "finalRoleState": {
+    "authorities": {
+      "governanceTimelock": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+      "treasuryMultisig": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "emergencyAuthority": "0x90F79bf6EB2c4f870365E785982E1f101E93b906"
+    },
+    "roleTable": [
+      {
+        "contract": "TimelockController(0x8A791620dd6260079BF849Dc5567aDC3F2FdC318)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "TimelockController(0x8A791620dd6260079BF849Dc5567aDC3F2FdC318)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "TimelockController(0x8A791620dd6260079BF849Dc5567aDC3F2FdC318)",
+        "role": "PROPOSER_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "TimelockController(0x8A791620dd6260079BF849Dc5567aDC3F2FdC318)",
+        "role": "EXECUTOR_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "TimelockController(0x8A791620dd6260079BF849Dc5567aDC3F2FdC318)",
+        "role": "CANCELLER_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraTreasury(0x3Aa5ebB10DC797CAC828524e59A333d0A371443c)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraTreasury(0x3Aa5ebB10DC797CAC828524e59A333d0A371443c)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraTreasury(0x3Aa5ebB10DC797CAC828524e59A333d0A371443c)",
+        "role": "OPERATOR_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraTreasury(0x3Aa5ebB10DC797CAC828524e59A333d0A371443c)",
+        "role": "PAUSER_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraStaking(0x68B1D87F95878fE05B998F19b66F4baba5De1aed)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraStaking(0x68B1D87F95878fE05B998F19b66F4baba5De1aed)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraStaking(0x68B1D87F95878fE05B998F19b66F4baba5De1aed)",
+        "role": "REWARD_GRANTOR_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraStaking(0x68B1D87F95878fE05B998F19b66F4baba5De1aed)",
+        "role": "REWARD_GRANTOR_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraStaking(0x68B1D87F95878fE05B998F19b66F4baba5De1aed)",
+        "role": "PAUSER_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraStaking(0x68B1D87F95878fE05B998F19b66F4baba5De1aed)",
+        "role": "PAUSER_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1)",
+        "role": "MANAGER_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1)",
+        "role": "MANAGER_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1)",
+        "role": "RECOVERY_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1)",
+        "role": "RECOVERY_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE)",
+        "role": "MANAGER_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE)",
+        "role": "MANAGER_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE)",
+        "role": "RECOVERY_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVesting(0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE)",
+        "role": "RECOVERY_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraAirdrop(0xc6e7DF5E7b4f2A278906862b61205850344D4e7d)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraAirdrop(0xc6e7DF5E7b4f2A278906862b61205850344D4e7d)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraAirdrop(0xc6e7DF5E7b4f2A278906862b61205850344D4e7d)",
+        "role": "PAUSER_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraAirdrop(0xc6e7DF5E7b4f2A278906862b61205850344D4e7d)",
+        "role": "PAUSER_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraAirdrop(0xc6e7DF5E7b4f2A278906862b61205850344D4e7d)",
+        "role": "RECOVERY_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraAirdrop(0xc6e7DF5E7b4f2A278906862b61205850344D4e7d)",
+        "role": "RECOVERY_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraPresale(0x59b670e9fA9D0A427751Af201D676719a970857b)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraPresale(0x59b670e9fA9D0A427751Af201D676719a970857b)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraPresale(0x59b670e9fA9D0A427751Af201D676719a970857b)",
+        "role": "MANAGER_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraPresale(0x59b670e9fA9D0A427751Af201D676719a970857b)",
+        "role": "MANAGER_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraPresale(0x59b670e9fA9D0A427751Af201D676719a970857b)",
+        "role": "PAUSER_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraPresale(0x59b670e9fA9D0A427751Af201D676719a970857b)",
+        "role": "PAUSER_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVoteToken(0x5FC8d32690cc91D4c39d9d3abcBD16989F875707)",
+        "role": "MINTER_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVoteToken(0x5FC8d32690cc91D4c39d9d3abcBD16989F875707)",
+        "role": "MINTER_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVoteToken(0x5FC8d32690cc91D4c39d9d3abcBD16989F875707)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "contract": "NexoraVoteToken(0x5FC8d32690cc91D4c39d9d3abcBD16989F875707)",
+        "role": "DEFAULT_ADMIN_ROLE",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      }
+    ]
+  },
+  "finalizationStatus": "FINALIZED",
+  "verificationStatus": "NOT VERIFIED",
+  "presaleStatus": "DISABLED",
+  "airdropStatus": "DISABLED"
+}

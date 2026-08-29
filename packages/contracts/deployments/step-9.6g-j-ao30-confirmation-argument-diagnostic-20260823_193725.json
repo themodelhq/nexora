@@ -1,0 +1,25 @@
+{
+  "step": "9.6G-J-AO.30",
+  "status": "DIAGNOSTIC_PASS",
+  "deployment_authorized": false,
+  "broadcast_authorized": false,
+  "rpc_access": false,
+  "private_key_usage": false,
+  "signer_initialization": false,
+  "transaction_creation": false,
+  "transaction_signing": false,
+  "transaction_broadcast": false,
+  "source_modification": false,
+  "environment_modification": false,
+  "hardhat_error": "HH305: Unrecognized param --i-confirm",
+  "diagnosis": "Hardhat consumes --i-confirm as a CLI argument before the deploy-mainnet.ts script receives it.",
+  "source_hashes": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2"
+  },
+  "deploy_mainnet_has_process_argv": true,
+  "deploy_mainnet_has_i_confirm": true,
+  "execution_performed": false
+}

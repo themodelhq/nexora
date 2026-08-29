@@ -1,0 +1,28 @@
+{
+  "step": "34A-13",
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "deployer": "0x167d231F59f86D0317CBF031b807daceC2bE6857",
+  "factory": "0x4587d758aD25B48be29cbbf6DE9ceca36Cb06265",
+  "contract": "NexoraToken",
+  "constructorParameter": "allocations",
+  "constructorComponents": [
+    {
+      "name": "recipient",
+      "type": "address",
+      "internalType": "address"
+    },
+    {
+      "name": "amount",
+      "type": "uint256",
+      "internalType": "uint256"
+    }
+  ],
+  "allocationConfigurationResolved": false,
+  "constructorEncodingGenerated": false,
+  "initcodeGenerated": false,
+  "productionDeploymentSent": false,
+  "transactionsSent": 0,
+  "broadcastEnabled": false,
+  "status": "ALLOCATION_CONFIGURATION_REQUIRES_REVIEW"
+}

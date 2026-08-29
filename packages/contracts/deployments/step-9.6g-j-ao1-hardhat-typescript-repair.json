@@ -1,0 +1,22 @@
+{
+  "step": "9.6G-J-AO.1",
+  "description": "Hardhat TypeScript configuration repair",
+  "timestamp_utc": "2026-08-23T18:44:22.237345+00:00",
+  "project": "/content/nexora",
+  "contracts": "/content/nexora/packages/contracts",
+  "original_config_sha256": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f",
+  "backup": "/content/nexora/packages/contracts/hardhat.config.ts.step-9.6g-j-ao1-before-repair-20260823_184420.backup",
+  "node": "v20.19.0",
+  "npm": "10.8.2",
+  "hardhat_declared": "2.22.19",
+  "typescript_declared": true,
+  "tsnode_declared": true,
+  "hardhat_test_return_code": 126,
+  "deployment_authorized": false,
+  "private_key_read": false,
+  "signer_initialized": false,
+  "transaction_created": false,
+  "transaction_sent": false,
+  "broadcast": false,
+  "blockchain_modified": false
+}

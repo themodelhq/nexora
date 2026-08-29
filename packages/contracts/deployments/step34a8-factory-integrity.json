@@ -1,0 +1,19 @@
+{
+  "step": "34A-8",
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "factory": "0x4587d758aD25B48be29cbbf6DE9ceca36Cb06265",
+  "deployer": "0x167d231F59f86D0317CBF031b807daceC2bE6857",
+  "factoryTransaction": "0x864843dcfcfce2afbbe781be2ce6dc14e65b177590156e86a1c5fa2e9b0cbb97",
+  "create2Transaction": "0xd805132a2aec7522cb6d2ede7fdb17c678d147573e61846b97af84c1cacb77e3",
+  "deterministicTestAddress": "0xB9EBEf96123112241d11d4736315801051e81024",
+  "factoryRuntimeBytecodeLength": 838,
+  "testRuntimeBytecodeLength": 136,
+  "factoryCodeVerified": true,
+  "factoryInterfaceVerified": true,
+  "factoryDeploymentVerified": true,
+  "create2DeploymentVerified": true,
+  "testContractVerified": true,
+  "deploymentRecordsVerified": true,
+  "status": "SUCCESS"
+}

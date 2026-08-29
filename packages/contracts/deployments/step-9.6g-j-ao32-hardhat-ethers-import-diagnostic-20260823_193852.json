@@ -1,0 +1,202 @@
+{
+  "step": "9.6G-J-AO.32",
+  "timestamp": "20260823_193852",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "rpc_access": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_creation": false,
+    "transaction_signing": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "package_modification": false,
+    "environment_modification": false
+  },
+  "paths": {
+    "/content/nexora": true,
+    "/content/nexora/packages/contracts": true,
+    "deploy-mainnet.ts": true,
+    "deploy-all.ts": true,
+    "package.json": true
+  },
+  "source_hashes": {
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "package.json": "6071cfaba284dfc0451c36c2014a88c64f65311eb635c7f94b2468e6b20c3137"
+  },
+  "versions": {
+    "node": {
+      "returncode": 0,
+      "output": "v20.19.0"
+    },
+    "npm": {
+      "returncode": 0,
+      "output": "10.8.2"
+    },
+    "hardhat": {
+      "returncode": 0,
+      "output": "2.22.19"
+    },
+    "ethers": {
+      "returncode": 1,
+      "output": "node:internal/modules/cjs/loader:643\n      throw e;\n      ^\n\nError [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './package.json' is not defined by \"exports\" in /content/nexora/node_modules/ethers/package.json\n    at exportsNotFound (node:internal/modules/esm/resolve:322:10)\n    at packageExportsResolve (node:internal/modules/esm/resolve:670:9)\n    at resolveExports (node:internal/modules/cjs/loader:636:36)\n    at Module._findPath (node:internal/modules/cjs/loader:716:31)\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1198:27)\n    at Module._load (node:internal/modules/cjs/loader:1043:27)\n    at Module.require (node:internal/modules/cjs/loader:1298:19)\n    at require (node:internal/modules/helpers:182:18)\n    at [eval]:1:13\n    at runScriptInThisContext (node:internal/vm:209:10) {\n  code: 'ERR_PACKAGE_PATH_NOT_EXPORTED'\n}\n\nNode.js v20.19.0"
+    }
+  },
+  "dependencies": {
+    "hardhat": "2.22.19",
+    "@nomicfoundation/hardhat-ethers": "^3.0.5",
+    "@nomiclabs/hardhat-ethers": null,
+    "ethers": "^6.13.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "typescript": "^5.5.4",
+    "ts-node": "^10.9.2"
+  },
+  "module_results": {
+    "hardhat module": {
+      "command": [
+        "npm",
+        "ls",
+        "hardhat",
+        "--depth=0"
+      ],
+      "returncode": 0,
+      "stdout": "nexora@0.1.0 /content/nexora\n\u2514\u2500\u252c @nexora/contracts@0.1.0 -> ./packages/contracts\n  \u2514\u2500\u2500 hardhat@2.22.19",
+      "stderr": ""
+    },
+    "hardhat-ethers foundation": {
+      "command": [
+        "npm",
+        "ls",
+        "@nomicfoundation/hardhat-ethers",
+        "--depth=0"
+      ],
+      "returncode": 0,
+      "stdout": "nexora@0.1.0 /content/nexora\n\u2514\u2500\u252c @nexora/contracts@0.1.0 -> ./packages/contracts\n  \u2514\u2500\u2500 @nomicfoundation/hardhat-ethers@3.1.3",
+      "stderr": ""
+    },
+    "hardhat-ethers legacy": {
+      "command": [
+        "npm",
+        "ls",
+        "@nomiclabs/hardhat-ethers",
+        "--depth=0"
+      ],
+      "returncode": 1,
+      "stdout": "nexora@0.1.0 /content/nexora\n\u2514\u2500\u2500 (empty)",
+      "stderr": ""
+    },
+    "ethers": {
+      "command": [
+        "npm",
+        "ls",
+        "ethers",
+        "--depth=0"
+      ],
+      "returncode": 0,
+      "stdout": "nexora@0.1.0 /content/nexora\n\u2514\u2500\u252c @nexora/contracts@0.1.0 -> ./packages/contracts\n  \u2514\u2500\u2500 ethers@6.17.0",
+      "stderr": ""
+    }
+  },
+  "config_results": {
+    "/content/nexora/packages/contracts/hardhat.config.ts": {
+      "sha256": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f",
+      "relevant_lines": [
+        "import { HardhatUserConfig } from 'hardhat/config';",
+        "import '@nomicfoundation/hardhat-toolbox';",
+        "import 'hardhat-contract-sizer';",
+        "import 'dotenv/config';",
+        "etherscan: {"
+      ]
+    }
+  },
+  "deploy_mainnet_imports": [
+    "import { ethers } from 'hardhat';"
+  ],
+  "deploy_all_imports": [
+    "import hre from 'hardhat';",
+    "import { ethers } from 'hardhat';"
+  ],
+  "hardhat_export_test": {
+    "command": [
+      "node",
+      "-e",
+      "\nconst h = require('hardhat');\nconsole.log('hardhat keys:', Object.keys(h).sort().join(','));\nconsole.log('has ethers:', Object.prototype.hasOwnProperty.call(h, 'ethers'));\n"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "file:///content/nexora/packages/contracts/hardhat.config.ts:12\nfunction getNetworkRpc(): { url: string; accounts?: string[] } | undefined {\n                        ^\n\nSyntaxError: Unexpected token ':'\n    at compileSourceTextModule (node:internal/modules/esm/utils:340:16)\n    at ModuleLoader.importSyncForRequire (node:internal/modules/esm/loader:316:18)\n    at loadESMFromCJS (node:internal/modules/cjs/loader:1371:24)\n    at Module._compile (node:internal/modules/cjs/loader:1511:5)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)\n    at Module.load (node:internal/modules/cjs/loader:1275:32)\n    at Module._load (node:internal/modules/cjs/loader:1096:12)\n    at Module.require (node:internal/modules/cjs/loader:1298:19)\n    at require (node:internal/modules/helpers:182:18)\n    at importCsjOrEsModule (/content/nexora/packages/contracts/node_modules/hardhat/internal/core/config/config-loading.js:23:26)\n\nNode.js v20.19.0"
+  },
+  "plugin_test": {
+    "command": [
+      "npx",
+      "hardhat",
+      "compile"
+    ],
+    "returncode": 0,
+    "stdout": "Nothing to compile\nNo need to generate any newer typings.",
+    "stderr": ""
+  },
+  "typescript_import_test": {
+    "command": [
+      "npx",
+      "ts-node",
+      "--transpile-only",
+      ".ao32_import_test.ts"
+    ],
+    "returncode": 0,
+    "stdout": "HARDHAT_ETHERS_IMPORT_AVAILABLE",
+    "stderr": ""
+  },
+  "deploy_mainnet_compile_test": {
+    "command": [
+      "npx",
+      "ts-node",
+      "--transpile-only",
+      "scripts/deploy-mainnet.ts"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Error: Refusing: second confirmation required. Re-run with --i-confirm after mainnet-preflight passes.\n    at main (/content/nexora/packages/contracts/scripts/deploy-mainnet.ts:24:11)\n    at Object.<anonymous> (/content/nexora/packages/contracts/scripts/deploy-mainnet.ts:48:3)\n    at Module._compile (node:internal/modules/cjs/loader:1529:14)\n    at Module.m._compile (/content/nexora/node_modules/ts-node/src/index.ts:1618:23)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)\n    at Object.require.extensions.<computed> [as .ts] (/content/nexora/node_modules/ts-node/src/index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1275:32)\n    at Function.Module._load (node:internal/modules/cjs/loader:1096:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\n    at phase4 (/content/nexora/node_modules/ts-node/src/bin.ts:649:14)"
+  },
+  "dangerous_pattern_results": {
+    "sendTransaction": 0,
+    "signTransaction": 0,
+    "sendRawTransaction": 0,
+    "broadcastTransaction": 0,
+    "Wallet(privateKey)": 0,
+    "JsonRpcProvider": 0
+  },
+  "secret_presence": {
+    "PRIVATE_KEY": {
+      "present": false,
+      "non_empty": false
+    },
+    "DEPLOYER_PRIVATE_KEY": {
+      "present": false,
+      "non_empty": false
+    },
+    "MNEMONIC": {
+      "present": false,
+      "non_empty": false
+    },
+    "SEED_PHRASE": {
+      "present": false,
+      "non_empty": false
+    },
+    "WALLET_PRIVATE_KEY": {
+      "present": false,
+      "non_empty": false
+    }
+  },
+  "diagnosis": {
+    "hardhat_import_issue": true,
+    "ethers_plugin_declared": true
+  },
+  "deployment_performed": false,
+  "transaction_created": false,
+  "broadcast_performed": false
+}

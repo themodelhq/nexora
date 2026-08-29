@@ -1,0 +1,35 @@
+{
+  "step": "9.6G-J-AK",
+  "timestamp_utc": "2026-08-23T18:38:44.964603Z",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_read": false,
+    "signer_initialized": false,
+    "transaction_created": false,
+    "transaction_sent": false,
+    "blockchain_modified": false
+  },
+  "sources": {
+    "deploy-all.ts": "/content/nexora/packages/contracts/scripts/deploy-all.ts",
+    "deploy-mainnet.ts": "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts",
+    "deployment-config.ts": "/content/nexora/packages/contracts/scripts/deployment-config.ts",
+    "NexoraToken.sol": "/content/nexora/packages/contracts/src/token/NexoraToken.sol"
+  },
+  "hashes": {
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959"
+  },
+  "deployment_analysis": {
+    "custom_deploy_calls": 12,
+    "factory_deploy_calls": 0,
+    "waitForDeployment_calls": 0,
+    "NexoraToken_references": 1
+  },
+  "helper_candidates": [
+    "/content/nexora/packages/contracts/scripts/helpers.ts"
+  ],
+  "decision": "RECONCILIATION_REQUIRED"
+}

@@ -1,0 +1,49 @@
+{
+  "step": "9.6G-J-AO.17-R2",
+  "status": "PASS",
+  "timestamp_utc": "2026-08-23T19:17:03.943303+00:00",
+  "read_only": true,
+  "deployment_performed": false,
+  "transaction_created": false,
+  "transaction_broadcast": false,
+  "blockchain_modified": false,
+  "source_modified": false,
+  "package_modified": false,
+  "rpc_accessed": false,
+  "recipients": {
+    "COMMUNITY_ADDRESS": "0xb0Ee0E2b53DC57e924066B93E87F933b5Ea2bEb5",
+    "LIQUIDITY_ADDRESS": "0xaf8A62113e189AF4C7E1130aefb5b57bea132c29",
+    "TREASURY_ADDRESS": "0x6BBdC0ec728D40586D3326749E541630bD382EbA",
+    "DEVELOPMENT_ADDRESS": "0xCa6BcAD3Fed3fC88E9dC8F537Eb44E3b37197Eb4"
+  },
+  "recipient_uniqueness": true,
+  "explicitRecipient": {
+    "environment_lookup": true,
+    "production_guard": true,
+    "production_no_fallback_error": true,
+    "test_fallback_present_for_testnet": true,
+    "production_guard_precedes_test_fallback": true,
+    "production_test_fallback_executable": false
+  },
+  "checks": {
+    "required_paths": true,
+    "private_keys_absent": true,
+    "address_format": true,
+    "zero_address_protection": true,
+    "recipient_uniqueness": true,
+    "production_guard": true,
+    "production_test_fallback_absent": true,
+    "production_configured_recipient": true,
+    "production_missing_recipient_rejected": true,
+    "testnet_fallback_preserved": true,
+    "canonical_keys": true,
+    "deploy_all_resolution": true,
+    "source_integrity": true,
+    "readonly_safety": true
+  },
+  "source_hashes": {
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2"
+  }
+}

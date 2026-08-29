@@ -1,0 +1,312 @@
+{
+  "step": "9.6G-J-AO.20-R1",
+  "type": "READ_ONLY",
+  "timestamp_utc": "2026-08-23T19:24:50.944987+00:00",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_creation": false,
+    "transaction_signing": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "package_modification": false,
+    "rpc_access": false
+  },
+  "paths": {
+    "ROOT": "/content/nexora",
+    "CONTRACTS": "/content/nexora/packages/contracts",
+    "NexoraToken.sol": "/content/nexora/packages/contracts/src/token/NexoraToken.sol",
+    "deployment-config.ts": "/content/nexora/packages/contracts/scripts/deployment-config.ts",
+    "deploy-all.ts": "/content/nexora/packages/contracts/scripts/deploy-all.ts",
+    "deploy-mainnet.ts": "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts"
+  },
+  "path_results": {
+    "ROOT": true,
+    "CONTRACTS": true,
+    "NexoraToken.sol": true,
+    "deployment-config.ts": true,
+    "deploy-all.ts": true,
+    "deploy-mainnet.ts": true
+  },
+  "source_hashes": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2"
+  },
+  "production_address_results": {
+    "COMMUNITY_ADDRESS": [
+      [
+        43,
+        "  { key: 'COMMUNITY_ADDRESS', bucket: 'community-ecosystem', amount: ethers.parseEther('350000000'), kind: 'external', purpose: 'Community airdrop/ecosystem multisig' },"
+      ],
+      [
+        54,
+        "  COMMUNITY_ADDRESS: '',"
+      ]
+    ],
+    "LIQUIDITY_ADDRESS": [
+      [
+        44,
+        "  { key: 'LIQUIDITY_ADDRESS', bucket: 'liquidity', amount: ethers.parseEther('150000000'), kind: 'external', purpose: 'DEX liquidity wallet' },"
+      ],
+      [
+        55,
+        "  LIQUIDITY_ADDRESS: '',"
+      ]
+    ],
+    "TREASURY_ADDRESS": [
+      [
+        45,
+        "  { key: 'TREASURY_ADDRESS', bucket: 'treasury', amount: ethers.parseEther('150000000'), kind: 'external', purpose: 'Treasury multisig' },"
+      ],
+      [
+        56,
+        "  TREASURY_ADDRESS: '',"
+      ]
+    ],
+    "DEVELOPMENT_ADDRESS": [
+      [
+        49,
+        "  { key: 'DEVELOPMENT_ADDRESS', bucket: 'development', amount: ethers.parseEther('100000000'), kind: 'external', purpose: 'Development/grants wallet' },"
+      ],
+      [
+        57,
+        "  DEVELOPMENT_ADDRESS: '',"
+      ]
+    ]
+  },
+  "reference_trace": {
+    "COMMUNITY_ADDRESS": [
+      {
+        "file": "deployment-config.ts",
+        "line": 43,
+        "text": "{ key: 'COMMUNITY_ADDRESS', bucket: 'community-ecosystem', amount: ethers.parseEther('350000000'), kind: 'external', purpose: 'Community airdrop/ecosystem multisig' },"
+      },
+      {
+        "file": "deployment-config.ts",
+        "line": 54,
+        "text": "COMMUNITY_ADDRESS: '',"
+      }
+    ],
+    "LIQUIDITY_ADDRESS": [
+      {
+        "file": "deployment-config.ts",
+        "line": 44,
+        "text": "{ key: 'LIQUIDITY_ADDRESS', bucket: 'liquidity', amount: ethers.parseEther('150000000'), kind: 'external', purpose: 'DEX liquidity wallet' },"
+      },
+      {
+        "file": "deployment-config.ts",
+        "line": 55,
+        "text": "LIQUIDITY_ADDRESS: '',"
+      }
+    ],
+    "TREASURY_ADDRESS": [
+      {
+        "file": "deployment-config.ts",
+        "line": 45,
+        "text": "{ key: 'TREASURY_ADDRESS', bucket: 'treasury', amount: ethers.parseEther('150000000'), kind: 'external', purpose: 'Treasury multisig' },"
+      },
+      {
+        "file": "deployment-config.ts",
+        "line": 56,
+        "text": "TREASURY_ADDRESS: '',"
+      }
+    ],
+    "DEVELOPMENT_ADDRESS": [
+      {
+        "file": "deployment-config.ts",
+        "line": 49,
+        "text": "{ key: 'DEVELOPMENT_ADDRESS', bucket: 'development', amount: ethers.parseEther('100000000'), kind: 'external', purpose: 'Development/grants wallet' },"
+      },
+      {
+        "file": "deployment-config.ts",
+        "line": 57,
+        "text": "DEVELOPMENT_ADDRESS: '',"
+      }
+    ]
+  },
+  "explicitRecipient": "export function explicitRecipient(key: string, isProduction: boolean): string {\n  const fromEnv = process.env[key];\n  if (fromEnv) return ethers.getAddress(fromEnv);\n  if (isProduction) throw new Error(`Production deployment requires ${key} (no fallback allowed)`);\n  const test = TEST_RECIPIENTS[key];\n  if (!test) throw new Error(`No test fallback for ${key}`);\n  return ethers.getAddress(test);\n}",
+  "allocations_source": [
+    [
+      42,
+      "export const ALLOCATIONS: AllocationSpec[] = ["
+    ],
+    [
+      43,
+      "  { key: 'COMMUNITY_ADDRESS', bucket: 'community-ecosystem', amount: ethers.parseEther('350000000'), kind: 'external', purpose: 'Community airdrop/ecosystem multisig' },"
+    ],
+    [
+      44,
+      "  { key: 'LIQUIDITY_ADDRESS', bucket: 'liquidity', amount: ethers.parseEther('150000000'), kind: 'external', purpose: 'DEX liquidity wallet' },"
+    ],
+    [
+      45,
+      "  { key: 'TREASURY_ADDRESS', bucket: 'treasury', amount: ethers.parseEther('150000000'), kind: 'external', purpose: 'Treasury multisig' },"
+    ],
+    [
+      46,
+      "  { key: 'TEAM_VESTING_ADDRESS', bucket: 'team', amount: ethers.parseEther('100000000'), kind: 'vault', salt: 'nexora-team-vault', purpose: 'Team vesting vault (-> NexoraVesting)' },"
+    ],
+    [
+      47,
+      "  { key: 'ADVISOR_VESTING_ADDRESS', bucket: 'advisors', amount: ethers.parseEther('50000000'), kind: 'vault', salt: 'nexora-advisor-vault', purpose: 'Advisor vesting vault (-> NexoraVesting)' },"
+    ],
+    [
+      48,
+      "  { key: 'PUBLIC_SALE_ADDRESS', bucket: 'public-sale', amount: ethers.parseEther('100000000'), kind: 'vault', salt: 'nexora-sale-vault', purpose: 'Public sale vault (-> NexoraPresale)' },"
+    ],
+    [
+      49,
+      "  { key: 'DEVELOPMENT_ADDRESS', bucket: 'development', amount: ethers.parseEther('100000000'), kind: 'external', purpose: 'Development/grants wallet' },"
+    ],
+    [
+      50,
+      "];"
+    ]
+  ],
+  "resolveAllocations_source": "export function resolveAllocations(\n  deployer: string,\n  isProduction: boolean,\n  vaultAddresses: Record<string, string> = {},\n): ResolvedAllocations {\n  const entries: { recipient: string; amount: bigint }[] = [];\n  const vaultRecipients: ResolvedAllocations['vaultRecipients'] = [];\n\n  for (const spec of ALLOCATIONS) {\n    let recipient: string;\n    if (spec.kind === 'vault') {\n      const vaultAddr = vaultAddresses[spec.salt!];\n      if (!vaultAddr) throw new Error(`Vault address for ${spec.bucket} (${spec.salt}) not provided`);\n      recipient = ethers.getAddress(vaultAddr);\n      vaultRecipients.push({ bucket: spec.bucket, recipient, amount: spec.amount, salt: spec.salt! });\n    } else {\n      recipient = explicitRecipient(spec.key, isProduction);\n    }\n    entries.push({ recipient, amount: spec.amount });\n  }\n\n  // Hard invariant: sum == MAX_SUPPLY.\n  if (!assertAllocationSum(entries)) {\n    throw new Error('Allocation sum does not equal MAX_SUPPLY (1,000,000,000)');\n  }\n\n  // Uniqueness, non-zero, no deployer windfall.\n  const seen = new Set<string>();\n  for (const e of entries) {\n    const key = e.recipient.toLowerCase();\n    if (seen.has(key)) throw new Error(`Duplicate allocation recipient: ${e.recipient}`);\n    seen.add(key);\n    if (e.recipient === ethers.ZeroAddress) throw new Error('Zero address is not a valid allocation recipient');\n    if (isProduction && key === deployer.toLowerCase()) {\n      throw new Error('Deployer address cannot be an allocation recipient in production');\n    }\n  }\n\n  return { entries, vaultRecipients, deploymentType: isProduction ? 'production' : 'testnet' };\n}",
+  "deploy_all_trace": {
+    "resolveAllocations": [
+      [
+        94,
+        "import { resolveAllocations, ALLOCATIONS, resolveVestingSchedules } from './deployment-config';"
+      ],
+      [
+        180,
+        "const { entries: allocations, vaultRecipients, deploymentType } = resolveAllocations("
+      ]
+    ],
+    "isProduction": [
+      [
+        128,
+        "const isProduction = process.env.APP_ENV === 'production' || network === 'base';"
+      ],
+      [
+        147,
+        "console.log(`Deploying Nexora suite on network=\"${network}\" chainId=${chainId} (${isProduction ? 'PRODUCTION' : 'testnet'})`);"
+      ],
+      [
+        182,
+        "isProduction,"
+      ],
+      [
+        290,
+        "const schedules = resolveVestingSchedules(isProduction, BigInt(Math.floor(Date.now() / 1000)) + 3600n);"
+      ],
+      [
+        324,
+        "const authorities = resolvePermanentAuthorities(isProduction, timelock, treasuryDestination);"
+      ],
+      [
+        332,
+        "isProduction,"
+      ]
+    ],
+    "vaultAddresses": [
+      [
+        163,
+        "const vaultAddresses: Record<string, string> = {};"
+      ],
+      [
+        173,
+        "vaultAddresses[spec.salt!] = predicted;"
+      ],
+      [
+        183,
+        "vaultAddresses,"
+      ],
+      [
+        253,
+        "if (spec.kind === 'vault') vaultByBucket[spec.bucket] = vaultAddresses[spec.salt!]!;"
+      ],
+      [
+        272,
+        "const vaultAddr = vaultAddresses[spec.salt!];"
+      ]
+    ],
+    "allocations": [
+      [
+        180,
+        "const { entries: allocations, vaultRecipients, deploymentType } = resolveAllocations("
+      ],
+      [
+        185,
+        "console.log(`Allocation resolved (${deploymentType}), ${allocations.length} recipients, sum=${ethers.formatEther(allocations.reduce((a, e) => a + e.amount, 0n))} NXR`);"
+      ],
+      [
+        186,
+        "for (const e of allocations) {"
+      ],
+      [
+        191,
+        "const token = await deploy('NexoraToken', [allocations.map((a) => ({ recipient: a.recipient, amount: a.amount }))]);"
+      ],
+      [
+        323,
+        "const treasuryDestination = allocations[ALLOCATIONS.findIndex((a) => a.bucket === 'treasury')]?.recipient!;"
+      ],
+      [
+        394,
+        "allocation: allocations.map((a) => ({ recipient: a.recipient, amount: a.amount.toString() })),"
+      ]
+    ],
+    "deploy\\(['\\\"]NexoraToken": [
+      [
+        191,
+        "const token = await deploy('NexoraToken', [allocations.map((a) => ({ recipient: a.recipient, amount: a.amount }))]);"
+      ]
+    ]
+  },
+  "constructor_source": null,
+  "mint_hits": {
+    "_mint\\s*\\(": [
+      [
+        79,
+        "_mint(alloc.recipient, alloc.amount);"
+      ]
+    ],
+    "_update\\s*\\(": [],
+    "mint\\s*\\(": [
+      [
+        79,
+        "_mint(alloc.recipient, alloc.amount);"
+      ]
+    ],
+    "_balances\\s*\\[": [],
+    "totalSupply": [
+      [
+        84,
+        "// mint after construction, totalSupply == MAX_SUPPLY forever."
+      ]
+    ]
+  },
+  "constructor_flags": {
+    "references_allocations": false,
+    "references_recipient": false,
+    "references_amount": false,
+    "references_max_supply": false,
+    "contains_mint": false,
+    "contains_loop": false
+  },
+  "genesis_mint_status": "FAIL",
+  "genesis_mint_reason": "No recognized genesis allocation minting pattern.",
+  "deployer_direct_recipient": false,
+  "results": {
+    "required_paths": true,
+    "production_keys_present": true,
+    "explicitRecipient_present": true,
+    "production_guard_present": true,
+    "canonical_keys_present": true,
+    "token_constructor_present": false,
+    "token_allocation_wiring": true,
+    "genesis_mint_semantic_status": "FAIL",
+    "direct_deployer_recipient_absent": true,
+    "static_readonly_safety": true
+  },
+  "overall_pass": false
+}

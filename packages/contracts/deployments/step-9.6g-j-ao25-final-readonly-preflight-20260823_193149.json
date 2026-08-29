@@ -1,0 +1,100 @@
+{
+  "step": "9.6G-J-AO.25",
+  "title": "Final Read-Only Production Preflight + Offline Genesis Simulation",
+  "timestamp_utc": "2026-08-23T19:31:49.209633+00:00",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "rpc_access": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_creation": false,
+    "transaction_signing": false,
+    "transaction_broadcast": false,
+    "source_modification": false,
+    "package_modification": false,
+    "environment_modification": false
+  },
+  "source_hashes": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2"
+  },
+  "production_recipients": {
+    "COMMUNITY_ADDRESS": {
+      "present": true,
+      "non_empty": true,
+      "valid_format": true,
+      "zero_address": false,
+      "fingerprint": "0x6a56...e429"
+    },
+    "LIQUIDITY_ADDRESS": {
+      "present": true,
+      "non_empty": true,
+      "valid_format": true,
+      "zero_address": false,
+      "fingerprint": "0xb5FD...5044"
+    },
+    "TREASURY_ADDRESS": {
+      "present": true,
+      "non_empty": true,
+      "valid_format": true,
+      "zero_address": false,
+      "fingerprint": "0x23A3...3dFC"
+    },
+    "DEVELOPMENT_ADDRESS": {
+      "present": true,
+      "non_empty": true,
+      "valid_format": true,
+      "zero_address": false,
+      "fingerprint": "0xAAa7...7fCe"
+    }
+  },
+  "allocation_summary": {
+    "entries": 7,
+    "external_total": 750000000,
+    "vault_total": 250000000,
+    "grand_total": 1000000000,
+    "expected_max_supply": 1000000000
+  },
+  "checks": {
+    "required_paths": true,
+    "production_runtime_addresses": true,
+    "recipient_uniqueness": true,
+    "test_fallback_isolation": true,
+    "allocation_structure": true,
+    "supply_reconciliation": true,
+    "vault_wiring": true,
+    "token_constructor": true,
+    "post_construction_mint_absent": true,
+    "token_constructor_wiring": true,
+    "production_resolver_safety": true,
+    "offline_genesis_simulation": true
+  },
+  "simulation": {
+    "entries": 7,
+    "simulated_total": 1000000000,
+    "expected_max_supply": 1000000000,
+    "pass": true
+  },
+  "deployment_decision": {
+    "overall_audit_pass": true,
+    "deployment_authorized": false
+  },
+  "mandatory_safety_statement": {
+    "deployment_performed": false,
+    "transaction_created": false,
+    "transaction_signed": false,
+    "broadcast_performed": false,
+    "blockchain_modified": false,
+    "source_modified": false,
+    "package_modified": false,
+    "environment_modified": false,
+    "rpc_access_performed": false,
+    "private_key_read": false,
+    "mnemonic_read": false,
+    "secret_printed": false
+  }
+}

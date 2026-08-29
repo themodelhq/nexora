@@ -1,0 +1,265 @@
+{
+  "step": "9.6G-J-AJ",
+  "timestamp": "2026-08-23T18:37:54.410296",
+  "deployment_authorized": false,
+  "private_key_read": false,
+  "signer_initialized": false,
+  "transaction_created": false,
+  "transaction_sent": false,
+  "broadcast": false,
+  "blockchain_modified": false,
+  "source_hashes": {
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "mainnet-preflight.ts": "0b76aa32b5beb19190c72ab8173dd3e3189e35ec0c528676e142677ac3faba21",
+    "finalize-mainnet.ts": "ff174b44f3f7ab6aa5d3312d46a41c2ffe9771e84cd2a2360f569a124aca3357",
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959"
+  },
+  "orchestrator": {
+    "NexoraToken reference": {
+      "count": 1,
+      "pass": true
+    },
+    "getContractFactory": {
+      "count": 1,
+      "pass": true
+    },
+    "ContractFactory": {
+      "count": 1,
+      "pass": true
+    },
+    "factory.deploy": {
+      "count": 0,
+      "pass": false
+    },
+    "waitForDeployment": {
+      "count": 0,
+      "pass": false
+    },
+    "deployment target": {
+      "count": 1,
+      "pass": true
+    },
+    "deploy call": {
+      "count": 1,
+      "pass": true
+    },
+    "deployed contract address": {
+      "count": 0,
+      "pass": false
+    }
+  },
+  "authorization": {
+    "Base Mainnet chain ID 8453": {
+      "count": 3,
+      "pass": true
+    },
+    "DEPLOY_TO_MAINNET": {
+      "count": 4,
+      "pass": true
+    },
+    "APP_ENV": {
+      "count": 6,
+      "pass": true
+    },
+    "production": {
+      "count": 15,
+      "pass": true
+    },
+    "--i-confirm": {
+      "count": 4,
+      "pass": true
+    },
+    "runtime chain validation": {
+      "count": 21,
+      "pass": true
+    },
+    "J-Y authorization": {
+      "count": 1,
+      "pass": true
+    }
+  },
+  "allocations": {
+    "community": {
+      "count": 0,
+      "pass": false
+    },
+    "liquidity": {
+      "count": 0,
+      "pass": false
+    },
+    "treasury": {
+      "count": 13,
+      "pass": true
+    },
+    "team": {
+      "count": 14,
+      "pass": true
+    },
+    "advisors": {
+      "count": 9,
+      "pass": true
+    },
+    "publicSale": {
+      "count": 0,
+      "pass": false
+    },
+    "development": {
+      "count": 0,
+      "pass": false
+    }
+  },
+  "config": {
+    "ALLOCATIONS": {
+      "count": 8,
+      "pass": true
+    },
+    "MAX_SUPPLY": {
+      "count": 4,
+      "pass": true
+    },
+    "COMMUNITY": {
+      "count": 3,
+      "pass": true
+    },
+    "LIQUIDITY": {
+      "count": 3,
+      "pass": true
+    },
+    "TREASURY": {
+      "count": 3,
+      "pass": true
+    },
+    "TEAM": {
+      "count": 16,
+      "pass": true
+    },
+    "ADVISORS": {
+      "count": 13,
+      "pass": true
+    },
+    "PUBLIC_SALE": {
+      "count": 0,
+      "pass": false
+    },
+    "DEVELOPMENT": {
+      "count": 3,
+      "pass": true
+    }
+  },
+  "token": {
+    "Allocation type": {
+      "count": 1,
+      "pass": true
+    },
+    "constructor": {
+      "count": 1,
+      "pass": true
+    },
+    "allocation array": {
+      "count": 1,
+      "pass": true
+    },
+    "zero recipient protection": {
+      "count": 1,
+      "pass": true
+    },
+    "zero amount protection": {
+      "count": 1,
+      "pass": true
+    },
+    "duplicate recipient protection": {
+      "count": 1,
+      "pass": true
+    },
+    "allocation sum": {
+      "count": 2,
+      "pass": true
+    },
+    "MAX_SUPPLY": {
+      "count": 4,
+      "pass": true
+    },
+    "mint": {
+      "count": 1,
+      "pass": true
+    }
+  },
+  "danger_audit": {
+    "PRIVATE_KEY assignment": 0,
+    "new Wallet": 0,
+    "Wallet constructor": 0,
+    "sendTransaction": 0,
+    "raw transaction": 0,
+    "provider broadcast": 0
+  },
+  "required_features": {
+    "Base Mainnet = 8453": {
+      "count": 3,
+      "pass": true
+    },
+    "DEPLOY_TO_MAINNET authorization": {
+      "count": 4,
+      "pass": true
+    },
+    "APP_ENV production": {
+      "count": 6,
+      "pass": true
+    },
+    "--i-confirm": {
+      "count": 4,
+      "pass": true
+    },
+    "NexoraToken deployment": {
+      "count": 0,
+      "pass": false
+    },
+    "factory.deploy": {
+      "count": 0,
+      "pass": false
+    },
+    "waitForDeployment": {
+      "count": 0,
+      "pass": false
+    },
+    "name verification": {
+      "count": 0,
+      "pass": false
+    },
+    "symbol verification": {
+      "count": 0,
+      "pass": false
+    },
+    "decimals verification": {
+      "count": 0,
+      "pass": false
+    },
+    "totalSupply verification": {
+      "count": 0,
+      "pass": false
+    },
+    "balanceOf verification": {
+      "count": 1,
+      "pass": true
+    },
+    "zero address": {
+      "count": 1,
+      "pass": true
+    },
+    "allocations": {
+      "count": 12,
+      "pass": true
+    },
+    "MAX_SUPPLY": {
+      "count": 0,
+      "pass": false
+    }
+  },
+  "critical_failures": [
+    "NexoraToken deployment",
+    "factory.deploy",
+    "waitForDeployment",
+    "MAX_SUPPLY"
+  ]
+}

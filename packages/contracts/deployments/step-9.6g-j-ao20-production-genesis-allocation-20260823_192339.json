@@ -1,0 +1,69 @@
+{
+  "step": "9.6G-J-AO.20",
+  "timestamp_utc": "20260823_192339",
+  "status": "FAIL",
+  "deployment_performed": false,
+  "transaction_created": false,
+  "transaction_signed": false,
+  "broadcast_performed": false,
+  "blockchain_modified": false,
+  "source_modified": false,
+  "rpc_access": false,
+  "hashes": {
+    "NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "deploy-mainnet.ts": "865d14160e2afd868d4b75826b2cce29f92e488b5bd943964dbabb1679110bd2"
+  },
+  "production_addresses": {},
+  "canonical_key_occurrences": {
+    "COMMUNITY_ADDRESS": 2,
+    "LIQUIDITY_ADDRESS": 2,
+    "TREASURY_ADDRESS": 2,
+    "TEAM_VESTING_ADDRESS": 1,
+    "ADVISOR_VESTING_ADDRESS": 1,
+    "PUBLIC_SALE_ADDRESS": 1,
+    "DEVELOPMENT_ADDRESS": 2
+  },
+  "expected_allocations_nxr": {
+    "community-ecosystem": 350000000,
+    "liquidity": 150000000,
+    "treasury": 150000000,
+    "team": 100000000,
+    "advisors": 50000000,
+    "public-sale": 100000000,
+    "development": 100000000
+  },
+  "external_total_nxr": 750000000,
+  "vault_total_nxr": 250000000,
+  "grand_total_nxr": 1000000000,
+  "max_supply_nxr": 1000000000,
+  "direct_deployer_fallback_matches": [],
+  "direct_mainnet_allocation_refs": [],
+  "vault_wiring": {
+    "TEAM_VESTING_ADDRESS": true,
+    "ADVISOR_VESTING_ADDRESS": true,
+    "PUBLIC_SALE_ADDRESS": true
+  },
+  "checks": {
+    "required_paths": true,
+    "address_format": false,
+    "zero_address_protection": true,
+    "recipient_uniqueness": true,
+    "explicitRecipient_present": true,
+    "production_guard": true,
+    "production_test_fallback_contamination_absent": true,
+    "canonical_keys": true,
+    "token_constructor_wiring": true,
+    "token_constructor_present": true,
+    "allocation_input_detected": true,
+    "MAX_SUPPLY_source": true,
+    "genesis_mint_source": false,
+    "direct_production_deployer_fallback_absent": true,
+    "vault_wiring": true,
+    "deploy_mainnet_delegation": true,
+    "supply_reconciliation": true,
+    "external_vault_reconciliation": true,
+    "static_readonly_safety": true
+  }
+}

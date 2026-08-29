@@ -1,0 +1,19 @@
+{
+  "network": "hardhat",
+  "chainId": 84532,
+  "deployedAt": "2026-08-14T14:27:43.066Z",
+  "contracts": {
+    "factory": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "nxrToken": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+    "voteToken": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+    "voteWrapper": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+    "timelock": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+    "governor": "0xA51c1fc2f0D1a1b8494Ed1FE312d7C3a78Ed91C0",
+    "vesting": "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1",
+    "vestingAdvisors": "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE",
+    "staking": "0x68B1D87F95878fE05B998F19b66F4baba5De1aed",
+    "treasury": "0x3Aa5ebB10DC797CAC828524e59A333d0A371443c",
+    "airdrop": "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d",
+    "presale": "0x59b670e9fA9D0A427751Af201D676719a970857b"
+  }
+}

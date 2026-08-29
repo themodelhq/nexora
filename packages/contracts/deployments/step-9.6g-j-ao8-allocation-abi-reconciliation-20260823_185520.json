@@ -1,0 +1,214 @@
+{
+  "step": "9.6G-J-AO.8",
+  "timestamp": "20260823_185520",
+  "safety": {
+    "deployment_authorized": false,
+    "broadcast_authorized": false,
+    "private_key_usage": false,
+    "signer_initialization": false,
+    "wallet_creation": false,
+    "transaction_construction": false,
+    "transaction_broadcast": false,
+    "blockchain_modification": false,
+    "source_modification": false,
+    "package_modification": false,
+    "rpc_access": false
+  },
+  "paths": {
+    "project": "/content/nexora",
+    "contracts": "/content/nexora/packages/contracts",
+    "token_source": "/content/nexora/packages/contracts/src/token/NexoraToken.sol",
+    "deployment_config": "/content/nexora/packages/contracts/scripts/deployment-config.ts",
+    "deploy_all": "/content/nexora/packages/contracts/scripts/deploy-all.ts",
+    "hardhat_config": "/content/nexora/packages/contracts/hardhat.config.ts",
+    "contracts_package": "/content/nexora/packages/contracts/package.json",
+    "root_package": "/content/nexora/package.json",
+    "root_lock": "/content/nexora/package-lock.json"
+  },
+  "source_hashes": {
+    "/content/nexora/packages/contracts/src/token/NexoraToken.sol": "96c883d51dcd619ee83b35ee286f4b6bd3e95431fb198706e78b4ea5d0e7b959",
+    "/content/nexora/packages/contracts/scripts/deployment-config.ts": "e4047eb0bad04a345dd0093eea51d2ac937f4610f1830b9cb29f7841affff5f9",
+    "/content/nexora/packages/contracts/scripts/deploy-all.ts": "b815c66a77e37425f92149f2a28ae805b2435b069b0a616ba8b3041d49a43c02",
+    "/content/nexora/packages/contracts/hardhat.config.ts": "4a7f7090c184f51d3e1fa84eae7972172e59e0379ca8c410b5ac12047f8dca9f"
+  },
+  "environment": {
+    "node": "v20.19.0",
+    "npm": "10.8.2"
+  },
+  "hardhat": {
+    "version": "2.22.19",
+    "compile_returncode": 0
+  },
+  "artifact": {
+    "path": "/content/nexora/packages/contracts/artifacts/src/token/NexoraToken.sol/NexoraToken.json",
+    "abi_entries": 34
+  },
+  "constructor": {
+    "schema": [
+      {
+        "index": 0,
+        "name": "allocations",
+        "type": "tuple[]",
+        "internalType": "struct NexoraToken.Allocation[]",
+        "components": [
+          {
+            "internalType": "address",
+            "name": "recipient",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ]
+      }
+    ],
+    "expected": {
+      "parameter_count": 1,
+      "parameter_name": "allocations",
+      "parameter_type": "tuple[]",
+      "components": [
+        {
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ]
+    },
+    "match": true,
+    "mismatches": []
+  },
+  "allocations": {
+    "structural_entries": [
+      {
+        "bucket": "community-ecosystem",
+        "amount_expression": "ethers.parseEther('350000000')",
+        "kind": "external",
+        "key": "COMMUNITY_ADDRESS",
+        "salt": null
+      },
+      {
+        "bucket": "liquidity",
+        "amount_expression": "ethers.parseEther('150000000')",
+        "kind": "external",
+        "key": "LIQUIDITY_ADDRESS",
+        "salt": null
+      },
+      {
+        "bucket": "treasury",
+        "amount_expression": "ethers.parseEther('150000000')",
+        "kind": "external",
+        "key": "TREASURY_ADDRESS",
+        "salt": null
+      },
+      {
+        "bucket": "team",
+        "amount_expression": "ethers.parseEther('100000000')",
+        "kind": "vault",
+        "key": "TEAM_VESTING_ADDRESS",
+        "salt": "nexora-team-vault"
+      },
+      {
+        "bucket": "advisors",
+        "amount_expression": "ethers.parseEther('50000000')",
+        "kind": "vault",
+        "key": "ADVISOR_VESTING_ADDRESS",
+        "salt": "nexora-advisor-vault"
+      },
+      {
+        "bucket": "public-sale",
+        "amount_expression": "ethers.parseEther('100000000')",
+        "kind": "vault",
+        "key": "PUBLIC_SALE_ADDRESS",
+        "salt": "nexora-sale-vault"
+      },
+      {
+        "bucket": "development",
+        "amount_expression": "ethers.parseEther('100000000')",
+        "kind": "external",
+        "key": "DEVELOPMENT_ADDRESS",
+        "salt": null
+      }
+    ],
+    "bucket_counts": {
+      "community-ecosystem": 1,
+      "liquidity": 1,
+      "treasury": 1,
+      "team": 1,
+      "advisors": 1,
+      "public-sale": 1,
+      "development": 1
+    },
+    "duplicate_buckets": {},
+    "max_supply_wei": 1000000000000000000000000000,
+    "max_supply_nxr": "1000000000"
+  },
+  "vesting_identifiers": [
+    "Team",
+    "advisors",
+    "team"
+  ],
+  "deployment_argument_audit": {
+    "nexora_token_deploy_pattern": true,
+    "recipient_amount_mapping": true
+  },
+  "static_deployment_safety": {
+    "/content/nexora/packages/contracts/scripts/deploy-all.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    },
+    "/content/nexora/packages/contracts/scripts/deploy-mainnet.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    },
+    "/content/nexora/packages/contracts/scripts/mainnet-preflight.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    },
+    "/content/nexora/packages/contracts/scripts/finalize-mainnet.ts": {
+      "private_key_assignment": 0,
+      "new_wallet": 0,
+      "send_transaction": 0,
+      "send_raw_transaction": 0,
+      "broadcast_transaction": 0
+    }
+  },
+  "rpc_hits": [
+    {
+      "file": "/content/nexora/packages/contracts/scripts/deploy-all.ts",
+      "pattern": "getNetwork",
+      "count": 1
+    }
+  ],
+  "final_results": {
+    "required_paths": true,
+    "hardhat_execution": true,
+    "compilation": true,
+    "artifact_found": true,
+    "abi_constructor_available": true,
+    "constructor_parameter_count": 1,
+    "constructor_structure_match": true,
+    "constructor_field_order_match": true,
+    "canonical_allocation_objects_detected": 7,
+    "duplicate_canonical_allocation_buckets": {},
+    "deploy_all_constructor_pattern": true,
+    "deploy_all_recipient_amount_mapping": true,
+    "private_keys_present": false,
+    "deployment_executed": false,
+    "broadcast_executed": false,
+    "blockchain_modified": false
+  }
+}
