@@ -1,0 +1,50 @@
+{
+  "name": "@nexora/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Nexora (NXR) smart contracts — token, airdrop, vesting, staking, treasury, governance, presale.",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:gas": "REPORT_GAS=true hardhat test",
+    "coverage": "hardhat coverage",
+    "test:sepolia": "hardhat test --network baseSepolia",
+    "size": "hardhat size-contracts",
+    "deploy:local": "hardhat run scripts/deploy-local.ts",
+    "deploy:sepolia": "hardhat run scripts/deploy-sepolia.ts --network baseSepolia",
+    "deploy:mainnet": "hardhat run scripts/deploy-mainnet.ts --network base",
+    "verify:sepolia": "hardhat verify --network baseSepolia",
+    "lint:sol": "solhint 'src/**/*.sol' 'test/**/*.sol'",
+    "format:sol": "prettier --write 'src/**/*.sol'",
+    "foundry:test": "forge test --match-path \"test/foundry/*\"",
+    "foundry:invariant": "forge test --match-test \"invariant_*\" --match-path \"test/foundry/*\"",
+    "foundry:install": "forge install foundry-rs/forge-std --no-git",
+    "foundry:build": "forge build"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
+    "@openzeppelin/contracts-upgradeable": "^5.0.2"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.6",
+    "@nomicfoundation/hardhat-ethers": "^3.0.5",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.10",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.6",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@types/chai": "^4.3.16",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.14.9",
+    "chai": "^4.4.1",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.0",
+    "hardhat": "2.22.19",
+    "hardhat-contract-sizer": "^2.10.0",
+    "hardhat-gas-reporter": "^1.0.10",
+    "mocha": "^10.4.0",
+    "solhint": "^5.0.1",
+    "ts-node": "^10.9.2",
+    "typechain": "^8.3.2",
+    "typescript": "^5.5.4"
+  }
+}
